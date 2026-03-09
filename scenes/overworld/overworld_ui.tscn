@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://cp7cev47h51bg"]
+
+[ext_resource type="Texture2D" uid="uid://ckaqngfyf8hcq" path="res://assets/art/ui/D-Pad/button_xboxone_dpad_dark_1.png" id="1_3xbcd"]
+[ext_resource type="Script" uid="uid://intul55g50aq" path="res://scenes/ui/d_pad_skill_wheel.gd" id="1_y531t"]
+[ext_resource type="PackedScene" uid="uid://cr8v662wqotvh" path="res://scenes/ui/skill_slot.tscn" id="3_x8qqa"]
+[ext_resource type="Texture2D" uid="uid://d1hymrdptvdqm" path="res://assets/art/ui/green-arrow-up.png" id="4_f7bk2"]
+[ext_resource type="Texture2D" uid="uid://bodt01sgcyrk1" path="res://assets/art/ui/green-arrow-vector-down.png" id="5_0wxml"]
+[ext_resource type="Texture2D" uid="uid://dlur0tg127c8i" path="res://assets/art/ui/green-arrow-vector-600x457.png" id="6_lk8ac"]
+[ext_resource type="Texture2D" uid="uid://bb1i5s1xqdi2p" path="res://assets/art/ui/green-arrow-vector-right.png" id="7_74qgl"]
+
+[node name="OverworldUI" type="CanvasLayer"]
+
+[node name="DPadSkillWheel" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -220.0
+offset_right = 220.0
+offset_bottom = -20.0
+grow_vertical = 0
+script = ExtResource("1_y531t")
+
+[node name="TextureRect" type="TextureRect" parent="DPadSkillWheel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3xbcd")
+expand_mode = 1
+
+[node name="SkillUp" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+skill_icon = ExtResource("4_f7bk2")
+
+[node name="SkillDown" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+skill_icon = ExtResource("5_0wxml")
+
+[node name="SkillLeft" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_vertical = 2
+skill_icon = ExtResource("6_lk8ac")
+
+[node name="SkillRight" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 0.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+skill_icon = ExtResource("7_74qgl")
+
+[node name="SoloPitches" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -220.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0

@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvbs78jt1r2qh"]
+
+[ext_resource type="Script" uid="uid://brqbh45bh166s" path="res://scenes/ui/dialogue_box.gd" id="1_6iboe"]
+[ext_resource type="Texture2D" uid="uid://x8yfpt4w65lq" path="res://assets/art/ui/ABXY/button_xbox_digital_x_11.png" id="2_4mjmi"]
+
+[node name="DialogueBox" type="CanvasLayer"]
+script = ExtResource("1_6iboe")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 122.0
+offset_top = -279.0
+offset_right = -77.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.44849992, 0.58154696, 0.84948283, 1)
+theme_override_font_sizes/font_size = 20
+text = "Boss"
+
+[node name="DialogueLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Haha lol..."
+fit_content = true
+scroll_active = false
+
+[node name="ContinueIcon" type="Sprite2D" parent="Panel"]
+visible = false
+position = Vector2(902.99994, 157.99998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_4mjmi")

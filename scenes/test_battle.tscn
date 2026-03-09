@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpf48v6rxvktq"]
+
+[ext_resource type="Script" uid="uid://c07qelcloyiwm" path="res://scenes/battle/battle.gd" id="1_lwvhg"]
+[ext_resource type="PackedScene" uid="uid://c374r3l0ywvxu" path="res://scenes/arrow_test.tscn" id="2_7a36v"]
+[ext_resource type="AudioStream" uid="uid://c84gk6vp61fej" path="res://assets/muzak/click_105bpm_4-4time_101.mp3" id="2_qnlnl"]
+[ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="3_7a36v"]
+[ext_resource type="Texture2D" uid="uid://d1hymrdptvdqm" path="res://assets/art/ui/green-arrow-up.png" id="3_di38x"]
+[ext_resource type="Texture2D" uid="uid://bodt01sgcyrk1" path="res://assets/art/ui/green-arrow-vector-down.png" id="4_h5m2h"]
+[ext_resource type="Texture2D" uid="uid://dlur0tg127c8i" path="res://assets/art/ui/green-arrow-vector-600x457.png" id="4_qnlnl"]
+[ext_resource type="Texture2D" uid="uid://bb1i5s1xqdi2p" path="res://assets/art/ui/green-arrow-vector-right.png" id="6_bjvnw"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lwvhg")
+arrow_scene = ExtResource("2_7a36v")
+arrow_up_texture = ExtResource("3_di38x")
+arrow_down_texture = ExtResource("4_h5m2h")
+arrow_left_texture = ExtResource("4_qnlnl")
+arrow_right_texture = ExtResource("6_bjvnw")
+
+[node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("3_7a36v")
+bpm = 105.0
+beat_length = 0.5714285714285714
+audio_stream_player = NodePath("../AudioStreamPlayer")
+metadata/_custom_type_script = "uid://dos3qhffr4v0a"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qnlnl")
+
+[node name="Feedback" type="Label" parent="."]
+offset_left = 105.0
+offset_top = 206.0
+offset_right = 596.0
+offset_bottom = 399.0
+
+[node name="ArrowColumn" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 400)
+layout_direction = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 648.0
+offset_right = 1122.0
+offset_bottom = 583.0
+grow_horizontal = 2
+grow_vertical = 2

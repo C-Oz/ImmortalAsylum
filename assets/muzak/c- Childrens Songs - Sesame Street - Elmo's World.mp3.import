@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://rb65lwxo3lcf"
+path="res://.godot/imported/c- Childrens Songs - Sesame Street - Elmo's World.mp3-1a86f8579f4f91e7a62af9f0070dd530.mp3str"
+
+[deps]
+
+source_file="res://assets/muzak/c- Childrens Songs - Sesame Street - Elmo's World.mp3"
+dest_files=["res://.godot/imported/c- Childrens Songs - Sesame Street - Elmo's World.mp3-1a86f8579f4f91e7a62af9f0070dd530.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

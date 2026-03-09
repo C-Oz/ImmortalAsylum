@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c374r3l0ywvxu"]
+
+[ext_resource type="Texture2D" uid="uid://cl62cuuwbglcl" path="res://assets/art/ui/ABXY/button_xbox_digital_y_2.png" id="1_txrh7"]
+
+[node name="TextureRect" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+texture = ExtResource("1_txrh7")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1blx866xkacx"]
+
+[ext_resource type="Script" uid="uid://bk4mk1676mlva" path="res://scenes/ui/title_screen.gd" id="1_eb34j"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_eb34j")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 94.0
+offset_right = 913.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 60
+text = "Immortal Asylum"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 388.0
+offset_right = 656.0
+offset_bottom = 419.0
+text = "Start"
