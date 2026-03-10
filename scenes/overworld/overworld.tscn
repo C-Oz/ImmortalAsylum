@@ -58,3 +58,9 @@ stream = ExtResource("7_bduoi")
 [node name="Obstacle" parent="." instance=ExtResource("8_lvsx0")]
 position = Vector2(120, 569)
 sequence = Array[String](["Y", "B", "A", "A"])
+
+[node name="ControlTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="ControlTimer" to="OverworldUI" method="_on_control_timer_timeout"]

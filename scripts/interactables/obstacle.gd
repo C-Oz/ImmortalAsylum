@@ -28,18 +28,27 @@ func _on_body_exited(body: Node2D) -> void:
 		ui.stop_sequence()
 
 func on_beat():
-	print("Obstacle.gd on_beat called")
+	#print("Obstacle.gd on_beat called")
 	ui.on_beat()
 
 func _input(event):
 	# Only process input if UI is active
 	var button = null
+	
 	if event is InputEventJoypadButton and event.pressed:
 		if event.button_index == JOY_BUTTON_Y:
 			button = "Y"
 		elif event.button_index == JOY_BUTTON_B:
 			button = "B"
 		elif event.button_index == JOY_BUTTON_A:
+			button = "A"
+	# Keyboard fallback for debugging
+	elif event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_Q:
+			button = "Y"
+		elif event.keycode == KEY_A:
+			button = "B"
+		elif event.keycode == KEY_Z:
 			button = "A"
 	
 	if button:

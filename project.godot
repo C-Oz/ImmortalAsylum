@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GameManager="*res://scripts/autoload/game_manager.gd"
 DialogueBox="*res://scenes/ui/dialogue_box.tscn"
 
+[editor]
+
+movie_writer/movie_file="D:/Godot_v4.5-stable_win64.exe/Projects/immortal-asylum/screen_rec.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/GDScript/addons/YATI/plugin.cfg")

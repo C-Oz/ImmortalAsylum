@@ -1,7 +1,10 @@
 extends Control
 
-@export var skill_icon: Texture2D
-
+@export var skill_icon: Texture2D:
+	set(value):
+		skill_icon = value
+		if is_node_ready() and icon:
+			icon.texture = skill_icon
 @export var max_charge: float = 100.0
 @export var drain_rate: float = 1.0
 

@@ -13,19 +13,25 @@ var state = State.INACTIVE
 var current_beat_index = 0
 var beats_remaining = 0
 var player_input_index = 0
+const HIT_WINDOW_SECS := 0.2
+var pressed_slots := []
 
 @onready var sequence_container = $SequenceContainer
 @onready var needle = $Needle
 @onready var countdown_label = $CountdownLabel
 @onready var background_panel = $BackgroundPanel
 
-# Button sprite mapping - UPDATE THESE PATHS TO YOUR SPRITES
 var button_sprites = {
 	"Y": preload("res://assets/art/ui/ABXY/button_xbox_digital_y_1.png"),
 	"B": preload("res://assets/art/ui/ABXY/button_xbox_digital_b_1.png"),
 	"A": preload("res://assets/art/ui/ABXY/button_xbox_digital_a_1.png")
 }
 
+var button_sprites_pressed = {
+	"Y": preload("res://assets/art/ui/ABXY/button_xbox_digital_y_2.png"),
+	"B": preload("res://assets/art/ui/ABXY/button_xbox_digital_b_2.png"),
+	"A": preload("res://assets/art/ui/ABXY/button_xbox_digital_a_2.png")
+}
 
 func _ready():
 	setup_sequence()
@@ -89,9 +95,10 @@ func stop_sequence():
 	hide_countdown()
 	player_input_index = 0
 	current_beat_index = 0
+	reset_buttons()
 
 func on_beat():
-	print("on_beat called, state: ", State.keys()[state], " beats_remaining: ", beats_remaining)
+	#print("on_beat called, state: ", State.keys()[state], " beats_remaining: ", beats_remaining)
 	match state:
 		State.COUNTDOWN:
 			beats_remaining -= 1
@@ -129,9 +136,12 @@ func advance_needle():
 	current_beat_index = (current_beat_index + 1) % sequence.size()
 	update_needle_position()
 	
-	# If we've looped back to start and player hasn't matched anything, reset their progress
-	if current_beat_index == 0 and player_input_index > 0:
-		player_input_index = 0
+	# Always reset visuals at start of loop
+	if current_beat_index == 0:
+		reset_buttons()
+		# Also reset player progress if incomplete
+		if player_input_index > 0 and player_input_index < sequence.size():
+			player_input_index = 0
 
 func update_needle_position():
 	if sequence_container.get_child_count() == 0:
@@ -146,21 +156,79 @@ func check_input(button: String):
 	if state != State.ACTIVE:
 		return
 	
-	# Player must be on the correct beat AND correct button
-	var expected_button = sequence[player_input_index]
+	var rhythm_notifier = get_node("/root/Overworld/RhythmNotifier")
 	
-	if button == expected_button and current_beat_index == player_input_index:
-		# Correct!
-		player_input_index += 1
-		# Visual feedback here (highlight slot, play sound, etc)
-		
-		if player_input_index >= sequence.size():
-			# Sequence completed!
-			emit_signal("sequence_completed")
-			state = State.INACTIVE
-	else:
-		# Wrong button or wrong timing - reset
+	# Calculate timing difference (same as battle system)
+	var beat_time : float = floor(rhythm_notifier.current_beat) * rhythm_notifier.beat_length
+	var next_beat_time : float = beat_time + rhythm_notifier.beat_length
+	var diff_current : float = rhythm_notifier.current_position - beat_time
+	var diff_next : float = next_beat_time - rhythm_notifier.current_position
+	var diff : float = min(diff_current, diff_next)
+	
+	# Check timing window
+	if diff > HIT_WINDOW_SECS:
 		player_input_index = 0
+		print("Off beat!")
+		return
+	
+	# Determine which beat to check
+	var check_index = current_beat_index
+	# If closer to next beat, check next button
+	if diff_current > diff_next and current_beat_index + 1 < sequence.size():
+		check_index = current_beat_index + 1
+	
+	var expected_button = sequence[check_index]
+	
+	# Check if correct button for THIS beat (not sequence position)
+	if button == expected_button:
+		# Always show visual feedback for correct button
+		show_pressed_feedback(check_index)
+		print("Correct button at position: ", check_index)
+		
+		# Only advance sequence if it's the NEXT expected button
+		if check_index == player_input_index:
+			player_input_index += 1
+			print("Sequence progress: ", player_input_index, "/", sequence.size())
+			
+			if player_input_index >= sequence.size():
+				# Sequence completed!
+				print("Sequence completed!")
+				emit_signal("sequence_completed")
+				state = State.INACTIVE
+		else:
+			# Correct button but wrong order - reset sequence tracking
+			print("Correct button but broke sequence. Resetting progress.")
+			player_input_index = 0
+	else:
+		# Wrong button entirely
+		print("Wrong button! Expected: ", expected_button, " Got: ", button)
+		player_input_index = 0
+
+func show_pressed_feedback(slot_index: int):
+	if slot_index >= sequence_container.get_child_count():
+		return
+	
+	var slot = sequence_container.get_child(slot_index)
+	var button_key = sequence[slot_index]
+	
+	# Change to pressed sprite
+	if button_key in button_sprites_pressed:
+		slot.texture = button_sprites_pressed[button_key]
+	
+	# Track that this slot was pressed
+	if not pressed_slots.has(slot_index):
+		pressed_slots.append(slot_index)
+
+func reset_buttons():
+	# Reset all buttons to unpressed state
+	for i in range(sequence_container.get_child_count()):
+		var slot = sequence_container.get_child(i)
+		var button_key = sequence[i]
+		
+		if button_key in button_sprites:
+			slot.texture = button_sprites[button_key]
+	
+	pressed_slots.clear()
 
 func reset_needle():
 	current_beat_index = 0
