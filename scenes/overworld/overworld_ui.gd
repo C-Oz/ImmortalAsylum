@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var solo_instrument = $SoloPitches/SoloInstrument
 @onready var skill_up = $DPadSkillWheel/SkillUp
 @onready var skill_down = $DPadSkillWheel/SkillDown
+@onready var skill_left = $DPadSkillWheel/SkillLeft
+@onready var skill_right = $DPadSkillWheel/SkillRight
 
 @onready var timer_label = $TimerLabel
 @onready var control_timer = get_node("/root/Overworld/ControlTimer")
@@ -12,7 +14,23 @@ var tex_clarinet = preload("res://assets/art/instruments/clarinet_big.png")
 var tex_cello = preload("res://assets/art/instruments/cello_big.png")
 
 # State machine for the switching instruments
-var cycle_state: int = 0  
+var cycle_state: int = 0
+
+# Maps dpad actions to their corresponding skill slots
+var _dpad_slots: Dictionary
+
+func _ready():
+	_dpad_slots = {
+		"dpad_up": skill_up,
+		"dpad_down": skill_down,
+		"dpad_left": skill_left,
+		"dpad_right": skill_right,
+	}
+
+func _unhandled_input(event: InputEvent):
+	for action in _dpad_slots:
+		if event.is_action_pressed(action):
+			_dpad_slots[action].activate_color(5.0) # ****** INLINE CONFIG ********
 
 func _process(delta):
 	if is_instance_valid(control_timer):

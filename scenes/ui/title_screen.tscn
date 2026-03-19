@@ -4,22 +4,49 @@
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_eb34j")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 413.0
-offset_top = 94.0
-offset_right = 913.0
-offset_bottom = 178.0
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 100.0
+offset_right = 250.0
+offset_bottom = 184.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 60
 text = "Immortal Asylum"
 
 [node name="StartButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 610.0
-offset_top = 388.0
-offset_right = 656.0
-offset_bottom = 419.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -26.5
+offset_right = 41.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
 text = "Start"
+
+[node name="VersionNo" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -67.0
+offset_right = 175.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Version"

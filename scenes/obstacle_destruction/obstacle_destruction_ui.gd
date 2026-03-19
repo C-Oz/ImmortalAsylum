@@ -20,6 +20,7 @@ var pressed_slots := []
 @onready var needle = $Needle
 @onready var countdown_label = $CountdownLabel
 @onready var background_panel = $BackgroundPanel
+@onready var success_particles = $SuccessParticles
 
 var button_sprites = {
 	"Y": preload("res://assets/art/ui/ABXY/button_xbox_digital_y_1.png"),
@@ -96,6 +97,8 @@ func stop_sequence():
 	player_input_index = 0
 	current_beat_index = 0
 	reset_buttons()
+	# Grey out when leaving
+	modulate = Color(0.5, 0.5, 0.5, 1.0)
 
 func on_beat():
 	#print("on_beat called, state: ", State.keys()[state], " beats_remaining: ", beats_remaining)
@@ -109,6 +112,7 @@ func on_beat():
 				print("Countdown finished, going ACTIVE")
 				state = State.ACTIVE
 				hide_countdown()
+				modulate = Color(1.0, 1.0, 1.0, 1.0)  # Full brightness
 		
 		State.ACTIVE:
 			advance_needle()
@@ -215,9 +219,12 @@ func show_pressed_feedback(slot_index: int):
 	if button_key in button_sprites_pressed:
 		slot.texture = button_sprites_pressed[button_key]
 	
-	# Track that this slot was pressed
+		# Track that this slot was pressed
 	if not pressed_slots.has(slot_index):
 		pressed_slots.append(slot_index)
+	
+	spawn_success_particles(slot.position + Vector2(slot.size.x * button_scale / 2.0, slot.size.y * button_scale / 2.0))
+	trigger_vibration()
 
 func reset_buttons():
 	# Reset all buttons to unpressed state
@@ -243,3 +250,13 @@ func hide_countdown():
 func update_countdown_display():
 	print("Updating countdown label to: ", beats_remaining)
 	countdown_label.text = str(beats_remaining)
+
+func spawn_success_particles(pos: Vector2):
+	if success_particles:
+		success_particles.position = pos
+		success_particles.restart()
+		success_particles.emitting = true
+
+func trigger_vibration():
+	# Vibrate for 0.1 seconds, medium strength
+	Input.start_joy_vibration(0, 0.3, 0.3, 0.1)  # (device, weak_motor, strong_motor, duration)

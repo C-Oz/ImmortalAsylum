@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cp7cev47h51bg"]
+[gd_scene load_steps=15 format=3 uid="uid://cp7cev47h51bg"]
 
-[ext_resource type="Texture2D" uid="uid://ckaqngfyf8hcq" path="res://assets/art/ui/D-Pad/button_xboxone_dpad_dark_1.png" id="1_3xbcd"]
 [ext_resource type="Script" uid="uid://cjjfugihguyrw" path="res://scenes/overworld/overworld_ui.gd" id="1_rkdga"]
 [ext_resource type="Script" uid="uid://intul55g50aq" path="res://scenes/ui/d_pad_skill_wheel.gd" id="1_y531t"]
+[ext_resource type="Texture2D" uid="uid://1rbkues7fgmw" path="res://assets/art/ui/D-Pad/button_xboxone_dpad_dark_6.png" id="3_rkdga"]
 [ext_resource type="PackedScene" uid="uid://cr8v662wqotvh" path="res://scenes/ui/skill_slot.tscn" id="3_x8qqa"]
 [ext_resource type="Texture2D" uid="uid://r0ylm5x7yg0p" path="res://assets/art/instruments/clarinet_big.png" id="4_0wxml"]
 [ext_resource type="Texture2D" uid="uid://b0a6v7aiwhrpn" path="res://assets/art/instruments/cello_big.png" id="4_7lhd5"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cl62cuuwbglcl" path="res://assets/art/ui/ABXY/button_xbox_digital_y_2.png" id="9_7lhd5"]
 [ext_resource type="Texture2D" uid="uid://dc5hhp2vsli15" path="res://assets/art/ui/ABXY/button_xbox_digital_b_2.png" id="10_rkdga"]
 [ext_resource type="Texture2D" uid="uid://db14wbnemouw0" path="res://assets/art/ui/ABXY/button_xbox_digital_a_1.png" id="11_u8qpe"]
+[ext_resource type="AudioStream" uid="uid://pt0p6smrp0q" path="res://assets/muzak/idoberg-bells-melody-loop-266598.mp3" id="14_u8qpe"]
 
 [node name="OverworldUI" type="CanvasLayer"]
 script = ExtResource("1_rkdga")
@@ -43,7 +44,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_3xbcd")
+texture = ExtResource("3_rkdga")
 expand_mode = 1
 
 [node name="SkillUp" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
@@ -151,6 +152,15 @@ expand_mode = 4
 layout_mode = 2
 texture = ExtResource("11_u8qpe")
 expand_mode = 4
+
+[node name="SoundY" type="AudioStreamPlayer" parent="SoloPitches"]
+stream = ExtResource("14_u8qpe")
+
+[node name="SoundB" type="AudioStreamPlayer" parent="SoloPitches"]
+stream = ExtResource("14_u8qpe")
+
+[node name="SoundA" type="AudioStreamPlayer" parent="SoloPitches"]
+stream = ExtResource("14_u8qpe")
 
 [node name="TimerLabel" type="Label" parent="."]
 anchors_preset = 5

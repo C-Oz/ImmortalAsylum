@@ -1,9 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://biflggyra163j"]
+[gd_scene load_steps=5 format=3 uid="uid://biflggyra163j"]
 
 [ext_resource type="Script" uid="uid://bnp3r3fi66ug4" path="res://scenes/obstacle_destruction/obstacle_destruction_ui.gd" id="1_8yhai"]
 [ext_resource type="Texture2D" uid="uid://5iwpt4s4pfkd" path="res://icon.svg" id="2_jkyh0"]
+[ext_resource type="Texture2D" uid="uid://bpysslsdc8wv2" path="res://assets/art/particles/star_yellow.png" id="3_q8ge0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hkmo7"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 100.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 980, 0)
+radial_accel_min = -100.0
+radial_accel_max = 99.99999
+scale_min = 0.5
+scale_max = 0.5
 
 [node name="DestructionUI" type="Control"]
+modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 185.0
@@ -29,6 +46,7 @@ texture = ExtResource("2_jkyh0")
 expand_mode = 1
 
 [node name="CountdownLabel" type="Label" parent="."]
+modulate = Color(2, 2, 2, 1)
 layout_mode = 0
 offset_right = 183.0
 offset_bottom = 45.0
@@ -36,3 +54,12 @@ theme_override_font_sizes/font_size = 32
 text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SuccessParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 12
+texture = ExtResource("3_q8ge0")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_hkmo7")
