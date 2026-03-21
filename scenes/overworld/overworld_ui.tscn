@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cp7cev47h51bg"]
+[gd_scene load_steps=17 format=3 uid="uid://cp7cev47h51bg"]
 
 [ext_resource type="Script" uid="uid://cjjfugihguyrw" path="res://scenes/overworld/overworld_ui.gd" id="1_rkdga"]
 [ext_resource type="Script" uid="uid://intul55g50aq" path="res://scenes/ui/d_pad_skill_wheel.gd" id="1_y531t"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cl62cuuwbglcl" path="res://assets/art/ui/ABXY/button_xbox_digital_y_2.png" id="9_7lhd5"]
 [ext_resource type="Texture2D" uid="uid://dc5hhp2vsli15" path="res://assets/art/ui/ABXY/button_xbox_digital_b_2.png" id="10_rkdga"]
 [ext_resource type="Texture2D" uid="uid://db14wbnemouw0" path="res://assets/art/ui/ABXY/button_xbox_digital_a_1.png" id="11_u8qpe"]
-[ext_resource type="AudioStream" uid="uid://pt0p6smrp0q" path="res://assets/muzak/idoberg-bells-melody-loop-266598.mp3" id="14_u8qpe"]
+[ext_resource type="AudioStream" uid="uid://dd5rkghg3ad8e" path="res://assets/muzak/solo/d.mp3" id="14_a45s8"]
+[ext_resource type="AudioStream" uid="uid://co28phwffx13h" path="res://assets/muzak/solo/g-flat.mp3" id="15_0i1vl"]
+[ext_resource type="AudioStream" uid="uid://ce6do0u6knht8" path="res://assets/muzak/solo/b-flat-rvised.mp3" id="16_mbcjf"]
 
 [node name="OverworldUI" type="CanvasLayer"]
 script = ExtResource("1_rkdga")
@@ -154,13 +156,13 @@ texture = ExtResource("11_u8qpe")
 expand_mode = 4
 
 [node name="SoundY" type="AudioStreamPlayer" parent="SoloPitches"]
-stream = ExtResource("14_u8qpe")
+stream = ExtResource("14_a45s8")
 
 [node name="SoundB" type="AudioStreamPlayer" parent="SoloPitches"]
-stream = ExtResource("14_u8qpe")
+stream = ExtResource("15_0i1vl")
 
 [node name="SoundA" type="AudioStreamPlayer" parent="SoloPitches"]
-stream = ExtResource("14_u8qpe")
+stream = ExtResource("16_mbcjf")
 
 [node name="TimerLabel" type="Label" parent="."]
 anchors_preset = 5

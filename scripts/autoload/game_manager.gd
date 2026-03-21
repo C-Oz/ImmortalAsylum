@@ -8,6 +8,14 @@ var returning_from_battle: bool = false
 var battle_victory: bool = false
 var saved_player_position: Vector2 = Vector2.ZERO
 
+var total_battles_won: int = 0
+var unlocked_skills: Dictionary = {
+	"up": true,
+	"down": true,
+	"left": false,
+	"right": false
+}
+
 func change_scene(scene_path: String) -> void:
 	scene_changed.emit(scene_path)
 	get_tree().change_scene_to_file(scene_path)
@@ -21,7 +29,19 @@ func start_battle(npc_id: String, player_position: Vector2) -> void:
 func return_to_overworld(victory: bool) -> void:
 	battle_victory = victory
 	returning_from_battle = true
-	change_scene("res://scenes/overworld/overworld.tscn")
+	
+	if victory:
+		total_battles_won += 1
+		evaluate_progression()
+		
+	change_scene("res://scenes/overworld/demo1.tscn")
+
+func evaluate_progression() -> void:
+	# Flexible progression logic based on battle wins
+	if total_battles_won >= 1:
+		unlocked_skills["left"] = true
+	if total_battles_won >= 2:
+		unlocked_skills["right"] = true
 
 func get_battle_result() -> Dictionary:
 	return {
