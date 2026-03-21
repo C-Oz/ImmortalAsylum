@@ -1,6 +1,16 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-screen_rec.avi
-agents.md
+*.avi
 /assets/
+/exports/macos/
+/exports/win/
+
+# Local workspace files
+agents.md
+export_presets.cfg
+
+# macOS and Windows system files
+.DS_Store
+Thumbs.db
+Desktop.ini
