@@ -165,15 +165,15 @@ func _input(event: InputEvent) -> void:
 	# Map joypad and keyboard input to directions
 	if event is InputEventJoypadButton and event.button_index == JOY_BUTTON_Y and event.pressed:
 		pressed_direction = Direction.Y
-	elif event.is_action_pressed("ui_up"):
+	elif event is InputEventKey and event.keycode == KEY_Q and event.pressed and not event.echo:
 		pressed_direction = Direction.Y
 	elif event is InputEventJoypadButton and event.button_index == JOY_BUTTON_B and event.pressed:
 		pressed_direction = Direction.B
-	elif event.is_action_pressed("ui_right"):
+	elif event is InputEventKey and event.keycode == KEY_A and event.pressed and not event.echo:
 		pressed_direction = Direction.B
 	elif event is InputEventJoypadButton and event.button_index == JOY_BUTTON_A and event.pressed:
 		pressed_direction = Direction.A
-	elif event.is_action_pressed("ui_down"):
+	elif event is InputEventKey and event.keycode == KEY_Z and event.pressed and not event.echo:
 		pressed_direction = Direction.A
 	
 	if pressed_direction != -1:

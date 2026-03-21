@@ -6,10 +6,13 @@ extends Control
 @onready var skill_right = $SkillRight
 
 func _ready():
-	skill_up.visible = true
-	skill_down.visible = true
-	skill_left.visible = false
-	skill_right.visible = false
+	update_visuals()
+
+func update_visuals():
+	skill_up.visible = GameManager.unlocked_skills["up"]
+	skill_down.visible = GameManager.unlocked_skills["down"]
+	skill_left.visible = GameManager.unlocked_skills["left"]
+	skill_right.visible = GameManager.unlocked_skills["right"]
 
 func unlock_skill(direction: String):
 	match direction:
