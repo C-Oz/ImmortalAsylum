@@ -3,8 +3,7 @@
 /android/
 *.avi
 /assets/
-/exports/macos/
-/exports/win/
+/exports/
 
 # Local workspace files
 agents.md
