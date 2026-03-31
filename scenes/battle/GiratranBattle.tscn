@@ -1,38 +1,38 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkooiwj82bi62"]
+[gd_scene load_steps=14 format=3 uid="uid://b6lfxwb6ouvag"]
 
-[ext_resource type="Script" uid="uid://c07qelcloyiwm" path="res://scenes/battle/battle.gd" id="1_sr2a6"]
-[ext_resource type="PackedScene" uid="uid://c374r3l0ywvxu" path="res://scenes/arrow_test.tscn" id="2_pw7nh"]
-[ext_resource type="Texture2D" uid="uid://cl62cuuwbglcl" path="res://assets/art/ui/ABXY/button_xbox_digital_y_2.png" id="3_icoan"]
-[ext_resource type="Texture2D" uid="uid://dc5hhp2vsli15" path="res://assets/art/ui/ABXY/button_xbox_digital_b_2.png" id="4_kd6yx"]
-[ext_resource type="Texture2D" uid="uid://b4g6d8ix012eh" path="res://assets/art/ui/ABXY/button_xbox_digital_a_2.png" id="5_t1kk3"]
-[ext_resource type="AudioStream" uid="uid://l1rvvhx6kyh4" path="res://assets/muzak/IMMORTAL ASYLUM MUSIC BUG TEST - Rudakohm Rhythm battle full score.wav" id="7_icoan"]
-[ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="7_v0scd"]
-[ext_resource type="Texture2D" uid="uid://bylnqjgsv5gro" path="res://assets/art/p3.png" id="9_fisqk"]
-[ext_resource type="Texture2D" uid="uid://cwg5sa5ok2tv6" path="res://assets/art/p1.PNG" id="10_mxe8n"]
-[ext_resource type="Texture2D" uid="uid://cuq430wucds1x" path="res://assets/art/p2.PNG" id="11_icoan"]
-[ext_resource type="Texture2D" uid="uid://dc5qy1md6b5lq" path="res://assets/art/ui/ABXY/button_xbox_digital_y_1.png" id="11_mxe8n"]
-[ext_resource type="Texture2D" uid="uid://dld1ew4ffofat" path="res://assets/art/ui/ABXY/button_xbox_digital_b_1.png" id="12_icoan"]
-[ext_resource type="Texture2D" uid="uid://db14wbnemouw0" path="res://assets/art/ui/ABXY/button_xbox_digital_a_1.png" id="14_n6gaa"]
+[ext_resource type="Script" uid="uid://c07qelcloyiwm" path="res://scenes/battle/battle.gd" id="1_5hh1o"]
+[ext_resource type="PackedScene" uid="uid://c374r3l0ywvxu" path="res://scenes/arrow_test.tscn" id="2_rtus5"]
+[ext_resource type="Texture2D" uid="uid://cl62cuuwbglcl" path="res://assets/art/ui/ABXY/button_xbox_digital_y_2.png" id="3_b3ls3"]
+[ext_resource type="Texture2D" uid="uid://dc5hhp2vsli15" path="res://assets/art/ui/ABXY/button_xbox_digital_b_2.png" id="4_jguoe"]
+[ext_resource type="Texture2D" uid="uid://b4g6d8ix012eh" path="res://assets/art/ui/ABXY/button_xbox_digital_a_2.png" id="5_fy2rg"]
+[ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="6_7216s"]
+[ext_resource type="AudioStream" uid="uid://l1rvvhx6kyh4" path="res://assets/muzak/IMMORTAL ASYLUM MUSIC BUG TEST - Rudakohm Rhythm battle full score.wav" id="7_4digr"]
+[ext_resource type="Texture2D" uid="uid://cwg5sa5ok2tv6" path="res://assets/art/p1.PNG" id="8_pwj5h"]
+[ext_resource type="Texture2D" uid="uid://cuq430wucds1x" path="res://assets/art/p2.PNG" id="9_cig6q"]
+[ext_resource type="Texture2D" uid="uid://dc5qy1md6b5lq" path="res://assets/art/ui/ABXY/button_xbox_digital_y_1.png" id="10_ftyie"]
+[ext_resource type="Texture2D" uid="uid://dld1ew4ffofat" path="res://assets/art/ui/ABXY/button_xbox_digital_b_1.png" id="11_0dhvl"]
+[ext_resource type="Texture2D" uid="uid://db14wbnemouw0" path="res://assets/art/ui/ABXY/button_xbox_digital_a_1.png" id="12_rbacs"]
+[ext_resource type="Texture2D" uid="uid://bylnqjgsv5gro" path="res://assets/art/p3.png" id="13_2ev70"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_sr2a6")
+script = ExtResource("1_5hh1o")
 sequence_length = 8
 battle_length = 3
 mode = 1
-button_prompt_scene = ExtResource("2_pw7nh")
-button_y_texture = ExtResource("3_icoan")
-button_b_texture = ExtResource("4_kd6yx")
-button_a_texture = ExtResource("5_t1kk3")
+button_prompt_scene = ExtResource("2_rtus5")
+button_y_texture = ExtResource("3_b3ls3")
+button_b_texture = ExtResource("4_jguoe")
+button_a_texture = ExtResource("5_fy2rg")
 
 [node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
-script = ExtResource("7_v0scd")
+script = ExtResource("6_7216s")
 bpm = 80.0
 beat_length = 0.75
 audio_stream_player = NodePath("../AudioStreamPlayer")
 metadata/_custom_type_script = "uid://dos3qhffr4v0a"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_icoan")
+stream = ExtResource("7_4digr")
 
 [node name="Feedback" type="Label" parent="."]
 z_index = 1000
@@ -44,12 +44,12 @@ offset_bottom = 373.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(138, 493.00003)
 scale = Vector2(2.570707, 2.509804)
-texture = ExtResource("10_mxe8n")
+texture = ExtResource("8_pwj5h")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(997, 151.00002)
 scale = Vector2(2.570707, 2.509804)
-texture = ExtResource("11_icoan")
+texture = ExtResource("9_cig6q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 top_level = true
@@ -63,19 +63,19 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("11_mxe8n")
+texture = ExtResource("10_ftyie")
 expand_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("12_icoan")
+texture = ExtResource("11_0dhvl")
 expand_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("14_n6gaa")
+texture = ExtResource("12_rbacs")
 expand_mode = 5
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
@@ -89,19 +89,19 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("11_mxe8n")
+texture = ExtResource("10_ftyie")
 expand_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("12_icoan")
+texture = ExtResource("11_0dhvl")
 expand_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="VBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("14_n6gaa")
+texture = ExtResource("12_rbacs")
 expand_mode = 5
 
 [node name="DemoLaneContainer" type="Control" parent="."]
@@ -124,7 +124,7 @@ offset_right = 760.0
 offset_bottom = 230.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("9_fisqk")
+texture = ExtResource("13_2ev70")
 expand_mode = 2
 
 [node name="LaneY" type="Control" parent="DemoLaneContainer"]
@@ -175,7 +175,7 @@ anchor_right = 1.0
 offset_left = -760.0
 offset_bottom = 203.0
 grow_horizontal = 0
-texture = ExtResource("9_fisqk")
+texture = ExtResource("13_2ev70")
 expand_mode = 2
 flip_h = true
 

@@ -7,4 +7,4 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	#GameManager.change_scene("res://scenes/overworld/overworld.tscn")
-	GameManager.change_scene("res://scenes/overworld/demo1.tscn")
+	GameManager.change_scene("res://scenes/overworld/EastArea.tscn")

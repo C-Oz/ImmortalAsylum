@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cp7cev47h51bg"]
+[gd_scene load_steps=16 format=3 uid="uid://cp7cev47h51bg"]
 
 [ext_resource type="Script" uid="uid://cjjfugihguyrw" path="res://scenes/overworld/overworld_ui.gd" id="1_rkdga"]
 [ext_resource type="Script" uid="uid://intul55g50aq" path="res://scenes/ui/d_pad_skill_wheel.gd" id="1_y531t"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cr8v662wqotvh" path="res://scenes/ui/skill_slot.tscn" id="3_x8qqa"]
 [ext_resource type="Texture2D" uid="uid://r0ylm5x7yg0p" path="res://assets/art/instruments/clarinet_big.png" id="4_0wxml"]
 [ext_resource type="Texture2D" uid="uid://b0a6v7aiwhrpn" path="res://assets/art/instruments/cello_big.png" id="4_7lhd5"]
-[ext_resource type="Texture2D" uid="uid://bgudd23bdjqgh" path="res://assets/art/instruments/guitar_big.png" id="5_lk8ac"]
 [ext_resource type="Texture2D" uid="uid://bveb3u0fyap7h" path="res://assets/art/instruments/drums_big.png" id="7_rkdga"]
 [ext_resource type="Script" uid="uid://sxa2wewkejr6" path="res://scenes/ui/solo_pitches.gd" id="8_7lhd5"]
 [ext_resource type="Texture2D" uid="uid://dt56th7g3aydf" path="res://assets/art/instruments/piano_big.png" id="8_112df"]
@@ -82,7 +81,7 @@ anchor_bottom = 0.5
 offset_top = -20.0
 offset_bottom = 20.0
 grow_vertical = 2
-skill_icon = ExtResource("5_lk8ac")
+skill_icon = ExtResource("8_112df")
 
 [node name="SkillRight" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
 layout_mode = 1
@@ -127,7 +126,7 @@ offset_top = -50.0
 offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("8_112df")
+texture = ExtResource("7_rkdga")
 expand_mode = 1
 
 [node name="Pitches" type="VBoxContainer" parent="SoloPitches"]

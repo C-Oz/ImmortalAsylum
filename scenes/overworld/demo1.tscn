@@ -19,7 +19,7 @@ tile_map_data = PackedByteArray("AAAeABQAAwAqAA4AAAAfABQAAwArAA4AAAAgABQAAwAsAA4
 position = Vector2(381, 315)
 
 [node name="Rudakohm" parent="YSort" index="1"]
-position = Vector2(-361, 711)
+position = Vector2(-450, 674)
 
 [node name="Giratran" parent="YSort" index="2" instance=ExtResource("2_ol6wc")]
 position = Vector2(-701, 8)

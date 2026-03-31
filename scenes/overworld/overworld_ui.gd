@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@onready var solo_pitches = $SoloPitches
 @onready var solo_instrument = $SoloPitches/SoloInstrument
 @onready var skill_up = $DPadSkillWheel/SkillUp
 @onready var skill_down = $DPadSkillWheel/SkillDown
@@ -26,6 +27,16 @@ func _ready():
 		"dpad_left": skill_left,
 		"dpad_right": skill_right,
 	}
+	_apply_progression_state()
+
+func _apply_progression_state():
+	# Solo pitches: hidden and disabled until unlocked
+	solo_pitches.visible = GameManager.solo_pitches_unlocked
+	solo_pitches.set_process(GameManager.solo_pitches_unlocked)
+	solo_pitches.set_process_input(GameManager.solo_pitches_unlocked)
+	
+	# Cycling: timer always runs (label visible), but the timeout callback
+	# is guarded — instrument switching only happens when unlocked.
 
 func _unhandled_input(event: InputEvent):
 	for action in _dpad_slots:
@@ -37,7 +48,9 @@ func _process(delta):
 		timer_label.text = str("%.1f" % control_timer.time_left)
 
 func _on_control_timer_timeout():
-	# States 1,2,3
+	if not GameManager.cycling_unlocked:
+		return
+	# States 0,1,2
 	cycle_state = (cycle_state + 1) % 3
 	
 	match cycle_state:

@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwpluf0f7q284"]
+
+[ext_resource type="Script" uid="uid://djw5m7d3mwnmj" path="res://scenes/overworld/overworld.gd" id="1_6xsup"]
+[ext_resource type="PackedScene" uid="uid://m5gvnt7areop" path="res://scenes/boss.tscn" id="3_1gfpu"]
+[ext_resource type="PackedScene" uid="uid://c5bcqd2dmw0ak" path="res://scenes/overworld/player.tscn" id="3_60i81"]
+[ext_resource type="PackedScene" uid="uid://drvroeiiseu6p" path="res://scenes/battle/RudakohmBattle.tscn" id="4_6xsup"]
+[ext_resource type="PackedScene" uid="uid://cp7cev47h51bg" path="res://scenes/overworld/overworld_ui.tscn" id="5_6syue"]
+[ext_resource type="AudioStream" uid="uid://defl3j2n8qgvb" path="res://assets/muzak/IMMORTAL ASYLUM electronic support and sfx WITH INTRO.wav" id="5_nfbw4"]
+[ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="6_8nkie"]
+[ext_resource type="AudioStream" uid="uid://bel1bni0aab3p" path="res://assets/muzak/IMMORTAL ASYLUM MUSIC BUG TEST - Area 1 (trio + drum improv) Drum Set.wav" id="6_vl2yl"]
+[ext_resource type="PackedScene" uid="uid://cc873lrey5euh" path="res://EastMap.tscn" id="7_vl2yl"]
+
+[node name="Overworld" type="Node2D"]
+script = ExtResource("1_6xsup")
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="YSort" instance=ExtResource("3_60i81")]
+position = Vector2(1862, -860)
+scale = Vector2(0.5, 0.5)
+speed = 100.0
+
+[node name="Rudakohm" parent="YSort" instance=ExtResource("3_1gfpu")]
+z_index = 1
+position = Vector2(1951, -506)
+npc_id = "Rudakohm"
+battle_scene = ExtResource("4_6xsup")
+pre_battle_dialogue = Array[String](["Stop right there, foolish avatar. Don't think I didn't hear you scurrying about my domain like some filthy virus.", "If you are here, that must mean you have  already ignored every single possible warning you received. You know how many man hours it will take to clean up your mess?", "You deserve no mercy, you dissident. You are an immediate threat to civilian order and the Energy Efficiency Program. I will destroy you where you stand."])
+post_battle_dialogue = Array[String](["My old age made me rusty on the drums, which I suppose you will take from me as well.", "You will make Kruneainon a graveyard like all others.", "Your crusade is one of ignorant destruction and death. At least my evil is a necessary one."])
+
+[node name="OverworldUI" parent="." instance=ExtResource("5_6syue")]
+
+[node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("6_8nkie")
+bpm = 72.0
+beat_length = 0.8333333333333334
+audio_stream_player = NodePath("AudioStreamPlayer")
+metadata/_custom_type_script = "uid://dos3qhffr4v0a"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RhythmNotifier"]
+stream = ExtResource("5_nfbw4")
+
+[node name="ControlTimer" type="Timer" parent="."]
+wait_time = 180.0
+autostart = true
+
+[node name="DrumsPlaceholder" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_vl2yl")
+
+[node name="East Area - Rudakohm\'s Domain (structures on water) rehearsal version" parent="." instance=ExtResource("7_vl2yl")]
+position = Vector2(792, -550)
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="ControlTimer" to="OverworldUI" method="_on_control_timer_timeout"]

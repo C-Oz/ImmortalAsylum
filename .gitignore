@@ -9,6 +9,7 @@
 # Local workspace files
 agents.md
 export_presets.cfg
+/ADO/
 
 # macOS and Windows system files
 .DS_Store

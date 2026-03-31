@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @export var npc_id: String = "boss_1"  # Unique ID for each boss
+@export var battle_scene: PackedScene
 @export_multiline var pre_battle_dialogue: Array[String] = [
 	"You dare challenge me?",
 	"Prepare for battle!"
@@ -88,7 +89,7 @@ func _finish_dialogue_sequence() -> void:
 	if current_state == State.PRE_BATTLE:
 		current_state = State.BATTLING
 		var player = get_tree().get_first_node_in_group("player")
-		GameManager.start_battle(npc_id, player.global_position)
+		GameManager.start_battle(npc_id, player.global_position, battle_scene)
 	elif current_state == State.POST_BATTLE:
 		current_state = State.COMPLETED
 		_play_completion_animation()
