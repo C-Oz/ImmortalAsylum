@@ -53,3 +53,7 @@ texture_under = ExtResource("3_a62ui")
 texture_progress = ExtResource("3_a62ui")
 tint_under = Color(0.11727124, 0.24032909, 0.30947688, 1)
 tint_progress = Color(0.31812468, 0.7954881, 0.7911919, 1)
+
+[node name="RedSfx" type="AudioStreamPlayer" parent="."]
+
+[node name="BlueSfx" type="AudioStreamPlayer" parent="."]

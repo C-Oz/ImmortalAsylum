@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwpluf0f7q284"]
+[gd_scene load_steps=11 format=3 uid="uid://bwpluf0f7q284"]
 
 [ext_resource type="Script" uid="uid://djw5m7d3mwnmj" path="res://scenes/overworld/overworld.gd" id="1_6xsup"]
 [ext_resource type="PackedScene" uid="uid://m5gvnt7areop" path="res://scenes/boss.tscn" id="3_1gfpu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="6_8nkie"]
 [ext_resource type="AudioStream" uid="uid://bel1bni0aab3p" path="res://assets/muzak/IMMORTAL ASYLUM MUSIC BUG TEST - Area 1 (trio + drum improv) Drum Set.wav" id="6_vl2yl"]
 [ext_resource type="PackedScene" uid="uid://cc873lrey5euh" path="res://EastMap.tscn" id="7_vl2yl"]
+[ext_resource type="AudioStream" uid="uid://b8rmrfjv6xos7" path="res://assets/sfx/SFX player switch v1 [2026-04-01 032029].wav" id="8_erhs1"]
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource("1_6xsup")
@@ -45,7 +46,10 @@ stream = ExtResource("5_nfbw4")
 wait_time = 180.0
 autostart = true
 
-[node name="DrumsPlaceholder" type="AudioStreamPlayer2D" parent="."]
+[node name="PlayerChangeFx" type="AudioStreamPlayer" parent="ControlTimer"]
+stream = ExtResource("8_erhs1")
+
+[node name="DrumsPlaceholder" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_vl2yl")
 
 [node name="East Area - Rudakohm\'s Domain (structures on water) rehearsal version" parent="." instance=ExtResource("7_vl2yl")]

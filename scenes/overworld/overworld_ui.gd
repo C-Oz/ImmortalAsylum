@@ -13,6 +13,9 @@ extends CanvasLayer
 var tex_piano = preload("res://assets/art/instruments/piano_big.png")
 var tex_clarinet = preload("res://assets/art/instruments/clarinet_big.png")
 var tex_cello = preload("res://assets/art/instruments/cello_big.png")
+var tex_drums = preload("res://assets/art/instruments/drums_big.png")
+
+@onready var _sfx_player: AudioStreamPlayer = get_node("/root/Overworld/ControlTimer/PlayerChangeFx")
 
 # State machine for the switching instruments
 var cycle_state: int = 0
@@ -27,6 +30,7 @@ func _ready():
 		"dpad_left": skill_left,
 		"dpad_right": skill_right,
 	}
+	
 	_apply_progression_state()
 
 func _apply_progression_state():
@@ -50,6 +54,9 @@ func _process(delta):
 func _on_control_timer_timeout():
 	if not GameManager.cycling_unlocked:
 		return
+	
+	_sfx_player.play()
+	
 	# States 0,1,2
 	cycle_state = (cycle_state + 1) % 3
 	
@@ -59,13 +66,16 @@ func _on_control_timer_timeout():
 			solo_instrument.texture = tex_piano
 			skill_up.skill_icon = tex_cello
 			skill_down.skill_icon = tex_clarinet
+			skill_left.skill_icon = tex_drums
 			
 		1:
 			solo_instrument.texture = tex_cello
 			skill_up.skill_icon = tex_piano
 			skill_down.skill_icon = tex_clarinet
+			skill_left.skill_icon = tex_drums
 			
 		2:
 			solo_instrument.texture = tex_clarinet
 			skill_up.skill_icon = tex_cello
 			skill_down.skill_icon = tex_piano
+			skill_left.skill_icon = tex_drums

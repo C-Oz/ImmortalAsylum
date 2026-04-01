@@ -30,7 +30,11 @@ PLAY A.B.BY..
 PLAY AYBABA..
 WAIT 4
 PLAY BYABBYYB
-WAIT 32"
+PLAY ABYBABYB
+PLAY ABABABAB
+WAIT 4
+PLAY ABAY.B..
+WAIT 4"
 button_prompt_scene = ExtResource("2_ri3xh")
 button_y_texture = ExtResource("3_0jjex")
 button_b_texture = ExtResource("4_m56xd")

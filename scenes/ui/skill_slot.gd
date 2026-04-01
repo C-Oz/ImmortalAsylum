@@ -2,6 +2,10 @@ extends Control
 
 @onready var background_color = $BackgroundColor
 
+@export var activate_sfx: AudioStreamPlayer
+@export var deactivate_sfx: AudioStreamPlayer
+
+
 @export var skill_icon: Texture2D:
 	set(value):
 		skill_icon = value
@@ -42,6 +46,8 @@ func activate_color(duration: float = 1.0):
 	_is_red = true
 	_style.bg_color = COLOR_RED
 	_color_timer = duration
+	if activate_sfx:
+		activate_sfx.play()
 
 func _process(delta):
 	if _color_timer > 0:
@@ -49,6 +55,8 @@ func _process(delta):
 		if _color_timer <= 0:
 			_is_red = false
 			_style.bg_color = _color_blue
+			if deactivate_sfx:
+				deactivate_sfx.play()
 			
 	if current_charge > 0:
 		current_charge -= drain_rate * delta
