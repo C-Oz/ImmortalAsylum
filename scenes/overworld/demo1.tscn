@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://b8ur2tbjw4uh4"]
+[gd_scene load_steps=5 format=4 uid="uid://b8ur2tbjw4uh4"]
 
 [ext_resource type="PackedScene" uid="uid://c4kq4msbjxsl" path="res://scenes/overworld/overworld.tscn" id="1_j0tjh"]
-[ext_resource type="PackedScene" uid="uid://m5gvnt7areop" path="res://scenes/boss.tscn" id="2_ol6wc"]
-[ext_resource type="PackedScene" uid="uid://5grkrn0n4npa" path="res://scenes/obstacle.tscn" id="8_l6tmk"]
+[ext_resource type="PackedScene" uid="uid://m5gvnt7areop" path="res://scenes/interactables/boss.tscn" id="2_ol6wc"]
+[ext_resource type="AudioStream" uid="uid://b8rmrfjv6xos7" path="res://assets/sfx/SFX player switch v1 [2026-04-01 032029].wav" id="3_d7s17"]
+[ext_resource type="PackedScene" uid="uid://5grkrn0n4npa" path="res://scenes/interactables/obstacle.tscn" id="8_l6tmk"]
 
 [node name="Overworld" instance=ExtResource("1_j0tjh")]
 
@@ -26,6 +27,9 @@ position = Vector2(-701, 8)
 npc_id = "Giratran"
 pre_battle_dialogue = Array[String](["Oh? A visitor? How interesting. I have not had a visitor in a very long time.  Seeing you have the crystal drums I guess you met Rudakohm as well hahaha! Don't take his words too hard, he is bestowed with an impossible task, as am I. I may be a Guardian but mostly I am a mere agent of the Energy Efficiency Program.", "I like your boldness, young one. It's a trait that has not been seen in this static world for a long time. But there is a reason for that. You must have taken days, maybe weeks already from the remaining crystals in the reserves of Kruneainon. And despite its coldness, this world still deserves persistence, for as long as possible. This I must believe."])
 post_battle_dialogue = Array[String](["Did you know that residents used to live around these parts? Some of the logs you are reading come from those that used to live here, play here, sing here, paint here. Or whatever its digital equivalent may be.", "There used to be other employees here as well, but they were not efficiënt enough, so I am here working alone.", "Alone…", "Maybe you will be able to find another way, young one."])
+
+[node name="PlayerChangeFx" type="AudioStreamPlayer2D" parent="ControlTimer" index="0"]
+stream = ExtResource("3_d7s17")
 
 [node name="Obstacle2" parent="." index="9" instance=ExtResource("8_l6tmk")]
 position = Vector2(-476, 350)

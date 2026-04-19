@@ -37,11 +37,16 @@ theme_override_constants/separation = 8
 [node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.44849992, 0.58154696, 0.84948283, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 64
 text = "Boss"
 
 [node name="DialogueLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
 text = "Haha lol..."
 fit_content = true

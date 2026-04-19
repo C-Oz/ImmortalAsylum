@@ -2,6 +2,7 @@
 .godot/
 /android/
 *.avi
+*.zip
 /assets/
 /exports/
 
@@ -9,6 +10,7 @@
 agents.md
 export_presets.cfg
 /ADO/
+notesc.txt
 
 # macOS and Windows system files
 .DS_Store

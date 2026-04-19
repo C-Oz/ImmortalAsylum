@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr8v662wqotvh"]
+[gd_scene load_steps=4 format=3 uid="uid://cr8v662wqotvh"]
 
 [ext_resource type="Script" uid="uid://bbxtifofh5i5l" path="res://scenes/ui/skill_slot.gd" id="1_q4ota"]
 [ext_resource type="Texture2D" uid="uid://dt56th7g3aydf" path="res://assets/art/instruments/piano_big.png" id="2_yu5lf"]
 [ext_resource type="Texture2D" uid="uid://7pivya251ar4" path="res://assets/art/ui/progress bar medium rounded progress blue.png" id="3_a62ui"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a62ui"]
-bg_color = Color(0.22467309, 0.5206751, 1, 1)
 
 [node name="SkillSlot" type="Control"]
 layout_mode = 3
@@ -15,45 +12,38 @@ offset_bottom = 48.0
 script = ExtResource("1_q4ota")
 drain_rate = 10.0
 
-[node name="BackgroundColor" type="Panel" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_a62ui")
 
-[node name="Icon" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -24.0
-offset_right = 24.0
-offset_bottom = 48.0
-grow_horizontal = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 texture = ExtResource("2_yu5lf")
-expand_mode = 1
+expand_mode = 5
 
-[node name="ChargeBar" type="TextureProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = 12.0
-offset_right = 16.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="ChargeBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 texture_under = ExtResource("3_a62ui")
 texture_progress = ExtResource("3_a62ui")
 tint_under = Color(0.11727124, 0.24032909, 0.30947688, 1)
 tint_progress = Color(0.31812468, 0.7954881, 0.7911919, 1)
 
-[node name="RedSfx" type="AudioStreamPlayer" parent="."]
-
-[node name="BlueSfx" type="AudioStreamPlayer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+columns = 2

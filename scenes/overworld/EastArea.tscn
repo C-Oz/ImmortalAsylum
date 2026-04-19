@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bwpluf0f7q284"]
 
 [ext_resource type="Script" uid="uid://djw5m7d3mwnmj" path="res://scenes/overworld/overworld.gd" id="1_6xsup"]
-[ext_resource type="PackedScene" uid="uid://m5gvnt7areop" path="res://scenes/boss.tscn" id="3_1gfpu"]
+[ext_resource type="PackedScene" uid="uid://m5gvnt7areop" path="res://scenes/interactables/boss.tscn" id="3_1gfpu"]
 [ext_resource type="PackedScene" uid="uid://c5bcqd2dmw0ak" path="res://scenes/overworld/player.tscn" id="3_60i81"]
 [ext_resource type="PackedScene" uid="uid://drvroeiiseu6p" path="res://scenes/battle/RudakohmBattle.tscn" id="4_6xsup"]
 [ext_resource type="PackedScene" uid="uid://cp7cev47h51bg" path="res://scenes/overworld/overworld_ui.tscn" id="5_6syue"]

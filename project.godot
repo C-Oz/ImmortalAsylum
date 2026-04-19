@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Immortal Asylum"
-config/version="0.1.2"
+config/description="Island Emergence"
+config/version="0.2.4"
 run/main_scene="uid://c1blx866xkacx"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://cxlwcefa72d47"
@@ -20,6 +21,7 @@ config/icon="uid://cxlwcefa72d47"
 
 GameManager="*res://scripts/autoload/game_manager.gd"
 DialogueBox="*res://scenes/ui/dialogue_box.tscn"
+AudioManager="*res://scripts/autoload/audio_manager.gd"
 
 [editor]
 
@@ -33,6 +35,10 @@ enabled=PackedStringArray("res://addons/GDScript/addons/YATI/plugin.cfg")
 
 player=""
 destructibles="Destructible obstacles receiving the rhythm notifier beats in the overworld"
+
+[gui]
+
+theme/custom_font="uid://cbuccdnl4aayr"
 
 [input]
 
@@ -109,6 +115,7 @@ dpad_right={
 2d_physics/layer_2="player"
 2d_physics/layer_3="interactables"
 2d_physics/layer_4="triggers"
+2d_physics/layer_5="Override"
 
 [rendering]
 

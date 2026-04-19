@@ -116,9 +116,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u13xr"]
-radius = 16.0
-height = 34.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u13xr"]
+size = Vector2(24, 13.5)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -127,13 +126,16 @@ motion_mode = 1
 script = ExtResource("1_54eon")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_kddb1")
 animation = &"run"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.19713175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_u13xr")
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_u13xr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false

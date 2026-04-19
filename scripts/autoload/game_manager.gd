@@ -11,14 +11,15 @@ var saved_player_position: Vector2 = Vector2.ZERO
 var saved_overworld_scene: String = ""
 
 var total_battles_won: int = 0
-var solo_pitches_unlocked: bool = false
+var solo_pitches_unlocked: bool = true
 var cycling_unlocked: bool = false
+var current_chord_zone: String = "Am9"
 
 var unlocked_skills: Dictionary = {
 	"up": true,
 	"down": true,
 	"left": true,
-	"right": false
+	"right": true
 }
 
 func change_scene(scene_path: String) -> void:
@@ -43,7 +44,7 @@ func return_to_overworld(victory: bool) -> void:
 		total_battles_won += 1
 		evaluate_progression()
 		
-	var return_scene = saved_overworld_scene if saved_overworld_scene != "" else "res://scenes/overworld/EastArea.tscn"
+	var return_scene = saved_overworld_scene if saved_overworld_scene != "" else "res://scenes/overworld/EastArea2.tscn"
 	change_scene(return_scene)
 
 func evaluate_progression() -> void:

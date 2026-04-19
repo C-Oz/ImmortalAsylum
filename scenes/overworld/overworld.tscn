@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://djw5m7d3mwnmj" path="res://scenes/overworld/overworld.gd" id="1_n3lcv"]
 [ext_resource type="PackedScene" uid="uid://c5bcqd2dmw0ak" path="res://scenes/overworld/player.tscn" id="2_jvs31"]
 [ext_resource type="TileSet" uid="uid://cwtmoqe2c85np" path="res://assets/art/tilesets/overworld.tres" id="4_b1b42"]
-[ext_resource type="PackedScene" uid="uid://m5gvnt7areop" path="res://scenes/boss.tscn" id="6_0wbp6"]
+[ext_resource type="PackedScene" uid="uid://m5gvnt7areop" path="res://scenes/interactables/boss.tscn" id="6_0wbp6"]
 [ext_resource type="PackedScene" uid="uid://cp7cev47h51bg" path="res://scenes/overworld/overworld_ui.tscn" id="6_b1b42"]
 [ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="6_lvsx0"]
 [ext_resource type="AudioStream" uid="uid://begfdklk3rnum" path="res://assets/muzak/IMMORTAL ASYLUM 8-bit metronome 72 bpm.wav" id="7_lvsx0"]
-[ext_resource type="PackedScene" uid="uid://5grkrn0n4npa" path="res://scenes/obstacle.tscn" id="8_lvsx0"]
+[ext_resource type="PackedScene" uid="uid://5grkrn0n4npa" path="res://scenes/interactables/obstacle.tscn" id="8_lvsx0"]
 [ext_resource type="AudioStream" uid="uid://cx55vp1yuubly" path="res://assets/muzak/Area 1 (trio + drum improv) Drum Set - will play after unlocking first instrument alongside metronome.wav" id="9_bduoi"]
 
 [node name="Overworld" type="Node2D"]

@@ -8,44 +8,53 @@ extends CanvasLayer
 @onready var skill_right = $DPadSkillWheel/SkillRight
 
 @onready var timer_label = $TimerLabel
-@onready var control_timer = get_node("/root/Overworld/ControlTimer")
 
-var tex_piano = preload("res://assets/art/instruments/piano_big.png")
-var tex_clarinet = preload("res://assets/art/instruments/clarinet_big.png")
-var tex_cello = preload("res://assets/art/instruments/cello_big.png")
-var tex_drums = preload("res://assets/art/instruments/drums_big.png")
+var control_timer: Timer
 
-@onready var _sfx_player: AudioStreamPlayer = get_node("/root/Overworld/ControlTimer/PlayerChangeFx")
-
-# State machine for the switching instruments
-var cycle_state: int = 0
+var _sfx_player: AudioStreamPlayer
 
 # Maps dpad actions to their corresponding skill slots
 var _dpad_slots: Dictionary
 
 func _ready():
+	# Attempt to find ControlTimer globally or locally, allowing any map node root
+	if get_tree().current_scene:
+		control_timer = get_tree().current_scene.get_node_or_null("ControlTimer")
+	if not control_timer:
+		# Fallback if OverworldUI is a sibling
+		control_timer = get_node_or_null("../ControlTimer")
+		
+	if control_timer:
+		_sfx_player = control_timer.get_node_or_null("PlayerChangeFx")
+		# Connect timeout signal safely
+		if not control_timer.timeout.is_connected(_on_control_timer_timeout):
+			control_timer.timeout.connect(_on_control_timer_timeout)
+
 	_dpad_slots = {
 		"dpad_up": skill_up,
 		"dpad_down": skill_down,
 		"dpad_left": skill_left,
 		"dpad_right": skill_right,
 	}
-	
-	_apply_progression_state()
 
-func _apply_progression_state():
-	# Solo pitches: hidden and disabled until unlocked
-	solo_pitches.visible = GameManager.solo_pitches_unlocked
-	solo_pitches.set_process(GameManager.solo_pitches_unlocked)
-	solo_pitches.set_process_input(GameManager.solo_pitches_unlocked)
-	
-	# Cycling: timer always runs (label visible), but the timeout callback
-	# is guarded — instrument switching only happens when unlocked.
+	# Initialize the pip options
+	var initial_labels: Array[String] = ["Off ", "Solo", "Box1", "Box2", "Box3", "Box4"]
+	for slot in _dpad_slots.values():
+		if is_instance_valid(slot):
+			slot.option_names = initial_labels
+			slot.total_options = initial_labels.size()
+			# Children _ready happens before parent _ready, so we rebuild the dynamic pips here
+			if slot.has_method("_setup_pips"):
+				slot._setup_pips()
+				slot._update_pips()
 
 func _unhandled_input(event: InputEvent):
 	for action in _dpad_slots:
 		if event.is_action_pressed(action):
-			_dpad_slots[action].activate_color(5.0) # ****** INLINE CONFIG ********
+			var slot = _dpad_slots[action]
+			if is_instance_valid(slot):
+				# Toggle to the next pip / label option safely wrapping around at the max
+				slot.current_option_index = (slot.current_option_index + 1) % slot.total_options
 
 func _process(delta):
 	if is_instance_valid(control_timer):
@@ -55,27 +64,5 @@ func _on_control_timer_timeout():
 	if not GameManager.cycling_unlocked:
 		return
 	
-	_sfx_player.play()
-	
-	# States 0,1,2
-	cycle_state = (cycle_state + 1) % 3
-	
-	match cycle_state:
-		0:
-			# Starting Position
-			solo_instrument.texture = tex_piano
-			skill_up.skill_icon = tex_cello
-			skill_down.skill_icon = tex_clarinet
-			skill_left.skill_icon = tex_drums
-			
-		1:
-			solo_instrument.texture = tex_cello
-			skill_up.skill_icon = tex_piano
-			skill_down.skill_icon = tex_clarinet
-			skill_left.skill_icon = tex_drums
-			
-		2:
-			solo_instrument.texture = tex_clarinet
-			skill_up.skill_icon = tex_cello
-			skill_down.skill_icon = tex_piano
-			skill_left.skill_icon = tex_drums
+	if is_instance_valid(_sfx_player):
+		_sfx_player.play()

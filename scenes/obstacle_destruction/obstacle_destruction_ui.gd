@@ -160,7 +160,7 @@ func check_input(button: String):
 	if state != State.ACTIVE:
 		return
 	
-	var rhythm_notifier = get_node("/root/Overworld/RhythmNotifier")
+	var rhythm_notifier = get_tree().current_scene.get_node("RhythmNotifier")
 	
 	# Calculate timing difference (same as battle system)
 	var beat_time : float = floor(rhythm_notifier.current_beat) * rhythm_notifier.beat_length
