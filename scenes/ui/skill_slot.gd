@@ -21,14 +21,14 @@ extends Control
 		if is_node_ready():
 			_update_pips()
 
-# You can use find_child to reliably locate these nodes even if you restructure the scene slightly.
+# find_child for restructure-proof locating nodes
 @onready var icon = find_child("Icon", true, false) as TextureRect
 @onready var charge_bar = find_child("ChargeBar", true, false) as TextureProgressBar
 @onready var grid_container = find_child("GridContainer", true, false) as GridContainer
 @onready var title_label = find_child("Label", true, false) as Label
 
-const PIP_OPEN = preload("res://assets/art/ui/pipopen16.png")
-const PIP_FULL = preload("res://assets/art/ui/pipfull16.png")
+const PIP_OPEN = preload("res://assets/art/ui/empty_bubble.tres")
+const PIP_FULL = preload("res://assets/art/ui/full_bubble.tres")
 
 var current_charge: float = 100.0
 var _pips: Array[TextureRect] = []
