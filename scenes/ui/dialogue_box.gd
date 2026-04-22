@@ -7,6 +7,7 @@ extends CanvasLayer
 var current_text: String = ""
 var is_displaying: bool = false
 
+signal dialogue_started
 signal dialogue_finished
 signal advance_requested
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	hide_dialogue()
 
 func show_dialogue(npc_name: String, text: String) -> void:
+	dialogue_started.emit()
 	name_label.text = npc_name
 	current_text = text
 	dialogue_label.text = text
@@ -25,6 +27,7 @@ func hide_dialogue() -> void:
 	visible = false
 	is_displaying = false
 	current_text = ""
+	dialogue_finished.emit()
 
 func is_active() -> bool:
 	return is_displaying

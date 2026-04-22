@@ -47,6 +47,9 @@ func _ready():
 			if slot.has_method("_setup_pips"):
 				slot._setup_pips()
 				slot._update_pips()
+	
+	DialogueBox.dialogue_started.connect(_on_dialogue_started)
+	DialogueBox.dialogue_finished.connect(_on_dialogue_finished)
 
 func _unhandled_input(event: InputEvent):
 	for action in _dpad_slots:
@@ -66,3 +69,9 @@ func _on_control_timer_timeout():
 	
 	if is_instance_valid(_sfx_player):
 		_sfx_player.play()
+
+func _on_dialogue_started():
+	visible = false
+
+func _on_dialogue_finished():
+	visible = true

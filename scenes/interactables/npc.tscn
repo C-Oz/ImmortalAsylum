@@ -329,6 +329,7 @@ shape = SubResource("RectangleShape2D_r3bxh")
 
 [node name="InteractionPrompt" type="Sprite2D" parent="."]
 visible = false
+z_index = 4
 position = Vector2(0, -55.000008)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_rqbc1")

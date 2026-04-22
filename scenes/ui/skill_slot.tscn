@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr8v662wqotvh"]
+[gd_scene load_steps=6 format=3 uid="uid://cr8v662wqotvh"]
 
 [ext_resource type="Script" uid="uid://bbxtifofh5i5l" path="res://scenes/ui/skill_slot.gd" id="1_q4ota"]
 [ext_resource type="Texture2D" uid="uid://b8bclmk0it15i" path="res://assets/art/ui/box_ui.tres" id="2_a62ui"]
 [ext_resource type="Texture2D" uid="uid://dt56th7g3aydf" path="res://assets/art/instruments/piano_big.png" id="2_yu5lf"]
 [ext_resource type="Texture2D" uid="uid://7pivya251ar4" path="res://assets/art/ui/progress bar medium rounded progress blue.png" id="3_a62ui"]
+[ext_resource type="Texture2D" uid="uid://b6i14d2vucx1o" path="res://assets/art/ui/circle_ui.tres" id="3_w4jot"]
 
 [node name="SkillSlot" type="Control"]
 layout_mode = 3
@@ -48,9 +49,23 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Off"
 
-[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(48, 48)
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Circle" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Control"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 9.0
+offset_right = 60.0
+offset_bottom = 64.0
+texture = ExtResource("3_w4jot")
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Control"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_top = 4.0
+offset_right = 48.0
+offset_bottom = 53.98857
 texture = ExtResource("2_yu5lf")
 expand_mode = 5
 

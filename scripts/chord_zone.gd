@@ -13,7 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if chord_name != "":
 			GameManager.current_chord_zone = chord_name
-		AudioManager.transition_to(zone_music, zone_ambience, crossfade_time)
+		# AudioManager.transition_to(zone_music, zone_ambience, crossfade_time) # Replaced by doormat chords
 
 func _on_body_exited(body: Node2D) -> void:
 	pass # AudioManager handles overlap priority

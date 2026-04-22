@@ -4,6 +4,9 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var last_tile_pos: Vector2i = Vector2i(-9999, -9999)
+var grass_layer: Node = null
+
 func _ready() -> void:
 	if GameManager.returning_from_battle and GameManager.saved_player_position != Vector2.ZERO:
 		global_position = GameManager.saved_player_position
@@ -25,3 +28,34 @@ func _physics_process(_delta: float) -> void:
 		sprite.play("idle")
 		
 	move_and_slide()
+	
+	_check_doormat_chords()
+
+func _check_doormat_chords() -> void:
+	if grass_layer == null:
+		var root = get_tree().current_scene
+		if root:
+			grass_layer = root.find_child("Grass Layer", true, false)
+		if grass_layer == null and get_parent():
+			grass_layer = get_parent().get_node_or_null("Grass Layer")
+			
+	if grass_layer != null and GameManager.current_chord_zone != "":
+		if grass_layer.has_method("local_to_map"):
+			var local_pos = grass_layer.to_local(global_position)
+			var current_tile_pos = grass_layer.local_to_map(local_pos)
+			
+			if current_tile_pos != last_tile_pos:
+				last_tile_pos = current_tile_pos
+				var tile_data = null
+				
+				if grass_layer.get_class() == "TileMapLayer":
+					tile_data = grass_layer.get_cell_tile_data(current_tile_pos)
+				elif grass_layer.has_method("get_layers_count"): # Fallback for legacy TileMap
+					for layer in range(grass_layer.get_layers_count()):
+						var td = grass_layer.get_cell_tile_data(layer, current_tile_pos)
+						if td != null and td.get_custom_data("steppable") == true:
+							tile_data = td
+							break
+				
+				if tile_data != null and tile_data.get_custom_data("steppable") == true:
+					AudioManager.play_doormat_chord(GameManager.current_chord_zone)
