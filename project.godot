@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Immortal Asylum"
-config/description="New UI, doormats"
-config/version="0.2.6"
+config/description="Object creation and doormay fix"
+config/version="0.2.7"
 run/main_scene="uid://c1blx866xkacx"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://cxlwcefa72d47"

@@ -1,0 +1,308 @@
+[gd_scene load_steps=25 format=3 uid="uid://nerxi4pue1y8"]
+
+[ext_resource type="Script" uid="uid://8c00npdle88v" path="res://scenes/interactables/togglable_obstacle.gd" id="1_eu46q"]
+[ext_resource type="Texture2D" uid="uid://dqq80vm2s6fh4" path="res://assets/maps/East Area/Animation/Statue-Fan Anims_16.png" id="2_c4bme"]
+[ext_resource type="PackedScene" uid="uid://biflggyra163j" path="res://scenes/obstacle_destruction/obstacle_destruction_ui.tscn" id="4_a3iir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1yey"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0qjp"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_626mj"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0t0a"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af074"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g43gn"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xigft"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5ust"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1wod"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(64, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_illvn"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(96, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txuah"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf3e2"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmt2x"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86rfj"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(96, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai5p2"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(128, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd0t3"]
+atlas = ExtResource("2_c4bme")
+region = Rect2(160, 128, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eu46q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1yey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0qjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_626mj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0t0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af074")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g43gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xigft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5ust")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1wod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_illvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txuah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf3e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmt2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86rfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai5p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd0t3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmtb4"]
+size = Vector2(14, 11)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jinl1"]
+texture = ExtResource("2_c4bme")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_a3iir"]
+sources/0 = SubResource("TileSetAtlasSource_jinl1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4xvc"]
+size = Vector2(172, 156)
+
+[node name="Statue" type="StaticBody2D" groups=["destructibles"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_eu46q")
+
+[node name="CreatedLayer" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -35)
+sprite_frames = SubResource("SpriteFrames_eu46q")
+autoplay = "default"
+frame = 12
+frame_progress = 0.11807106
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_hmtb4")
+
+[node name="DestroyedLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 255, 255, 0, 0, 1, 0, 3, 0, 0, 0)
+tile_set = SubResource("TileSet_a3iir")
+
+[node name="InteractionZone" type="Area2D" parent="." groups=["destructibles"]]
+position = Vector2(1, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_i4xvc")
+
+[node name="DestructionUI" parent="." instance=ExtResource("4_a3iir")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = 18.0
+offset_right = 94.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 0

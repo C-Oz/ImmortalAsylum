@@ -41,10 +41,13 @@ func _load_doormat_sounds() -> void:
 					folder_dir.list_dir_begin()
 					var file_name = folder_dir.get_next()
 					while file_name != "":
-						if not folder_dir.current_is_dir() and (file_name.ends_with(".wav") or file_name.ends_with(".ogg")):
-							var stream = load(folder_path + "/" + file_name)
-							if stream is AudioStream:
-								sounds.append(stream)
+						if not folder_dir.current_is_dir():
+							# In exported builds, audio files might only appear with a .import extension
+							var clean_name = file_name.trim_suffix(".import")
+							if clean_name.ends_with(".wav") or clean_name.ends_with(".ogg"):
+								var stream = load(folder_path + "/" + clean_name)
+								if stream is AudioStream and not sounds.has(stream):
+									sounds.append(stream)
 						file_name = folder_dir.get_next()
 					if sounds.size() > 0:
 						doormat_sounds[folder_name] = sounds
