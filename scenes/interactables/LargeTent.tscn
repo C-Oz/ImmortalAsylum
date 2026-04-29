@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://8kd5f3ct0a6i"]
+[gd_scene load_steps=12 format=4 uid="uid://8kd5f3ct0a6i"]
 
 [ext_resource type="Texture2D" uid="uid://cwfh05eo8djfs" path="res://assets/maps/East Area/Large Tent-0.png" id="1_6vrpm"]
 [ext_resource type="Script" uid="uid://8c00npdle88v" path="res://scenes/interactables/togglable_obstacle.gd" id="1_8h2o5"]
 [ext_resource type="Texture2D" uid="uid://blr6vgql3wi4m" path="res://assets/maps/East Area/Stranded 08 - Swamps/Swamp Tileset.png" id="2_8h2o5"]
 [ext_resource type="PackedScene" uid="uid://biflggyra163j" path="res://scenes/obstacle_destruction/obstacle_destruction_ui.tscn" id="3_ii6hr"]
+[ext_resource type="Texture2D" uid="uid://bgudd23bdjqgh" path="res://assets/art/instruments/guitar_big.png" id="5_ii6hr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ii6hr"]
 texture = ExtResource("1_6vrpm")
@@ -436,6 +437,7 @@ size = Vector2(200, 157)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_8h2o5")
+timer_value = 15.0
 
 [node name="CreatedLayer" type="TileMapLayer" parent="."]
 visible = false
@@ -471,3 +473,4 @@ offset_right = 94.0
 offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 0
+instrument_icon = ExtResource("5_ii6hr")

@@ -13,10 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cl62cuuwbglcl" path="res://assets/art/ui/ABXY/button_xbox_digital_y_2.png" id="9_7lhd5"]
 [ext_resource type="Texture2D" uid="uid://dc5hhp2vsli15" path="res://assets/art/ui/ABXY/button_xbox_digital_b_2.png" id="10_rkdga"]
 [ext_resource type="Texture2D" uid="uid://db14wbnemouw0" path="res://assets/art/ui/ABXY/button_xbox_digital_a_1.png" id="11_u8qpe"]
-[ext_resource type="AudioStream" uid="uid://d0xe8f7imtfxx" path="res://assets/muzak/solo/Voice 0011 [2026-04-14 150803].wav" id="14_a45s8"]
-[ext_resource type="AudioStream" uid="uid://b6ebqm18t18n8" path="res://assets/muzak/solo/Voice 0012 [2026-04-14 150806].wav" id="15_0i1vl"]
-[ext_resource type="AudioStream" uid="uid://dr5q1h2un6liw" path="res://assets/muzak/solo/Voice 0013 [2026-04-14 150818].wav" id="16_mbcjf"]
+[ext_resource type="AudioStream" uid="uid://dnrf3p2xfntbq" path="res://assets/muzak/solo/Am9/Pitch set 1/Voice 4 [2026-04-22 201321].wav" id="15_0i1vl"]
+[ext_resource type="AudioStream" uid="uid://boihoqgqhmy11" path="res://assets/muzak/solo/Am9/Pitch set 1/Voice 4 [2026-04-22 201324].wav" id="16_mbcjf"]
 [ext_resource type="Texture2D" uid="uid://bvawknj7yotev" path="res://assets/art/instruments/synth.png" id="16_xe0h8"]
+[ext_resource type="AudioStream" uid="uid://cufdqkdsnn05p" path="res://assets/muzak/solo/Am9/Pitch set 1/Voice 4 [2026-04-22 201325].wav" id="17_14gop"]
 
 [node name="OverworldUI" type="CanvasLayer"]
 script = ExtResource("1_rkdga")
@@ -77,6 +77,7 @@ offset_top = -49.0
 offset_right = 25.0
 offset_bottom = -1.0
 grow_horizontal = 2
+sounds_folder = "Cello"
 skill_icon = ExtResource("4_7lhd5")
 
 [node name="SkillDown" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
@@ -92,6 +93,7 @@ offset_right = 20.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+sounds_folder = "Clarinet"
 skill_icon = ExtResource("4_0wxml")
 
 [node name="SkillLeft" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
@@ -104,6 +106,7 @@ offset_top = -67.0
 offset_right = 28.0
 offset_bottom = -27.0
 grow_vertical = 2
+sounds_folder = "Piano"
 skill_icon = ExtResource("8_112df")
 
 [node name="SkillRight" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
@@ -119,6 +122,7 @@ offset_right = 23.0
 offset_bottom = -28.0
 grow_horizontal = 0
 grow_vertical = 2
+sounds_folder = "Drums"
 skill_icon = ExtResource("7_rkdga")
 
 [node name="SoloPitches" type="Control" parent="."]
@@ -178,13 +182,13 @@ texture = ExtResource("11_u8qpe")
 expand_mode = 4
 
 [node name="SoundY" type="AudioStreamPlayer" parent="SoloPitches"]
-stream = ExtResource("14_a45s8")
-
-[node name="SoundB" type="AudioStreamPlayer" parent="SoloPitches"]
 stream = ExtResource("15_0i1vl")
 
-[node name="SoundA" type="AudioStreamPlayer" parent="SoloPitches"]
+[node name="SoundB" type="AudioStreamPlayer" parent="SoloPitches"]
 stream = ExtResource("16_mbcjf")
+
+[node name="SoundA" type="AudioStreamPlayer" parent="SoloPitches"]
+stream = ExtResource("17_14gop")
 
 [node name="TimerLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -197,6 +201,14 @@ offset_bottom = 43.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "Timer"
+
+[node name="TimerAdjustmentLabel" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 546.0
+offset_top = 60.0
+offset_right = 586.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 24
 
 [editable path="DPadSkillWheel/SkillUp"]
 [editable path="DPadSkillWheel/SkillDown"]

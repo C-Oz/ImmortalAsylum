@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://b5bia7opd3m2r"]
+[gd_scene load_steps=11 format=4 uid="uid://b5bia7opd3m2r"]
 
 [ext_resource type="Script" uid="uid://8c00npdle88v" path="res://scenes/interactables/togglable_obstacle.gd" id="1_bl8be"]
 [ext_resource type="Texture2D" uid="uid://bqm3siebct1lf" path="res://assets/maps/East Area/RA_Atlantis_01.png" id="2_hlv1o"]
 [ext_resource type="PackedScene" uid="uid://biflggyra163j" path="res://scenes/obstacle_destruction/obstacle_destruction_ui.tscn" id="3_yvgwr"]
+[ext_resource type="Texture2D" uid="uid://bgudd23bdjqgh" path="res://assets/art/instruments/guitar_big.png" id="4_hlv1o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bl8be"]
 texture = ExtResource("2_hlv1o")
@@ -2831,3 +2832,4 @@ offset_right = 91.0
 offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 0
+instrument_icon = ExtResource("4_hlv1o")

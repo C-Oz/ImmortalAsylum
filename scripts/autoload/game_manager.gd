@@ -15,6 +15,8 @@ var solo_pitches_unlocked: bool = true
 var cycling_unlocked: bool = false
 var current_chord_zone: String = "Am9"
 
+var npc_alt_states: Dictionary = {} # Stores bools indexed by NPC ID (true = use alt dialogue)
+
 var unlocked_skills: Dictionary = {
 	"up": true,
 	"down": true,
@@ -69,3 +71,10 @@ func clear_battle_data() -> void:
 	battle_victory = false
 	saved_player_position = Vector2.ZERO
 	saved_overworld_scene = ""
+
+func set_npc_alt(id: String, active: bool) -> void:
+	npc_alt_states[id] = active
+	progression_updated.emit()
+
+func is_npc_alt(id: String) -> bool:
+	return npc_alt_states.get(id, false)

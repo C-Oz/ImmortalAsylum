@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var skill_right = $DPadSkillWheel/SkillRight
 
 @onready var timer_label = $TimerLabel
+@onready var timer_adjustment_label = $TimerAdjustmentLabel
 
 var control_timer: Timer
 
@@ -75,3 +76,25 @@ func _on_dialogue_started():
 
 func _on_dialogue_finished():
 	visible = true
+
+func show_timer_adjustment(delta: float) -> void:
+	if not timer_adjustment_label:
+		return
+	
+	# Set text and color based on adjustment
+	var prefix = "+" if delta > 0 else ""
+	timer_adjustment_label.text = prefix + str("%.1f" % delta)
+	timer_adjustment_label.modulate = Color.GREEN if delta > 0 else Color.RED
+	
+	# Reset alpha to full for the start of the animation
+	timer_adjustment_label.modulate.a = 1.0
+	
+	# Reset position (relative to its original place)
+	var base_y = timer_label.position.y + 40 
+	timer_adjustment_label.position.y = base_y
+	
+	# Animate: Float up slightly and fade out
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(timer_adjustment_label, "position:y", base_y - 20, 1.2)
+	tween.tween_property(timer_adjustment_label, "modulate:a", 0.0, 1.2)

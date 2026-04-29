@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brqbh45bh166s" path="res://scenes/ui/dialogue_box.gd" id="1_6iboe"]
 [ext_resource type="Texture2D" uid="uid://x8yfpt4w65lq" path="res://assets/art/ui/ABXY/button_xbox_digital_x_11.png" id="2_4mjmi"]
-[ext_resource type="Texture2D" uid="uid://d034pglju0rjl" path="res://assets/art/ui/dialogue_box_ui.tres" id="2_daetb"]
+[ext_resource type="Texture2D" uid="uid://dkbo5bvy2i4tp" path="res://assets/art/ui/Enlarged 1-bit-UI dialogue box.png" id="2_daetb"]
 
 [node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_6iboe")
@@ -19,7 +19,7 @@ offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_daetb")
-region_rect = Rect2(4.1765213, 6.195034, 175.37802, 85.69809)
+region_rect = Rect2(59, 195, 629, 159)
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -57,7 +57,6 @@ fit_content = true
 scroll_active = false
 
 [node name="ContinueIcon" type="Sprite2D" parent="Panel"]
-visible = false
-position = Vector2(902.99994, 157.99998)
+position = Vector2(908.99994, 167)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_4mjmi")

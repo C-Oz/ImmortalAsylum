@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://c67wrr12hfwop"]
+
+[ext_resource type="PackedScene" uid="uid://c5bcqd2dmw0ak" path="res://scenes/overworld/player.tscn" id="1_7scds"]
+[ext_resource type="Script" uid="uid://p2gqxyxvgf00" path="res://scenes/overworld/space_area.gd" id="1_qtdfl"]
+[ext_resource type="Texture2D" uid="uid://dmp5yglnd8es1" path="res://assets/art/Dynamic Space Background/Nebula Blue.png" id="1_wjqqv"]
+[ext_resource type="Texture2D" uid="uid://c1g8c4402ku3l" path="res://assets/art/Dynamic Space Background/Stars Small_1.png" id="2_7scds"]
+[ext_resource type="Texture2D" uid="uid://donvqpr4nsdij" path="res://assets/art/Dynamic Space Background/Stars-Big_1_1_PC.png" id="3_7scds"]
+[ext_resource type="PackedScene" uid="uid://djeqlq5gjlrw5" path="res://scenes/interactables/portal.tscn" id="5_vycpn"]
+[ext_resource type="PackedScene" uid="uid://cp7cev47h51bg" path="res://scenes/overworld/overworld_ui.tscn" id="7_oxy8t"]
+[ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="8_035ab"]
+[ext_resource type="AudioStream" uid="uid://begfdklk3rnum" path="res://assets/muzak/IMMORTAL ASYLUM 8-bit metronome 72 bpm.wav" id="9_n8625"]
+
+[node name="SpaceArea" type="Node2D"]
+script = ExtResource("1_qtdfl")
+world_width = 2000.0
+world_height = 2000.0
+
+[node name="ParallaxBackground" type="Node" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+unique_name_in_owner = true
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
+texture = ExtResource("1_wjqqv")
+metadata/_edit_lock_ = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
+unique_name_in_owner = true
+scroll_scale = Vector2(0.5, 0.5)
+autoscroll = Vector2(-1, -5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+texture = ExtResource("3_7scds")
+metadata/_edit_lock_ = true
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
+unique_name_in_owner = true
+autoscroll = Vector2(10, 20)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+z_index = 5
+texture = ExtResource("2_7scds")
+metadata/_edit_lock_ = true
+
+[node name="WorldContent" type="Node2D" parent="."]
+
+[node name="Portal" parent="WorldContent" instance=ExtResource("5_vycpn")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(792, 768)
+animation = &"orange"
+
+[node name="Player" parent="." instance=ExtResource("1_7scds")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(824, 776)
+
+[node name="OverworldUI" parent="." instance=ExtResource("7_oxy8t")]
+
+[node name="ControlTimer" type="Timer" parent="."]
+wait_time = 180.0
+autostart = true
+
+[node name="PlayerChangeFx" type="AudioStreamPlayer" parent="ControlTimer"]
+
+[node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("8_035ab")
+bpm = 72.0
+beat_length = 0.8333333333333334
+audio_stream_player = NodePath("AudioStreamPlayer")
+metadata/_custom_type_script = "uid://dos3qhffr4v0a"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RhythmNotifier"]
+stream = ExtResource("9_n8625")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://dgelqrgvkifon"]
+[gd_scene load_steps=13 format=4 uid="uid://dgelqrgvkifon"]
 
 [ext_resource type="Script" uid="uid://8c00npdle88v" path="res://scenes/interactables/togglable_obstacle.gd" id="1_0sycn"]
 [ext_resource type="Texture2D" uid="uid://bqm3siebct1lf" path="res://assets/maps/East Area/RA_Atlantis_01.png" id="2_cdy22"]
 [ext_resource type="PackedScene" uid="uid://biflggyra163j" path="res://scenes/obstacle_destruction/obstacle_destruction_ui.tscn" id="3_6en43"]
+[ext_resource type="Texture2D" uid="uid://bgudd23bdjqgh" path="res://assets/art/instruments/guitar_big.png" id="4_cdy22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfjny"]
 texture = ExtResource("2_cdy22")
@@ -1487,6 +1488,9 @@ texture = ExtResource("2_cdy22")
 [sub_resource type="TileSet" id="TileSet_cdy22"]
 sources/0 = SubResource("TileSetAtlasSource_0sycn")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sycn"]
+size = Vector2(110, 97)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4xvc"]
 size = Vector2(220, 172.5)
 
@@ -1494,6 +1498,7 @@ size = Vector2(220, 172.5)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_0sycn")
+timer_value = 15.0
 
 [node name="CreatedLayer" type="TileMapLayer" parent="."]
 visible = false
@@ -1508,9 +1513,9 @@ tile_set = SubResource("TileSet_ej5ct")
 tile_map_data = PackedByteArray("AAD///r/AAAYAAIAAAD///v/AAAYAAMAAAA=")
 tile_set = SubResource("TileSet_cdy22")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-8, -40)
-polygon = PackedVector2Array(-25, 39, -24, 24, 24, 24, 24, 40, 58, 39, 55, -53, -54, -55, -55, 39)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -47.5)
+shape = SubResource("RectangleShape2D_0sycn")
 
 [node name="InteractionZone" type="Area2D" parent="." groups=["destructibles"]]
 position = Vector2(1, 0)
@@ -1533,3 +1538,8 @@ offset_right = 83.0
 offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 0
+sequence = null
+countdown_beats = null
+slot_spacing = null
+button_scale = null
+instrument_icon = ExtResource("4_cdy22")

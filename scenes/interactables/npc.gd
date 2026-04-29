@@ -6,6 +6,8 @@ extends StaticBody2D
 	"Derp"
 ]
 
+@export_multiline var alt_dialogue: Array[String] = []
+
 @onready var interaction_zone: Area2D = $InteractionZone
 @onready var interaction_prompt: Sprite2D = $InteractionPrompt
 
@@ -39,15 +41,25 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _show_dialogue() -> void:
-	if npc_dialogue.is_empty():
+	var lines: Array = npc_dialogue
+	
+	if GameManager.is_npc_alt(npc_id) and not alt_dialogue.is_empty():
+		lines = alt_dialogue
+		
+	if lines.is_empty():
 		return
-	var dialogue_text: String = npc_dialogue[current_dialogue_index]
+		
+	var dialogue_text: String = lines[current_dialogue_index]
 	DialogueBox.show_dialogue(npc_id, dialogue_text)
 
 func _advance_dialogue() -> void:
 	current_dialogue_index += 1
 	
-	if current_dialogue_index < npc_dialogue.size():
+	var lines: Array = npc_dialogue
+	if GameManager.is_npc_alt(npc_id) and not alt_dialogue.is_empty():
+		lines = alt_dialogue
+	
+	if current_dialogue_index < lines.size():
 		_show_dialogue()
 	else:
 		_finish_dialogue_sequence()

@@ -8,6 +8,7 @@ enum State { INACTIVE, COUNTDOWN, ACTIVE }
 @export var countdown_beats: int = 4
 @export var slot_spacing: float = 20.0  # Adjust this to space buttons
 @export var button_scale: float = 0.06  # Scale down 480x480 button sprites
+@export var instrument_icon: Texture2D
 
 var state = State.INACTIVE
 var current_beat_index = 0
@@ -21,6 +22,7 @@ var pressed_slots := []
 @onready var countdown_label = $CountdownLabel
 @onready var background_panel = $BackgroundPanel
 @onready var success_particles = $SuccessParticles
+@onready var instrument_icon_rect = $InstrumentIcon
 
 var button_sprites = {
 	"Y": preload("res://assets/art/ui/ABXY/button_xbox_digital_y_1.png"),
@@ -35,9 +37,20 @@ var button_sprites_pressed = {
 }
 
 func _ready():
+	# Reset root modulation so it doesn't multiply with children
+	modulate = Color(1, 1, 1, 1)
+	
+	if instrument_icon_rect:
+		if instrument_icon:
+			instrument_icon_rect.texture = instrument_icon
+			instrument_icon_rect.visible = true
+		else:
+			instrument_icon_rect.visible = false
+	
 	setup_sequence()
 	hide_countdown()
 	reset_needle()
+	stop_sequence() # Ensure initial state is greyed out correctly
 
 func setup_sequence():
 	print("setup_sequence called with: ", sequence)
@@ -50,11 +63,7 @@ func setup_sequence():
 	
 	# Calculate layout
 	var button_width = 480 * button_scale
-	var total_width = (sequence.size() * button_width) + ((sequence.size() - 1) * slot_spacing)
-	var start_x = (sequence_container.size.x / 2.0) - (total_width / 2.0)
-	print("Total width: ", total_width)
-	print("Start X: ", start_x)
-	
+	var icon_width = 0.0
 # Create button slots
 	for i in sequence.size():
 		var slot = TextureRect.new()
@@ -68,7 +77,7 @@ func setup_sequence():
 		# Just scale it down instead of resizing
 		slot.scale = Vector2(button_scale, button_scale)
 		# Position (top-left corner positioning for Control nodes)
-		slot.position.x = start_x + (i * (button_width + slot_spacing))
+		slot.position.x = i * (button_width + slot_spacing)
 		slot.position.y = (sequence_container.size.y / 2.0) - (button_width / 2.0)
 		slot.name = "Slot_" + str(i)
 		print("Button ", i, " created at position: ", slot.position, " size: ", slot.size)
@@ -97,8 +106,11 @@ func stop_sequence():
 	player_input_index = 0
 	current_beat_index = 0
 	reset_buttons()
-	# Grey out when leaving
-	modulate = Color(0.5, 0.5, 0.5, 1.0)
+	# Grey out everything except the icon
+	background_panel.modulate = Color(0.5, 0.5, 0.5, 1.0)
+	sequence_container.modulate = Color(0.5, 0.5, 0.5, 1.0)
+	needle.modulate = Color(0.5, 0.5, 0.5, 1.0)
+	visible = true # Reappear when resetting
 
 func on_beat():
 	#print("on_beat called, state: ", State.keys()[state], " beats_remaining: ", beats_remaining)
@@ -112,7 +124,10 @@ func on_beat():
 				print("Countdown finished, going ACTIVE")
 				state = State.ACTIVE
 				hide_countdown()
-				modulate = Color(1.0, 1.0, 1.0, 1.0)  # Full brightness
+				# Full brightness for everything
+				background_panel.modulate = Color(1.0, 1.0, 1.0, 1.0)
+				sequence_container.modulate = Color(1.0, 1.0, 1.0, 1.0)
+				needle.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		
 		State.ACTIVE:
 			advance_needle()
@@ -120,21 +135,35 @@ func on_beat():
 func resize_container():
 	# Calculate needed width for all buttons + spacing
 	var button_width = 480 * button_scale  # Width of one button
-	var total_width = (button_width * sequence.size()) + (slot_spacing * (sequence.size() - 1))
+	var icon_width = 0.0
+	if instrument_icon:
+		icon_width = button_width + slot_spacing
+		
+	var total_width = (button_width * sequence.size()) + (slot_spacing * (sequence.size() - 1)) + icon_width
 	
 	var padding = 10
 	
 	# Resize the sequence container and the background panel
-	sequence_container.custom_minimum_size.x = total_width
-	sequence_container.size.x = total_width
+	sequence_container.custom_minimum_size.x = total_width - icon_width
+	sequence_container.size.x = total_width - icon_width
 	background_panel.custom_minimum_size.x = total_width + (padding * 2)
 	background_panel.size.x = total_width + (padding * 2)
+	
 	# Also resize the parent Control if needed
 	custom_minimum_size.x = total_width
 	size.x = total_width
+	
 	# Center the UI horizontally by offsetting position
 	position.x = -total_width / 2.0  # Shift left by half the width
 	background_panel.position.x = -padding # Shift left by padding amount
+	
+	# Position the icon and container
+	if instrument_icon:
+		instrument_icon_rect.size = Vector2(button_width, button_width)
+		instrument_icon_rect.position = Vector2(0, (size.y / 2.0) - (button_width / 2.0))
+		sequence_container.position.x = icon_width
+	else:
+		sequence_container.position.x = 0
 
 func advance_needle():
 	current_beat_index = (current_beat_index + 1) % sequence.size()
@@ -148,12 +177,16 @@ func advance_needle():
 			player_input_index = 0
 
 func update_needle_position():
-	if sequence_container.get_child_count() == 0:
+	if not sequence_container or sequence_container.get_child_count() == 0:
 		return
 	
 	var target_slot = sequence_container.get_child(current_beat_index)
+	if not target_slot: return
+	
 	var button_width = 480 * button_scale
-	needle.position.x = target_slot.position.x + (button_width / 2.0) - (needle.size.x / 2.0)
+	# Needle is sibling of SequenceContainer, so add its offset
+	# Set Y higher to avoid overlapping sprites
+	needle.position.x = sequence_container.position.x + target_slot.position.x + (button_width / 2.0) - (needle.size.x / 2.0)
 	needle.position.y = target_slot.position.y - button_width
 
 func check_input(button: String):
@@ -199,6 +232,7 @@ func check_input(button: String):
 				print("Sequence completed!")
 				emit_signal("sequence_completed")
 				state = State.INACTIVE
+				visible = false # Hide until player leaves zone
 		else:
 			# Correct button but wrong order - reset sequence tracking
 			print("Correct button but broke sequence. Resetting progress.")
@@ -219,11 +253,16 @@ func show_pressed_feedback(slot_index: int):
 	if button_key in button_sprites_pressed:
 		slot.texture = button_sprites_pressed[button_key]
 	
-		# Track that this slot was pressed
+	# Track that this slot was pressed
 	if not pressed_slots.has(slot_index):
 		pressed_slots.append(slot_index)
 	
-	spawn_success_particles(slot.position + Vector2(slot.size.x * button_scale / 2.0, slot.size.y * button_scale / 2.0))
+	if sequence_container and slot:
+		var button_width = 480 * button_scale
+		# Correct for container offset
+		var particle_pos = sequence_container.position + slot.position + Vector2(button_width / 2.0, button_width / 2.0)
+		spawn_success_particles(particle_pos)
+		
 	trigger_vibration()
 
 func reset_buttons():

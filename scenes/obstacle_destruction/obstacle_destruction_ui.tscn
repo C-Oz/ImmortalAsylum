@@ -21,11 +21,18 @@ scale_max = 0.5
 
 [node name="DestructionUI" type="Control"]
 modulate = Color(0.5, 0.5, 0.5, 1)
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 185.0
 offset_bottom = 48.0
 script = ExtResource("1_8yhai")
+
+[node name="InstrumentIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 0

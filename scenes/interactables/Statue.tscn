@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://nerxi4pue1y8"]
+[gd_scene load_steps=26 format=3 uid="uid://nerxi4pue1y8"]
 
 [ext_resource type="Script" uid="uid://8c00npdle88v" path="res://scenes/interactables/togglable_obstacle.gd" id="1_eu46q"]
 [ext_resource type="Texture2D" uid="uid://dqq80vm2s6fh4" path="res://assets/maps/East Area/Animation/Statue-Fan Anims_16.png" id="2_c4bme"]
 [ext_resource type="PackedScene" uid="uid://biflggyra163j" path="res://scenes/obstacle_destruction/obstacle_destruction_ui.tscn" id="4_a3iir"]
+[ext_resource type="Texture2D" uid="uid://r0ylm5x7yg0p" path="res://assets/art/instruments/clarinet_big.png" id="4_eu46q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1yey"]
 atlas = ExtResource("2_c4bme")
@@ -268,6 +269,7 @@ size = Vector2(172, 156)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_eu46q")
+timer_value = 5.0
 
 [node name="CreatedLayer" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -277,7 +279,7 @@ autoplay = "default"
 frame = 12
 frame_progress = 0.11807106
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_hmtb4")
 
@@ -306,3 +308,4 @@ offset_right = 94.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 0
+instrument_icon = ExtResource("4_eu46q")
