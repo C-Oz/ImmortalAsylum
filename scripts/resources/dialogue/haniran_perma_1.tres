@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://bhklsyjb663su"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_xirxw"]
+
+[resource]
+script = ExtResource("1_xirxw")
+text = "What are you still doing here? You should talk to Syndra down south-west of here!!! "
+metadata/_custom_type_script = "uid://f1ktqrse781a"

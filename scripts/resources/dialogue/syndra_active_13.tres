@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cqps5ekgyru5h"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_pg51w"]
+
+[resource]
+script = ExtResource("1_pg51w")
+text = "No really, I’m happy you’re back… In a way, this whole situation allowed me to escape my relationship with that idiot. I much prefer hanging out with Haniran all day haha! "
+metadata/_custom_type_script = "uid://f1ktqrse781a"

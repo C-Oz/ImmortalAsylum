@@ -24,6 +24,11 @@ var _shake_camera: Camera2D
 var _shake_original_offset: Vector2
 
 func _ready() -> void:
+	var state = GameManager.get_object_state(self)
+	if state is String and state == "destroyed":
+		queue_free()
+		return
+		
 	# Pass sequence to UI
 	ui.sequence = sequence
 	ui.setup_sequence()
@@ -75,6 +80,9 @@ func _input(event):
 
 func _on_sequence_completed():
 	destroying = true
+	
+	# Save state as destroyed
+	GameManager.save_object_state(self, "destroyed")
 	
 	# Step 1: Remove the DestructionUI
 	ui.queue_free()

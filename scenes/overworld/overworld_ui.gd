@@ -18,18 +18,17 @@ var _sfx_player: AudioStreamPlayer
 var _dpad_slots: Dictionary
 
 func _ready():
-	# Attempt to find ControlTimer globally or locally, allowing any map node root
-	if get_tree().current_scene:
-		control_timer = get_tree().current_scene.get_node_or_null("ControlTimer")
-	if not control_timer:
-		# Fallback if OverworldUI is a sibling
-		control_timer = get_node_or_null("../ControlTimer")
-		
+	# Use the persistent timer from GameManager
+	control_timer = GameManager.control_timer
+	
 	if control_timer:
-		_sfx_player = control_timer.get_node_or_null("PlayerChangeFx")
-		# Connect timeout signal safely
-		if not control_timer.timeout.is_connected(_on_control_timer_timeout):
-			control_timer.timeout.connect(_on_control_timer_timeout)
+		_sfx_player = GameManager.timer_sfx_player
+		# The timeout signal is now handled in GameManager for the SFX, 
+		# but if the UI needs to do something else, it can connect here too.
+		# For now, the existing _on_control_timer_timeout logic in this script 
+		# is just playing the sfx which GameManager already does.
+		# If there are other UI-specific timeout needs, we can add them.
+		pass
 
 	_dpad_slots = {
 		"dpad_up": skill_up,
@@ -74,7 +73,7 @@ func _on_control_timer_timeout():
 func _on_dialogue_started():
 	visible = false
 
-func _on_dialogue_finished():
+func _on_dialogue_finished(_next_state: String = ""):
 	visible = true
 
 func show_timer_adjustment(delta: float) -> void:

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://d0c3i7vajd5fo"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_u5a6c"]
+
+[resource]
+script = ExtResource("1_u5a6c")
+speaker = 1
+text = "SUPER-DUPER-MEGA-LAME."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

@@ -48,21 +48,18 @@ metadata/_edit_lock_ = true
 [node name="Portal" parent="WorldContent" instance=ExtResource("5_vycpn")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(792, 768)
+position = Vector2(80, 936)
 animation = &"orange"
+autoplay = "orange"
+destination_scene_path = "uid://cl3xanfp3q1qt"
+destination_portal_name = &"PortalOrange"
 
 [node name="Player" parent="." instance=ExtResource("1_7scds")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(824, 776)
+position = Vector2(112, 944)
 
 [node name="OverworldUI" parent="." instance=ExtResource("7_oxy8t")]
-
-[node name="ControlTimer" type="Timer" parent="."]
-wait_time = 180.0
-autostart = true
-
-[node name="PlayerChangeFx" type="AudioStreamPlayer" parent="ControlTimer"]
 
 [node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("8_035ab")

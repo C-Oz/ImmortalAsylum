@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://2gyq35bdjb8l"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_6vm3d"]
+
+[resource]
+script = ExtResource("1_6vm3d")
+text = "If she had signs of a solution she would say something. It needs to end. Or we will meet the same fate as Goney and Havyo. But like this we are stuck in perpetual stasis Giratran. Either a solution comes soon, or we just end the whole thing."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

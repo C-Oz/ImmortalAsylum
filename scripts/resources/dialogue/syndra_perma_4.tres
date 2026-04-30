@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://btk835wad3jns"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_fyiwp"]
+
+[resource]
+script = ExtResource("1_fyiwp")
+text = "Please find Kryona and fix this. Haniran shouldn’t suffer like this any longer. "
+metadata/_custom_type_script = "uid://f1ktqrse781a"

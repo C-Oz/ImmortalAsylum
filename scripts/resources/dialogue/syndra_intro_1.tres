@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://5u8yhrlfm2ah"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_5ji5d"]
+
+[resource]
+script = ExtResource("1_5ji5d")
+text = "No way, Gira, you came back? And you brought your instruments? Please play me Haniran’s Theme. I missed hearing it so much from you. If you can’t play it yet, just talk to him north-east of here."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

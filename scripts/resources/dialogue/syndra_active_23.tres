@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://bcloo7qotsii6"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_yw7l3"]
+
+[resource]
+script = ExtResource("1_yw7l3")
+text = "The Clarinet should be positioned north, the Guitar should be positioned south and the Cello should be positioned west. Use the knobs behind you to change their position in the sound space. If the lights turn on, that means you can input a stereo code, although you can change the instrument positions at any time."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

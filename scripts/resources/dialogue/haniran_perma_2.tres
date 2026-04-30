@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cw6x7tstvd0vi"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_i5k1j"]
+
+[resource]
+script = ExtResource("1_i5k1j")
+speaker = 1
+text = "I will. And can I destroy the house again? I might need to for some more… time"
+metadata/_custom_type_script = "uid://f1ktqrse781a"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://dsew6omwookej"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_ptwpm"]
+
+[resource]
+script = ExtResource("1_ptwpm")
+display_name_override = "Haniran"
+text = "Could you please build a huge, gorgeous palace over there? By the little overlay that says Y, B and A? If you press the buttons at the right time in sequence, according to the beat, you should be able to create a beautiful mansion for me!"
+metadata/_custom_type_script = "uid://f1ktqrse781a"

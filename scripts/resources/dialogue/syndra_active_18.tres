@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://paqunhguujsm"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_qtdj0"]
+
+[resource]
+script = ExtResource("1_qtdj0")
+text = "Listen Gira, you need to talk to Kryona, you are the only one who can stop her. There are rumours that she is completely obsessed with her research for a cure but there are no signs of progress for anything. We are still suffering silently."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

@@ -9,6 +9,11 @@ extends StaticBody2D
 var player_in_range: bool = false
 
 func _ready() -> void:
+	var state = GameManager.get_object_state(self)
+	if state is String and state == "destroyed":
+		queue_free()
+		return
+		
 	# Pass sequence to UI
 	ui.sequence = sequence
 	ui.setup_sequence()
@@ -55,5 +60,7 @@ func _input(event):
 		ui.check_input(button)
 
 func _on_sequence_completed():
+	# Save state as destroyed
+	GameManager.save_object_state(self, "destroyed")
 	# Play destruction animation/sound
 	queue_free()

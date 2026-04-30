@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://bn51an0flc0ir"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_h8lv8"]
+
+[resource]
+script = ExtResource("1_h8lv8")
+text = "She’s been working for a long time, Gira, and we don’t have much left."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

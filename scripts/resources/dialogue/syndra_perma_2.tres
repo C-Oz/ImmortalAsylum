@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://ce10ewp0pa3k5"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_2ne2o"]
+
+[resource]
+script = ExtResource("1_2ne2o")
+text = "I don’t know the codes to the other areas, but I know the Stereo Code to the SUB-area east of here. "
+metadata/_custom_type_script = "uid://f1ktqrse781a"

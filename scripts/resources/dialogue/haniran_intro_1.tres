@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://dpy2xf27coom2"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_eimck"]
+
+[resource]
+script = ExtResource("1_eimck")
+display_name_override = "Haniran"
+text = "Hey!!!!! Hellooo!!!
+I remember you! You made all of these houses and fountains and stuff with these instruments!"
+metadata/_custom_type_script = "uid://f1ktqrse781a"

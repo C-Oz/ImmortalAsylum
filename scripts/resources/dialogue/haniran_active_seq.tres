@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=23 format=3 uid="uid://5qdoqs5dyf4g"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_lm4ik"]
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="2_j06jk"]
+[ext_resource type="Resource" uid="uid://blth45b5so2mb" path="res://scripts/resources/dialogue/haniran_active_1.tres" id="2_sdl4t"]
+[ext_resource type="Resource" uid="uid://dyix0smgf7ixs" path="res://scripts/resources/dialogue/haniran_active_2.tres" id="3_haj6y"]
+[ext_resource type="Resource" uid="uid://tlxtaqmq5a3m" path="res://scripts/resources/dialogue/haniran_active_3.tres" id="4_lowsb"]
+[ext_resource type="Resource" uid="uid://bxckfekiqg7fy" path="res://scripts/resources/dialogue/haniran_active_4.tres" id="5_51c1o"]
+[ext_resource type="Resource" uid="uid://u20at7i2e0xm" path="res://scripts/resources/dialogue/haniran_active_5.tres" id="6_ygjyr"]
+[ext_resource type="Resource" uid="uid://d0iri53wmi16k" path="res://scripts/resources/dialogue/haniran_active_6.tres" id="7_d6dg3"]
+[ext_resource type="Resource" uid="uid://baaqp4byy4uoc" path="res://scripts/resources/dialogue/haniran_active_7.tres" id="8_3x7e0"]
+[ext_resource type="Resource" uid="uid://c7w3o2l2lkufo" path="res://scripts/resources/dialogue/haniran_active_8.tres" id="9_d3qwu"]
+[ext_resource type="Resource" uid="uid://dwuoixql1sadq" path="res://scripts/resources/dialogue/haniran_active_9.tres" id="10_ei168"]
+[ext_resource type="Resource" uid="uid://03b53b81giyi" path="res://scripts/resources/dialogue/haniran_active_10.tres" id="11_a0hye"]
+[ext_resource type="Resource" uid="uid://bt21ccu1yxeen" path="res://scripts/resources/dialogue/haniran_active_11.tres" id="12_ghnl1"]
+[ext_resource type="Resource" uid="uid://d0c3i7vajd5fo" path="res://scripts/resources/dialogue/haniran_active_12.tres" id="13_56c6e"]
+[ext_resource type="Resource" uid="uid://buk48fxu1pm8m" path="res://scripts/resources/dialogue/haniran_active_13.tres" id="14_buh16"]
+[ext_resource type="Resource" uid="uid://ckjl1b8yoihan" path="res://scripts/resources/dialogue/haniran_active_14.tres" id="15_5y1ab"]
+[ext_resource type="Resource" uid="uid://dwurgks0gqxip" path="res://scripts/resources/dialogue/haniran_active_15.tres" id="16_0mbdv"]
+[ext_resource type="Resource" uid="uid://mlc7mgh77n2d" path="res://scripts/resources/dialogue/haniran_active_16.tres" id="17_ockw1"]
+[ext_resource type="Resource" uid="uid://svbywrjk180j" path="res://scripts/resources/dialogue/haniran_active_17.tres" id="18_ulkk2"]
+[ext_resource type="Resource" uid="uid://chqcx5jp3kk4" path="res://scripts/resources/dialogue/haniran_active_18.tres" id="19_a1phu"]
+[ext_resource type="Resource" uid="uid://d0obvktaebnc2" path="res://scripts/resources/dialogue/haniran_active_19.tres" id="20_ya8vd"]
+[ext_resource type="Resource" uid="uid://b0yk52sa7h50m" path="res://scripts/resources/dialogue/haniran_active_20.tres" id="21_4nx1c"]
+
+[resource]
+script = ExtResource("2_j06jk")
+lines = Array[ExtResource("1_lm4ik")]([ExtResource("2_sdl4t"), ExtResource("3_haj6y"), ExtResource("4_lowsb"), ExtResource("5_51c1o"), ExtResource("6_ygjyr"), ExtResource("7_d6dg3"), ExtResource("8_3x7e0"), ExtResource("9_d3qwu"), ExtResource("10_ei168"), ExtResource("11_a0hye"), ExtResource("12_ghnl1"), ExtResource("13_56c6e"), ExtResource("14_buh16"), ExtResource("15_5y1ab"), ExtResource("16_0mbdv"), ExtResource("17_ockw1"), ExtResource("18_ulkk2"), ExtResource("19_a1phu"), ExtResource("20_ya8vd"), ExtResource("21_4nx1c")])
+next_state = "perma"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

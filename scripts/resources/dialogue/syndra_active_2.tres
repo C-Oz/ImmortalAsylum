@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cksdujvrtnxx6"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_8b21b"]
+
+[resource]
+script = ExtResource("1_8b21b")
+speaker = 1
+text = "… Bad Gira. We barely hear from Kryona anymore since you left. There’s no sign of the corruption slowing. I don’t know what will happen to Haniran if I’m gone completely."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

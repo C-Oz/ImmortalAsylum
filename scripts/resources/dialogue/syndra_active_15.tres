@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://b7ne5tsvk6ltr"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_3ary6"]
+
+[resource]
+script = ExtResource("1_3ary6")
+text = "Ugh I really do not care. I suppose I hope so so he wouldn’t be bothering everyone else. Although he would be bothering people on earth as a fresh android then. So we lose either way."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

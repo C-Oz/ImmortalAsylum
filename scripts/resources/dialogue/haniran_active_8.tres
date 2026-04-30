@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://c7w3o2l2lkufo"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_h2fp2"]
+
+[resource]
+script = ExtResource("1_h2fp2")
+text = "Yeah she removed almost everything… I hate her!!!
+Now everything is grey and stupid and boring. I just stayed here since then, nothing interesting to see anywhere else."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

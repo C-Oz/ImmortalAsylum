@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=26 format=3 uid="uid://cjq2mc33ouolc"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_g54ni"]
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="2_7grul"]
+[ext_resource type="Resource" uid="uid://lrdrig8t3esa" path="res://scripts/resources/dialogue/syndra_active_1.tres" id="2_ng7gt"]
+[ext_resource type="Resource" uid="uid://cksdujvrtnxx6" path="res://scripts/resources/dialogue/syndra_active_2.tres" id="3_jhau3"]
+[ext_resource type="Resource" uid="uid://dc1h010dptbjl" path="res://scripts/resources/dialogue/syndra_active_3.tres" id="4_44d14"]
+[ext_resource type="Resource" uid="uid://beuny0kd5w7ol" path="res://scripts/resources/dialogue/syndra_active_4.tres" id="5_6rluc"]
+[ext_resource type="Resource" uid="uid://bn51an0flc0ir" path="res://scripts/resources/dialogue/syndra_active_5.tres" id="6_fltef"]
+[ext_resource type="Resource" uid="uid://cj1lfpd5jx4y0" path="res://scripts/resources/dialogue/syndra_active_6.tres" id="7_ms5x6"]
+[ext_resource type="Resource" uid="uid://kiix2wvyso2e" path="res://scripts/resources/dialogue/syndra_active_7.tres" id="8_u43xt"]
+[ext_resource type="Resource" uid="uid://rp3ui0xcwdy1" path="res://scripts/resources/dialogue/syndra_active_8.tres" id="9_00ldu"]
+[ext_resource type="Resource" uid="uid://bxxqqw5rn81nl" path="res://scripts/resources/dialogue/syndra_active_9.tres" id="10_vonen"]
+[ext_resource type="Resource" uid="uid://fsfr5glfh5gu" path="res://scripts/resources/dialogue/syndra_active_10.tres" id="11_xiqji"]
+[ext_resource type="Resource" uid="uid://cjnxiwsr3mpyw" path="res://scripts/resources/dialogue/syndra_active_11.tres" id="12_kuehe"]
+[ext_resource type="Resource" uid="uid://chyjyq7bf8yuy" path="res://scripts/resources/dialogue/syndra_active_12.tres" id="13_elayg"]
+[ext_resource type="Resource" uid="uid://cqps5ekgyru5h" path="res://scripts/resources/dialogue/syndra_active_13.tres" id="14_mnrv1"]
+[ext_resource type="Resource" uid="uid://ukchyummvyco" path="res://scripts/resources/dialogue/syndra_active_14.tres" id="15_rn4xh"]
+[ext_resource type="Resource" uid="uid://b7ne5tsvk6ltr" path="res://scripts/resources/dialogue/syndra_active_15.tres" id="16_y7fjd"]
+[ext_resource type="Resource" uid="uid://bv31gufv3koov" path="res://scripts/resources/dialogue/syndra_active_16.tres" id="17_hrdo8"]
+[ext_resource type="Resource" uid="uid://dnub2ps7qv04p" path="res://scripts/resources/dialogue/syndra_active_17.tres" id="18_862i6"]
+[ext_resource type="Resource" uid="uid://paqunhguujsm" path="res://scripts/resources/dialogue/syndra_active_18.tres" id="19_6kcmx"]
+[ext_resource type="Resource" uid="uid://b75cji6l7xstw" path="res://scripts/resources/dialogue/syndra_active_19.tres" id="20_88lnr"]
+[ext_resource type="Resource" uid="uid://2gyq35bdjb8l" path="res://scripts/resources/dialogue/syndra_active_20.tres" id="21_4r151"]
+[ext_resource type="Resource" uid="uid://n45wm01g5tdy" path="res://scripts/resources/dialogue/syndra_active_21.tres" id="22_v55ei"]
+[ext_resource type="Resource" uid="uid://di26sgq5qrdna" path="res://scripts/resources/dialogue/syndra_active_22.tres" id="23_yfpo4"]
+[ext_resource type="Resource" uid="uid://bcloo7qotsii6" path="res://scripts/resources/dialogue/syndra_active_23.tres" id="24_4wymy"]
+
+[resource]
+script = ExtResource("2_7grul")
+lines = Array[ExtResource("1_g54ni")]([ExtResource("2_ng7gt"), ExtResource("3_jhau3"), ExtResource("4_44d14"), ExtResource("5_6rluc"), ExtResource("6_fltef"), ExtResource("7_ms5x6"), ExtResource("8_u43xt"), ExtResource("9_00ldu"), ExtResource("10_vonen"), ExtResource("11_xiqji"), ExtResource("12_kuehe"), ExtResource("13_elayg"), ExtResource("14_mnrv1"), ExtResource("15_rn4xh"), ExtResource("16_y7fjd"), ExtResource("17_hrdo8"), ExtResource("18_862i6"), ExtResource("19_6kcmx"), ExtResource("20_88lnr"), ExtResource("21_4r151"), ExtResource("22_v55ei"), ExtResource("23_yfpo4"), ExtResource("24_4wymy")])
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cjnxiwsr3mpyw"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_0n5bl"]
+
+[resource]
+script = ExtResource("1_0n5bl")
+text = "I mean, wait, no I’m glad you’re back, really, oh that was so rude, I’m sorry, I know you’re just trying…"
+metadata/_custom_type_script = "uid://f1ktqrse781a"

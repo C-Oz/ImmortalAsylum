@@ -14,7 +14,9 @@ var original_tile_atlas_coords: Vector2i = Vector2i(-1, -1)
 var original_tile_alt: int = 0
 
 func _ready() -> void:
-	if GameManager.returning_from_battle and GameManager.saved_player_position != Vector2.ZERO:
+	if GameManager.has_pending_portal_spawn():
+		_move_to_portal_spawn(GameManager.consume_pending_portal_name())
+	elif GameManager.returning_from_battle and GameManager.saved_player_position != Vector2.ZERO:
 		global_position = GameManager.saved_player_position
 
 func _physics_process(_delta: float) -> void:
@@ -89,3 +91,32 @@ func _check_doormat_chords() -> void:
 						original_tile_alt = grass_layer.get_cell_alternative_tile(found_layer, current_tile_pos)
 						grass_layer.set_cell(found_layer, current_tile_pos, original_tile_source_id, Vector2i(5, 0), original_tile_alt)
 						active_stepped_tile = current_tile_pos
+
+func _move_to_portal_spawn(portal_name: StringName) -> void:
+	var root := get_tree().current_scene
+	if root == null:
+		push_warning("Could not place player after portal travel: current scene is missing.")
+		return
+
+	var portal := root.find_child(String(portal_name), true, false)
+	if not portal is Node2D:
+		push_warning("Could not find destination portal '%s' in %s." % [portal_name, root.scene_file_path])
+		return
+
+	var portal_node := portal as Node2D
+	var spawn_position := portal_node.global_position
+
+	if portal.has_method("get_arrival_position"):
+		var result = portal.call("get_arrival_position")
+		if result is Vector2:
+			spawn_position = result
+	else:
+		var exit_point := portal.get_node_or_null("ExitPoint")
+		if exit_point is Node2D:
+			spawn_position = exit_point.global_position
+
+	global_position = spawn_position
+
+	var camera := get_node_or_null("Camera2D")
+	if camera and camera.has_method("reset_smoothing"):
+		camera.reset_smoothing()

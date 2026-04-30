@@ -1,7 +1,6 @@
 extends Node
 
 signal scene_changed(scene_name: String)
-signal battle_completed(npc_id: String, victory: bool)
 signal progression_updated
 
 var current_npc_id: String = ""
@@ -15,7 +14,16 @@ var solo_pitches_unlocked: bool = true
 var cycling_unlocked: bool = false
 var current_chord_zone: String = "Am9"
 
-var npc_alt_states: Dictionary = {} # Stores bools indexed by NPC ID (true = use alt dialogue)
+var pending_portal_name: StringName = &""
+var scene_object_states: Dictionary = {} # Stores states indexed by [scene_path][node_path]
+
+var control_timer: Timer
+var timer_sfx_player: AudioStreamPlayer
+
+var npc_states: Dictionary = {} # Stores String states indexed by NPC ID (e.g. "met", "angry", "done")
+
+var player_name: String = "Player"
+var player_portrait: Texture2D
 
 var unlocked_skills: Dictionary = {
 	"up": true,
@@ -24,9 +32,64 @@ var unlocked_skills: Dictionary = {
 	"right": true
 }
 
+func _ready() -> void:
+	# Create a persistent timer node that lives inside the Autoload
+	control_timer = Timer.new()
+	control_timer.name = "ControlTimer"
+	control_timer.one_shot = false # It should loop
+	control_timer.wait_time = 180.0
+	add_child(control_timer)
+	
+	timer_sfx_player = AudioStreamPlayer.new()
+	timer_sfx_player.name = "PlayerChangeFx"
+	timer_sfx_player.stream = load("res://assets/sfx/SFX player switch v1 [2026-04-01 032029].wav")
+	control_timer.add_child(timer_sfx_player)
+	
+	control_timer.timeout.connect(_on_control_timer_timeout)
+	control_timer.start()
+	
+	player_portrait = load("res://assets/art/p1.PNG")
+
+func _on_control_timer_timeout() -> void:
+	if cycling_unlocked:
+		timer_sfx_player.play()
+
+func adjust_timer(delta: float) -> void:
+	var new_time = max(0.1, control_timer.time_left + delta)
+	# start(new_time) sets the duration for the CURRENT run.
+	# We then reset wait_time so the NEXT automatic loop uses 180.
+	control_timer.start(new_time)
+	control_timer.wait_time = 180.0
+
 func change_scene(scene_path: String) -> void:
 	scene_changed.emit(scene_path)
 	get_tree().change_scene_to_file(scene_path)
+
+func save_object_state(node: Node, value: Variant) -> void:
+	var scene_root = get_tree().current_scene
+	if not scene_root or scene_root.scene_file_path == "":
+		return
+	
+	var scene_path = scene_root.scene_file_path
+	var node_path = String(scene_root.get_path_to(node))
+	
+	if not scene_object_states.has(scene_path):
+		scene_object_states[scene_path] = {}
+	
+	scene_object_states[scene_path][node_path] = value
+
+func get_object_state(node: Node, default: Variant = null) -> Variant:
+	var scene_root = get_tree().current_scene
+	if not scene_root or scene_root.scene_file_path == "":
+		return default
+	
+	var scene_path = scene_root.scene_file_path
+	var node_path = String(scene_root.get_path_to(node))
+	
+	if scene_object_states.has(scene_path):
+		return scene_object_states[scene_path].get(node_path, default)
+	
+	return default
 
 func start_battle(npc_id: String, player_position: Vector2, battle_scene: PackedScene = null) -> void:
 	current_npc_id = npc_id
@@ -72,9 +135,24 @@ func clear_battle_data() -> void:
 	saved_player_position = Vector2.ZERO
 	saved_overworld_scene = ""
 
-func set_npc_alt(id: String, active: bool) -> void:
-	npc_alt_states[id] = active
+func set_npc_state(id: String, state: String) -> void:
+	npc_states[id] = state
 	progression_updated.emit()
 
-func is_npc_alt(id: String) -> bool:
-	return npc_alt_states.get(id, false)
+func get_npc_state(id: String) -> String:
+	return npc_states.get(id, "intro")
+
+func travel_through_portal(scene_path: String, destination_portal_name: StringName) -> void:
+	pending_portal_name = destination_portal_name
+	returning_from_battle = false
+	saved_player_position = Vector2.ZERO
+	saved_overworld_scene = ""
+	change_scene(scene_path)
+
+func has_pending_portal_spawn() -> bool:
+	return pending_portal_name != &""
+
+func consume_pending_portal_name() -> StringName:
+	var portal_name := pending_portal_name
+	pending_portal_name = &""
+	return portal_name

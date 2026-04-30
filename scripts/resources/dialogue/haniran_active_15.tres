@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://dwurgks0gqxip"]
+
+[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_b73bc"]
+
+[resource]
+script = ExtResource("1_b73bc")
+text = "I don’t talk to them much since the quarantine. Too dangerous. Kryona says the corruption passes through the phoneline as well."
+metadata/_custom_type_script = "uid://f1ktqrse781a"

@@ -1,9 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://djeqlq5gjlrw5"]
+[gd_scene load_steps=41 format=3 uid="uid://djeqlq5gjlrw5"]
 
 [ext_resource type="Texture2D" uid="uid://b7v5gnjn5ehi2" path="res://assets/art/animations/portal/PORTAL BLUE-Sheet.png" id="1_amku0"]
 [ext_resource type="Texture2D" uid="uid://b8fenkf8ya8jg" path="res://assets/art/animations/portal/Sprite-0003-Sheet green.png" id="2_6gch6"]
 [ext_resource type="Texture2D" uid="uid://4ucnjuop8re" path="res://assets/art/animations/portal/PORTAL ORANGE-Sheet.png" id="3_hkpak"]
 [ext_resource type="Texture2D" uid="uid://cx3ro1pymkrxt" path="res://assets/art/animations/portal/portal-Sheet purple.png" id="4_dbtsg"]
+[ext_resource type="Script" uid="uid://ds0sb8assfrx7" path="res://scenes/interactables/portal.gd" id="5_hkpak"]
+[ext_resource type="Texture2D" uid="uid://vcnaj2tdt4nk" path="res://assets/art/ui/ABXY/button_xbox_digital_x_1.png" id="6_dbtsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5of8a"]
 atlas = ExtResource("1_amku0")
@@ -252,7 +254,27 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_amku0"]
+radius = 48.0
+
 [node name="Portal" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_fyah0")
 animation = &"green"
-autoplay = "orange"
+autoplay = "green"
+script = ExtResource("5_hkpak")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_amku0")
+
+[node name="InteractionPrompt" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(-2.9999995, -34.999996)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_dbtsg")
+
+[node name="ExitPoint" type="Marker2D" parent="."]
+position = Vector2(0, 16)
