@@ -13,6 +13,8 @@ var original_tile_source_id: int = -1
 var original_tile_atlas_coords: Vector2i = Vector2i(-1, -1)
 var original_tile_alt: int = 0
 
+var is_locked: bool = false
+
 func _ready() -> void:
 	if GameManager.has_pending_portal_spawn():
 		_move_to_portal_spawn(GameManager.consume_pending_portal_name())
@@ -20,7 +22,7 @@ func _ready() -> void:
 		global_position = GameManager.saved_player_position
 
 func _physics_process(_delta: float) -> void:
-	if DialogueBox.is_active():
+	if DialogueBox.is_active() or is_locked:
 		velocity = Vector2.ZERO
 		sprite.play("idle")
 		return
@@ -120,3 +122,17 @@ func _move_to_portal_spawn(portal_name: StringName) -> void:
 	var camera := get_node_or_null("Camera2D")
 	if camera and camera.has_method("reset_smoothing"):
 		camera.reset_smoothing()
+
+func flash_and_hide() -> void:
+	is_locked = true
+	velocity = Vector2.ZERO
+	sprite.play("idle")
+	
+	var tween = create_tween()
+	# Flashing white (HDR value for glow)
+	tween.tween_property(sprite, "modulate", Color(10, 10, 10, 1), 0.6)
+	await tween.finished
+	
+	visible = false
+	# Reset modulate for next time
+	sprite.modulate = Color.WHITE

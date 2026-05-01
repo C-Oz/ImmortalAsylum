@@ -93,7 +93,7 @@ func _process_audio(is_pressed: bool, player: AudioStreamPlayer):
 			#player.stop()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("solo_toggle"):
 		is_alt_map = !is_alt_map
 		_update_audio_streams()
 

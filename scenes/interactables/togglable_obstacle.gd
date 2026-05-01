@@ -12,6 +12,7 @@ extends "res://scripts/interactables/obstacle.gd"
 # Infer the initial logical state from the editor's visibility setting
 @onready var is_built: bool = created_layer.visible
 
+
 func _ready() -> void:
 	var saved_built = GameManager.get_object_state(self)
 	if saved_built is bool:

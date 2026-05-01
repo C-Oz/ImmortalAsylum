@@ -1,4 +1,4 @@
-NPC: What are you still doing here? You should talk to Syndra down south-west of here!!! 
+NPC: What are you still doing here? You should talk to [b]Syndra down south-west of here[/b]!!! 
 PLAYER: I will. And can I destroy the house again? I might need to for some more… time
 NPC: What?... Which house?... Oh the “quaint” architectural failure you just put there? Whatever I don’t care about it anymore.
 PLAYER: That’s a bit unnecessary… 

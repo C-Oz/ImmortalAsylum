@@ -5,7 +5,16 @@ signal progression_updated
 signal reward_granted(reward_id: String)
 
 var unlocked_rewards: Dictionary = {}
+var active_skills: Dictionary = {
+	"dpad_up": "Box 1",
+	"dpad_down": "Box 1",
+	"dpad_left": "Box 1",
+	"dpad_right": "Box 1"
+}
 
+func set_active_skill(action: String, skill_name: String) -> void:
+	active_skills[action] = skill_name
+	
 var current_npc_id: String = ""
 var returning_from_battle: bool = false
 var battle_victory: bool = false
@@ -23,7 +32,7 @@ var scene_object_states: Dictionary = {} # Stores states indexed by [scene_path]
 var control_timer: Timer
 var timer_sfx_player: AudioStreamPlayer
 
-var npc_states: Dictionary = {} # Stores String states indexed by NPC ID (e.g. "met", "angry", "done")
+var npc_states: Dictionary = {} # Stores String states indexed by NPC ID (e.g. "intro", "active", "perma")
 
 var player_name: String = "Giratran"
 var player_portrait: Texture2D
@@ -39,7 +48,7 @@ func _ready() -> void:
 	# Create a persistent timer node that lives inside the Autoload
 	control_timer = Timer.new()
 	control_timer.name = "ControlTimer"
-	control_timer.one_shot = false # It should loop
+	control_timer.one_shot = false
 	control_timer.wait_time = 180.0
 	add_child(control_timer)
 	

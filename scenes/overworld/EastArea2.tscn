@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://cl3xanfp3q1qt"]
+[gd_scene load_steps=98 format=4 uid="uid://cl3xanfp3q1qt"]
 
 [ext_resource type="Script" uid="uid://djw5m7d3mwnmj" path="res://scenes/overworld/overworld.gd" id="1_1r6xs"]
 [ext_resource type="PackedScene" uid="uid://cp7cev47h51bg" path="res://scenes/overworld/overworld_ui.tscn" id="2_hauu2"]
@@ -51,6 +51,7 @@
 [ext_resource type="PackedScene" uid="uid://dqivorff5bxkc" path="res://scenes/interactables/BuildingThree.tscn" id="33_6fx4o"]
 [ext_resource type="AudioStream" uid="uid://dor4xwamtivno" path="res://assets/muzak/Pads/Dbmaj9.wav" id="33_dbmaj"]
 [ext_resource type="Resource" uid="uid://dgqlxcp002feb" path="res://scripts/resources/dialogue/syndra_perma_seq.tres" id="33_rbrpy"]
+[ext_resource type="Script" uid="uid://cnke7m4mm0cf7" path="res://scripts/resources/conditional_state_override.gd" id="34_cdk8e"]
 [ext_resource type="PackedScene" uid="uid://b5bia7opd3m2r" path="res://scenes/interactables/BuildingTall.tscn" id="34_e2jdp"]
 [ext_resource type="AudioStream" uid="uid://cfurld8vmn4d" path="res://assets/muzak/Pads/Ebm maj9.wav" id="34_ebm"]
 [ext_resource type="AudioStream" uid="uid://dpi5ncjkikugd" path="res://assets/muzak/Pads/F halfdim.wav" id="35_fhalf"]
@@ -4377,6 +4378,10 @@ sources/20 = SubResource("TileSetAtlasSource_swwe6")
 sources/21 = SubResource("TileSetAtlasSource_xb75u")
 sources/22 = SubResource("TileSetAtlasSource_8tddi")
 
+[sub_resource type="Resource" id="Resource_rbrpy"]
+script = ExtResource("34_cdk8e")
+metadata/_custom_type_script = "uid://cnke7m4mm0cf7"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4lv6"]
 size = Vector2(417.333, 283)
 
@@ -4473,6 +4478,7 @@ dialogue_map = Dictionary[String, ExtResource("25_u2vi0")]({
 "intro": ExtResource("31_i8tfc"),
 "perma": ExtResource("33_rbrpy")
 })
+state_overrides = Array[ExtResource("34_cdk8e")]([SubResource("Resource_rbrpy")])
 
 [node name="Npc8" parent="East Area - Corrected/NPCs" instance=ExtResource("42_vpnsx")]
 position = Vector2(-159, -242)
@@ -4902,6 +4908,7 @@ metadata/_custom_type_script = "uid://dos3qhffr4v0a"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RhythmNotifier"]
 stream = ExtResource("44_bgwl7")
+volume_db = 12.0
 
 [editable path="East Area - Corrected/SubmergeSectGarden"]
 [editable path="East Area - Corrected/SubmergeSectRooftops"]

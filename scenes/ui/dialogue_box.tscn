@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvbs78jt1r2qh"]
+[gd_scene load_steps=7 format=3 uid="uid://bvbs78jt1r2qh"]
 
 [ext_resource type="Script" uid="uid://brqbh45bh166s" path="res://scenes/ui/dialogue_box.gd" id="1_6iboe"]
 [ext_resource type="Texture2D" uid="uid://x8yfpt4w65lq" path="res://assets/art/ui/ABXY/button_xbox_digital_x_11.png" id="2_4mjmi"]
@@ -6,10 +6,38 @@
 [ext_resource type="Texture2D" uid="uid://cwg5sa5ok2tv6" path="res://assets/art/p1.PNG" id="4_h44io"]
 [ext_resource type="Texture2D" uid="uid://cuq430wucds1x" path="res://assets/art/p2.PNG" id="5_pyby6"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h44io"]
+texture = ExtResource("2_daetb")
+region_rect = Rect2(59, 196, 631, 159)
+
 [node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_6iboe")
 
-[node name="Panel" type="NinePatchRect" parent="."]
+[node name="PlayerPortrait" type="TextureRect" parent="."]
+z_index = 1
+offset_left = 148.91177
+offset_top = 312.0
+offset_right = 278.0
+offset_bottom = 445.0
+texture = ExtResource("4_h44io")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="NPCPortrait" type="TextureRect" parent="."]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -328.0
+offset_top = 313.0
+offset_right = -15.0
+offset_bottom = 456.0
+grow_horizontal = 0
+texture = ExtResource("5_pyby6")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Panel" type="PanelContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -20,16 +48,10 @@ offset_right = -77.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("2_daetb")
-region_rect = Rect2(59, 195, 629, 159)
+theme_override_styles/panel = SubResource("StyleBoxTexture_h44io")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 168
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 168
@@ -47,6 +69,8 @@ text = "Boss"
 
 [node name="DialogueLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.9648226, 0.82705784, 0.9860154, 1)
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 48
@@ -63,29 +87,3 @@ scroll_active = false
 position = Vector2(908.99994, 253)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_4mjmi")
-
-[node name="PlayerPortrait" type="TextureRect" parent="Panel"]
-visible = false
-layout_mode = 1
-offset_left = 28.0
-offset_top = 32.0
-offset_right = 153.20587
-offset_bottom = 161.0
-texture = ExtResource("4_h44io")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="NPCPortrait" type="TextureRect" parent="Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -151.0
-offset_top = 37.0
-offset_right = -26.0
-offset_bottom = 162.0
-grow_horizontal = 0
-texture = ExtResource("5_pyby6")
-expand_mode = 3
-stretch_mode = 5

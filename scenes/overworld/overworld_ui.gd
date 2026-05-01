@@ -74,6 +74,9 @@ func _refresh_skill_slots() -> void:
 		if slot.has_method("_setup_pips"):
 			slot._setup_pips()
 			slot._update_pips()
+			
+		# Sync the initial state to GameManager
+		GameManager.set_active_skill(action, slot.option_names[slot.current_option_index])
 
 func _unhandled_input(event: InputEvent):
 	for action in _dpad_slots:
@@ -82,6 +85,8 @@ func _unhandled_input(event: InputEvent):
 			if is_instance_valid(slot):
 				# Toggle to the next pip / label option safely wrapping around at the max
 				slot.current_option_index = (slot.current_option_index + 1) % slot.total_options
+				# Push state to GameManager so NPCs can read it
+				GameManager.set_active_skill(action, slot.option_names[slot.current_option_index])
 
 func _process(delta):
 	if is_instance_valid(control_timer):

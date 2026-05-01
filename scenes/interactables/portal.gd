@@ -48,7 +48,16 @@ func _travel() -> void:
 	if interaction_prompt:
 		interaction_prompt.visible = false
 
-	GameManager.travel_through_portal(destination_scene_path, destination_portal_name)
+	# 1. Find player and lock them
+	var player = get_tree().get_first_node_in_group("player")
+	if player and player.has_method("flash_and_hide"):
+		await player.flash_and_hide()
+
+	# 2. Trigger the curtain wipe and scene change via the persistent Autoload
+	if SceneTransition:
+		SceneTransition.transition_to_scene(destination_scene_path, destination_portal_name)
+	else:
+		GameManager.travel_through_portal(destination_scene_path, destination_portal_name)
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
