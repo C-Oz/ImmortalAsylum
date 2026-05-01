@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://di26sgq5qrdna"]
-
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_a2u44"]
-
-[resource]
-script = ExtResource("1_a2u44")
-text = "It’s locked. But different people in the fractured SUB-areas have different parts of the Stereo Code. If you can put all of them together, you should be able to access it using your instruments.
-I don’t know the codes to the other areas, but I know the Stereo Code to the SUB-area east of here. "
-metadata/_custom_type_script = "uid://f1ktqrse781a"

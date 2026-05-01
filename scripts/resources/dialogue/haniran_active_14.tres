@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://ckjl1b8yoihan"]
-
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_n7ci7"]
-
-[resource]
-script = ExtResource("1_n7ci7")
-speaker = 1
-text = "Right sorry. Uhm if you don’t mind me asking? How are your parents? Dina and Kowo?"
-metadata/_custom_type_script = "uid://f1ktqrse781a"

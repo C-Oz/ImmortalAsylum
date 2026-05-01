@@ -1,13 +1,9 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=6 format=3 uid="uid://btnb4lu33srml"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://btnb4lu33srml"]
 
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_y8i4k"]
 [ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="2_201tt"]
-[ext_resource type="Resource" uid="uid://dpy2xf27coom2" path="res://scripts/resources/dialogue/haniran_intro_1.tres" id="2_t5sdi"]
-[ext_resource type="Resource" uid="uid://dd5hiarpbnt44" path="res://scripts/resources/dialogue/haniran_intro_2.tres" id="3_j65in"]
-[ext_resource type="Resource" uid="uid://blpwoc6yf7vnv" path="res://scripts/resources/dialogue/haniran_intro_3.tres" id="4_0g4df"]
 
 [resource]
 script = ExtResource("2_201tt")
-lines = Array[ExtResource("1_y8i4k")]([ExtResource("2_t5sdi"), ExtResource("3_j65in"), ExtResource("4_0g4df")])
+dialogue_file = "res://scripts/resources/dialogue/haniran_intro_seq.txt"
 next_state = "intro"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

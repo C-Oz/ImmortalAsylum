@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://bcxr7115e22e6"]
-
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_7gq23"]
-
-[resource]
-script = ExtResource("1_7gq23")
-text = "To go through the exit east of here,the Clarinet should be positioned north, the Guitar should be positioned south and the Cello should be positioned west."
-metadata/_custom_type_script = "uid://f1ktqrse781a"

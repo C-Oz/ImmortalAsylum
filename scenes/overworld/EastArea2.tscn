@@ -4446,7 +4446,7 @@ position = Vector2(97, -496)
 position = Vector2(218, -917)
 
 [node name="Haniran" parent="East Area - Corrected/NPCs" instance=ExtResource("42_vpnsx")]
-position = Vector2(1104, -608)
+position = Vector2(1102, -610)
 npc_id = "Haniran"
 npc_portrait = ExtResource("25_8lmd2")
 dialogue_map = Dictionary[String, ExtResource("25_u2vi0")]({

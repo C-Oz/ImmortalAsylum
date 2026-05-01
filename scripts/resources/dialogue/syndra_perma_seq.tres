@@ -1,14 +1,9 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=8 format=3 uid="uid://dgqlxcp002feb"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://dgqlxcp002feb"]
 
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_k6847"]
 [ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="2_34vda"]
-[ext_resource type="Resource" uid="uid://covqjg26rn08f" path="res://scripts/resources/dialogue/syndra_perma_1.tres" id="2_h4odd"]
-[ext_resource type="Resource" uid="uid://ce10ewp0pa3k5" path="res://scripts/resources/dialogue/syndra_perma_2.tres" id="3_irop8"]
-[ext_resource type="Resource" uid="uid://bcxr7115e22e6" path="res://scripts/resources/dialogue/syndra_perma_3.tres" id="4_8wuyi"]
-[ext_resource type="Resource" uid="uid://btk835wad3jns" path="res://scripts/resources/dialogue/syndra_perma_4.tres" id="5_slixh"]
-[ext_resource type="Resource" uid="uid://dpsf0eaxspdvw" path="res://scripts/resources/dialogue/syndra_perma_5.tres" id="6_04fb3"]
 
 [resource]
 script = ExtResource("2_34vda")
-lines = Array[ExtResource("1_k6847")]([ExtResource("2_h4odd"), ExtResource("3_irop8"), ExtResource("4_8wuyi"), ExtResource("5_slixh"), ExtResource("6_04fb3")])
+dialogue_file = "res://scripts/resources/dialogue/syndra_perma_seq.txt"
+next_state = "perma"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

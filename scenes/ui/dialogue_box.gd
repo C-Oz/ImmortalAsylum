@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 		advance_dialogue()
 
 func start_sequence(sequence: DialogueSequence, npc_name: String = "???", npc_portrait: Texture2D = null) -> void:
-	if not sequence or sequence.lines.is_empty():
+	if not sequence or sequence.get_parsed_lines().is_empty():
 		return
 		
 	current_sequence = sequence
@@ -44,25 +44,34 @@ func start_sequence(sequence: DialogueSequence, npc_name: String = "???", npc_po
 
 func advance_dialogue() -> void:
 	current_line_index += 1
-	if current_line_index < current_sequence.lines.size():
+	if current_line_index < current_sequence.get_parsed_lines().size():
 		_display_current_line()
 	else:
 		var next_state_id = current_sequence.next_state
+		var reward_id = current_sequence.reward_id
 		hide_dialogue()
 		dialogue_finished.emit(next_state_id)
+		
+		if reward_id != "":
+			GameManager.grant_reward(reward_id)
 
 func _display_current_line() -> void:
-	var line: DialogueLine = current_sequence.lines[current_line_index]
+	var line: DialogueSequence.ParsedLine = current_sequence.get_parsed_lines()[current_line_index]
 	
 	dialogue_label.text = line.text
 	
 	# Handle Name and Portrait Logic
-	if line.speaker == DialogueLine.Speaker.PLAYER:
+	if line.speaker.to_upper() == "PLAYER":
 		# Name: Override > Global Default
 		name_label.text = line.display_name_override if line.display_name_override != "" else GameManager.player_name
 		
 		# Portrait: Override > Global Default
-		var p = line.portrait_override if line.portrait_override else GameManager.player_portrait
+		var p = null
+		if line.portrait_override_key != "" and current_sequence.portrait_overrides.has(line.portrait_override_key):
+			p = current_sequence.portrait_overrides[line.portrait_override_key]
+		if not p:
+			p = GameManager.player_portrait
+			
 		if p:
 			portrait_left.texture = p
 			portrait_left.show()
@@ -75,7 +84,12 @@ func _display_current_line() -> void:
 		name_label.text = line.display_name_override if line.display_name_override != "" else active_npc_name
 		
 		# Portrait: Override > Active NPC Default
-		var p = line.portrait_override if line.portrait_override else active_npc_portrait
+		var p = null
+		if line.portrait_override_key != "" and current_sequence.portrait_overrides.has(line.portrait_override_key):
+			p = current_sequence.portrait_overrides[line.portrait_override_key]
+		if not p:
+			p = active_npc_portrait
+			
 		if p:
 			portrait_right.texture = p
 			portrait_right.show()

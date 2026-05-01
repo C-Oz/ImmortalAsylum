@@ -1,14 +1,9 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=7 format=3 uid="uid://h2m7d3s2p3ni"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://h2m7d3s2p3ni"]
 
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_3nmin"]
-[ext_resource type="Resource" uid="uid://bhklsyjb663su" path="res://scripts/resources/dialogue/haniran_perma_1.tres" id="2_4u6us"]
 [ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="2_jqx0b"]
-[ext_resource type="Resource" uid="uid://cw6x7tstvd0vi" path="res://scripts/resources/dialogue/haniran_perma_2.tres" id="3_fpuqb"]
-[ext_resource type="Resource" uid="uid://bvxgxl05euck1" path="res://scripts/resources/dialogue/haniran_perma_3.tres" id="4_wdmmc"]
-[ext_resource type="Resource" uid="uid://ca8tsotaa2v20" path="res://scripts/resources/dialogue/haniran_perma_4.tres" id="5_u3uw6"]
 
 [resource]
 script = ExtResource("2_jqx0b")
-lines = Array[ExtResource("1_3nmin")]([ExtResource("2_4u6us"), ExtResource("3_fpuqb"), ExtResource("4_wdmmc"), ExtResource("5_u3uw6")])
+dialogue_file = "res://scripts/resources/dialogue/haniran_perma_seq.txt"
 next_state = "perma"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

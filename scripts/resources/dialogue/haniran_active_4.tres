@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://bxckfekiqg7fy"]
-
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_ewngq"]
-
-[resource]
-script = ExtResource("1_ewngq")
-text = "What does “Quaint” mean? Who would even want a “Quaint” mansion?"
-metadata/_custom_type_script = "uid://f1ktqrse781a"

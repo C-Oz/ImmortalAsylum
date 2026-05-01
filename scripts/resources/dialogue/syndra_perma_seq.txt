@@ -1,0 +1,5 @@
+NPC: Different people in the fractured SUB-areas have different parts of the Stereo Code. If you can put all of them together, you should be able to access it using your instruments.
+NPC: I don’t know the codes to the other areas, but I know the Stereo Code to the SUB-area east of here. 
+NPC: To go through the exit east of here,the Clarinet should be positioned north, the Guitar should be positioned south and the Cello should be positioned west.
+NPC: Please find Kryona and fix this. Haniran shouldn’t suffer like this any longer. 
+PLAYER: Take care, Syn

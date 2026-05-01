@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://covqjg26rn08f"]
-
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_x6y6e"]
-
-[resource]
-script = ExtResource("1_x6y6e")
-text = "Different people in the fractured SUB-areas have different parts of the Stereo Code. If you can put all of them together, you should be able to access it using your instruments."
-metadata/_custom_type_script = "uid://f1ktqrse781a"

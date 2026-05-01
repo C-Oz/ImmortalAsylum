@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://blpwoc6yf7vnv"]
-
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_7iwt4"]
-
-[resource]
-script = ExtResource("1_7iwt4")
-display_name_override = "Haniran"
-text = "YOUR EXCUSES ARE OF NO CONCERN TO ME"
-metadata/_custom_type_script = "uid://f1ktqrse781a"

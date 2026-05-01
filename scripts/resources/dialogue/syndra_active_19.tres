@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://b75cji6l7xstw"]
-
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_lvtum"]
-
-[resource]
-script = ExtResource("1_lvtum")
-speaker = 1
-text = "… Do you have faith that she will find a solution?"
-metadata/_custom_type_script = "uid://f1ktqrse781a"

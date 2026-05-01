@@ -2,6 +2,9 @@ extends Node
 
 signal scene_changed(scene_name: String)
 signal progression_updated
+signal reward_granted(reward_id: String)
+
+var unlocked_rewards: Dictionary = {}
 
 var current_npc_id: String = ""
 var returning_from_battle: bool = false
@@ -22,7 +25,7 @@ var timer_sfx_player: AudioStreamPlayer
 
 var npc_states: Dictionary = {} # Stores String states indexed by NPC ID (e.g. "met", "angry", "done")
 
-var player_name: String = "Player"
+var player_name: String = "Giratran"
 var player_portrait: Texture2D
 
 var unlocked_skills: Dictionary = {
@@ -141,6 +144,13 @@ func set_npc_state(id: String, state: String) -> void:
 
 func get_npc_state(id: String) -> String:
 	return npc_states.get(id, "intro")
+
+func grant_reward(reward_id: String) -> void:
+	if reward_id == "" or unlocked_rewards.has(reward_id):
+		return
+	unlocked_rewards[reward_id] = true
+	reward_granted.emit(reward_id)
+	progression_updated.emit()
 
 func travel_through_portal(scene_path: String, destination_portal_name: StringName) -> void:
 	pending_portal_name = destination_portal_name

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://dwuoixql1sadq"]
-
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_0t63j"]
-
-[resource]
-script = ExtResource("1_0t63j")
-text = "but at least Syndra is here with me. She is down in the south-west if you haven’t found her already… Grah! I’m so mad at Kryona that she ruined everything, we could have had great parties with everyone! Every day!"
-metadata/_custom_type_script = "uid://f1ktqrse781a"

@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=5 format=3 uid="uid://8indrewxntqp"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://8indrewxntqp"]
 
-[ext_resource type="Script" uid="uid://f1ktqrse781a" path="res://scripts/resources/dialogue/dialogue_line.gd" id="1_u8hed"]
 [ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="2_6hl2c"]
-[ext_resource type="Resource" uid="uid://5u8yhrlfm2ah" path="res://scripts/resources/dialogue/syndra_intro_1.tres" id="2_hkrv3"]
-[ext_resource type="Resource" uid="uid://bh2dtadyee4ay" path="res://scripts/resources/dialogue/syndra_intro_2.tres" id="3_6c7vd"]
 
 [resource]
 script = ExtResource("2_6hl2c")
-lines = Array[ExtResource("1_u8hed")]([ExtResource("2_hkrv3"), ExtResource("3_6c7vd")])
+dialogue_file = "res://scripts/resources/dialogue/syndra_intro_seq.txt"
+next_state = "intro"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

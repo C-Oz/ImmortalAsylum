@@ -37,19 +37,43 @@ func _ready():
 		"dpad_right": skill_right,
 	}
 
-	# Initialize the pip options
-	var initial_labels: Array[String] = ["Off ", "Solo", "Box1", "Box2", "Box3", "Box4"]
-	for slot in _dpad_slots.values():
-		if is_instance_valid(slot):
-			slot.option_names = initial_labels
-			slot.total_options = initial_labels.size()
-			# Children _ready happens before parent _ready, so we rebuild the dynamic pips here
-			if slot.has_method("_setup_pips"):
-				slot._setup_pips()
-				slot._update_pips()
+	_refresh_skill_slots()
+	GameManager.progression_updated.connect(_refresh_skill_slots)
+	GameManager.reward_granted.connect(_on_reward_granted)
 	
 	DialogueBox.dialogue_started.connect(_on_dialogue_started)
 	DialogueBox.dialogue_finished.connect(_on_dialogue_finished)
+
+func _on_reward_granted(reward_id: String) -> void:
+	if reward_id == "haniran_box5":
+		var reward_scene = load("res://scenes/ui/RewardUI.tscn")
+		if reward_scene:
+			var reward_inst = reward_scene.instantiate()
+			reward_inst.setup("Haniran's Theme Acquired", load("res://assets/art/instruments/cello_big.png"))
+			add_child(reward_inst)
+
+func _refresh_skill_slots() -> void:
+	# Base labels for all slots
+	var base_labels: Array[String] = ["Box1", "Box2", "Box3", "Box4"]
+	
+	for action in _dpad_slots:
+		var slot = _dpad_slots[action]
+		if not is_instance_valid(slot): continue
+		
+		# Build specific labels for this slot
+		var current_labels = base_labels.duplicate()
+		
+		# If this is the skill_up slot and haniran box 5 is unlocked
+		if action == "dpad_up" and GameManager.unlocked_rewards.has("haniran_box5"):
+			current_labels.append("Haniran")
+			
+		# Apply the labels to the slot
+		slot.option_names = current_labels
+		slot.total_options = current_labels.size()
+		
+		if slot.has_method("_setup_pips"):
+			slot._setup_pips()
+			slot._update_pips()
 
 func _unhandled_input(event: InputEvent):
 	for action in _dpad_slots:
