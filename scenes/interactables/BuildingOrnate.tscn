@@ -1495,6 +1495,7 @@ size = Vector2(110, 97)
 size = Vector2(220, 172.5)
 
 [node name="BuildingOrnate" type="StaticBody2D" groups=["destructibles"]]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_0sycn")
@@ -1506,6 +1507,7 @@ tile_map_data = PackedByteArray("AAD8//r/AAAlABoAAAD8//v/AAAlABsAAAD8//z/AAAlABw
 tile_set = SubResource("TileSet_464g8")
 
 [node name="DestroyedLayer" type="TileMapLayer" parent="."]
+z_index = -1
 tile_map_data = PackedByteArray("AAD8//r/AQAlABoAAAD9//r/AQAmABoAAAABAPr/AQAqABoAAAACAPr/AQArABoAAAD8////AQAlAB4AAAD9////AQAmAB4AAAABAP//AQAqAB4AAAACAP//AQArAB4AAAD8//v/AQAlABsAAAD8//z/AQAlABsAAAD8//3/AQAlABwAAAD8//7/AQAlAB0AAAACAPv/AQArABsAAAACAPz/AQArABsAAAACAP3/AQArABwAAAACAP7/AQArAB0AAAD+//7/AQAoABwAAAD///7/AQAoABwAAAAAAP7/AQAoABwAAAD9//7/AQAoABsAAAD9//3/AQAoABsAAAD+//3/AQAoABsAAAD///3/AQAoABsAAAAAAP3/AQAoABsAAAABAP3/AQAoABsAAAABAP7/AQAoABsAAAD9//z/AQAoABsAAAD+//z/AQAoABsAAAD///z/AQAoABsAAAABAPz/AQAoABsAAAAAAPz/AQAoABsAAAD+//v/AQAuABsAAAAAAPv/AQAuABsAAAD///v/AQAuABsAAAD9//v/AQAmABsAAAABAPv/AQAqABsAAAA=")
 tile_set = SubResource("TileSet_ej5ct")
 
@@ -1538,8 +1540,4 @@ offset_right = 83.0
 offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 0
-sequence = null
-countdown_beats = null
-slot_spacing = null
-button_scale = null
 instrument_icon = ExtResource("4_cdy22")

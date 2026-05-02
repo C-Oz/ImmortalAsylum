@@ -92,6 +92,8 @@ func start_sequence():
 		print("Already active, returning")
 		return
 	
+	DeviceManager.vibrate(DeviceManager.Role.BUTTONS, 0.1, 0.1, 0)
+	
 	print("Starting countdown from ", countdown_beats)
 	state = State.COUNTDOWN
 	beats_remaining = countdown_beats
@@ -100,6 +102,7 @@ func start_sequence():
 	show_countdown()
 
 func stop_sequence():
+	DeviceManager.stop_vibrate(DeviceManager.Role.BUTTONS)
 	state = State.INACTIVE
 	reset_needle()
 	hide_countdown()
@@ -298,4 +301,4 @@ func spawn_success_particles(pos: Vector2):
 
 func trigger_vibration():
 	# Vibrate for 0.1 seconds, medium strength
-	Input.start_joy_vibration(0, 0.3, 0.3, 0.1)  # (device, weak_motor, strong_motor, duration)
+	DeviceManager.vibrate(DeviceManager.Role.BUTTONS, 0.5, 0.5, 0.1)

@@ -1,10 +1,5 @@
 extends Control
 
-@export var sounds_folder: String
-var _toggle_sfx: Array[AudioStream] = []
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
-
-
 @export var skill_icon: Texture2D:
 	set(value):
 		skill_icon = value
@@ -22,7 +17,6 @@ var _toggle_sfx: Array[AudioStream] = []
 		current_option_index = clamp(value, 0, total_options - 1)
 		if is_node_ready():
 			_update_pips()
-			_play_toggle_sound()
 
 
 # find_child for restructure-proof locating nodes
@@ -46,25 +40,6 @@ func _ready():
 	
 	_setup_pips()
 	_update_pips()
-	_load_sfx()
-
-func _load_sfx():
-	if sounds_folder == "": return
-	_toggle_sfx.clear()
-	for i in range(1, 7):
-		var path = "res://assets/sfx/%s/%s %d.wav" % [sounds_folder, sounds_folder, i]
-		if ResourceLoader.exists(path):
-			_toggle_sfx.append(load(path))
-		else:
-			_toggle_sfx.append(null)
-
-func _play_toggle_sound():
-	if audio_player and current_option_index < _toggle_sfx.size():
-		var stream = _toggle_sfx[current_option_index]
-		if stream:
-			audio_player.stream = stream
-			audio_player.play()
-
 
 func _setup_pips():
 	if not grid_container: return

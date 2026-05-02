@@ -14,6 +14,7 @@ region_rect = Rect2(59, 196, 631, 159)
 script = ExtResource("1_6iboe")
 
 [node name="PlayerPortrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
 z_index = 1
 offset_left = 148.91177
 offset_top = 312.0
@@ -24,6 +25,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="NPCPortrait" type="TextureRect" parent="."]
+unique_name_in_owner = true
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -62,12 +64,14 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.44849992, 0.58154696, 0.84948283, 1)
 theme_override_font_sizes/font_size = 64
 text = "Boss"
 
 [node name="DialogueLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.9648226, 0.82705784, 0.9860154, 1)
 theme_override_constants/outline_size = 2
@@ -84,6 +88,7 @@ fit_content = true
 scroll_active = false
 
 [node name="ContinueIcon" type="Sprite2D" parent="Panel"]
+unique_name_in_owner = true
 position = Vector2(908.99994, 253)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_4mjmi")

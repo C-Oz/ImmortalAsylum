@@ -1480,6 +1480,7 @@ size = Vector2(82, 82)
 size = Vector2(200, 157)
 
 [node name="BuildingThree" type="StaticBody2D" groups=["destructibles"]]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_8ji2t")

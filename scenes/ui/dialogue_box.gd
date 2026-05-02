@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-@onready var name_label: Label = $Panel/MarginContainer/VBoxContainer/NameLabel
-@onready var dialogue_label: RichTextLabel = $Panel/MarginContainer/VBoxContainer/DialogueLabel
-@onready var continue_icon: Sprite2D = $Panel/ContinueIcon
-@onready var portrait_left: TextureRect = $Panel/PlayerPortrait
-@onready var portrait_right: TextureRect = $Panel/NPCPortrait
+@onready var name_label: Label = %NameLabel
+@onready var dialogue_label: RichTextLabel = %DialogueLabel
+@onready var continue_icon: Sprite2D = %ContinueIcon
+@onready var portrait_left: TextureRect = %PlayerPortrait
+@onready var portrait_right: TextureRect = %NPCPortrait
 
 var current_sequence: DialogueSequence
 var current_line_index: int = 0

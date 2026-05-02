@@ -10,6 +10,14 @@ var doormat_player: AudioStreamPlayer
 var last_doormat_time: int = -15000
 var doormat_cooldown_ms: int = 15000
 
+# Add folders here that need to be quieter. Value is in decibels (negative is quieter).
+var doormat_volume_offsets: Dictionary = {
+	"Abmaj9": -8.0,
+	"Am9": -8.0,
+	"Dbmaj9": -8.0,
+	"Dm9": -8.0,
+}
+
 func _ready() -> void:
 	# Two players for seamless crossfading (no gap/click)
 	music_player_a = AudioStreamPlayer.new()
@@ -61,6 +69,12 @@ func play_doormat_chord(chord_name: String) -> void:
 	if doormat_sounds.has(chord_name):
 		var sounds = doormat_sounds[chord_name]
 		if sounds.size() > 0:
+			# Apply volume offset if defined, otherwise reset to 0
+			if doormat_volume_offsets.has(chord_name):
+				doormat_player.volume_db = doormat_volume_offsets[chord_name]
+			else:
+				doormat_player.volume_db = 0.0
+				
 			var random_sound = sounds.pick_random()
 			doormat_player.stream = random_sound
 			doormat_player.play()

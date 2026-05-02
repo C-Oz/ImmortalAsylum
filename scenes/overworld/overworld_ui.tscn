@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://r0ylm5x7yg0p" path="res://assets/art/instruments/clarinet_big.png" id="4_0wxml"]
 [ext_resource type="Texture2D" uid="uid://b0a6v7aiwhrpn" path="res://assets/art/instruments/cello_big.png" id="4_7lhd5"]
 [ext_resource type="Texture2D" uid="uid://bveb3u0fyap7h" path="res://assets/art/instruments/drums_big.png" id="7_rkdga"]
+[ext_resource type="Texture2D" uid="uid://bgudd23bdjqgh" path="res://assets/art/instruments/guitar_big.png" id="8_0i1vl"]
 [ext_resource type="Script" uid="uid://sxa2wewkejr6" path="res://scenes/ui/solo_pitches.gd" id="8_7lhd5"]
-[ext_resource type="Texture2D" uid="uid://dt56th7g3aydf" path="res://assets/art/instruments/piano_big.png" id="8_112df"]
 [ext_resource type="Texture2D" uid="uid://cl62cuuwbglcl" path="res://assets/art/ui/ABXY/button_xbox_digital_y_2.png" id="9_7lhd5"]
 [ext_resource type="Texture2D" uid="uid://dc5hhp2vsli15" path="res://assets/art/ui/ABXY/button_xbox_digital_b_2.png" id="10_rkdga"]
 [ext_resource type="Texture2D" uid="uid://db14wbnemouw0" path="res://assets/art/ui/ABXY/button_xbox_digital_a_1.png" id="11_u8qpe"]
@@ -77,7 +77,6 @@ offset_top = -49.0
 offset_right = 25.0
 offset_bottom = -1.0
 grow_horizontal = 2
-sounds_folder = "Cello"
 skill_icon = ExtResource("4_7lhd5")
 
 [node name="SkillDown" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
@@ -93,7 +92,6 @@ offset_right = 20.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
-sounds_folder = "Clarinet"
 skill_icon = ExtResource("4_0wxml")
 
 [node name="SkillLeft" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
@@ -106,8 +104,7 @@ offset_top = -67.0
 offset_right = 28.0
 offset_bottom = -27.0
 grow_vertical = 2
-sounds_folder = "Piano"
-skill_icon = ExtResource("8_112df")
+skill_icon = ExtResource("8_0i1vl")
 
 [node name="SkillRight" parent="DPadSkillWheel" instance=ExtResource("3_x8qqa")]
 layout_mode = 1
@@ -122,7 +119,6 @@ offset_right = 23.0
 offset_bottom = -28.0
 grow_horizontal = 0
 grow_vertical = 2
-sounds_folder = "Drums"
 skill_icon = ExtResource("7_rkdga")
 
 [node name="SoloPitches" type="Control" parent="."]
@@ -183,12 +179,15 @@ expand_mode = 4
 
 [node name="SoundY" type="AudioStreamPlayer" parent="SoloPitches"]
 stream = ExtResource("15_0i1vl")
+volume_db = -8.0
 
 [node name="SoundB" type="AudioStreamPlayer" parent="SoloPitches"]
 stream = ExtResource("16_mbcjf")
+volume_db = -8.0
 
 [node name="SoundA" type="AudioStreamPlayer" parent="SoloPitches"]
 stream = ExtResource("17_14gop")
+volume_db = -8.0
 
 [node name="TimerLabel" type="Label" parent="."]
 anchors_preset = 5

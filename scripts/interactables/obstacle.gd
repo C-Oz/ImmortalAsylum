@@ -40,21 +40,12 @@ func _input(event):
 	# Only process input if UI is active
 	var button = null
 	
-	if event is InputEventJoypadButton and event.pressed:
-		if event.button_index == JOY_BUTTON_Y:
-			button = "Y"
-		elif event.button_index == JOY_BUTTON_B:
-			button = "B"
-		elif event.button_index == JOY_BUTTON_A:
-			button = "A"
-	# Keyboard fallback for debugging
-	elif event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_Q:
-			button = "Y"
-		elif event.keycode == KEY_A:
-			button = "B"
-		elif event.keycode == KEY_Z:
-			button = "A"
+	if event.is_action_pressed("joy_y", false):
+		button = "Y"
+	elif event.is_action_pressed("joy_b", false):
+		button = "B"
+	elif event.is_action_pressed("joy_a", false):
+		button = "A"
 	
 	if button:
 		ui.check_input(button)

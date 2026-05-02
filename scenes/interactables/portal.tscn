@@ -258,6 +258,7 @@ animations = [{
 radius = 48.0
 
 [node name="Portal" type="AnimatedSprite2D"]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_fyah0")
 animation = &"green"
 autoplay = "green"
