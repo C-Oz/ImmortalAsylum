@@ -7,7 +7,9 @@ extends "res://scripts/interactables/obstacle.gd"
 @export var timer_value: float = 10.0 # seconds added/subtracted from timer
 @export var state_trigger_npc_id: String = "" # NPC ID to update when built
 @export var npc_state_built: String = "" # State to set when built (e.g. "active")
+@export var npc_required_state_for_build: String = "" # The only state that changes when built
 @export var npc_state_destroyed: String = "" # State to set when destroyed (e.g. "default")
+@export var npc_required_state_for_destroy: String = "" # Initial state that changes when destroyed
 
 # Infer the initial logical state from the editor's visibility setting
 @onready var is_built: bool = created_layer.visible
@@ -23,6 +25,10 @@ func _ready() -> void:
 	# We must call super._ready() but since we extend "res://scripts/interactables/obstacle.gd"
 	# and it's a script-based inheritance, we use super()
 	super()
+	
+	if state_trigger_npc_id != "":
+		GameManager.progression_updated.connect(_update_npc_trigger)
+		_update_npc_trigger()
 
 func _apply_state_visuals() -> void:
 	# Swap tilemap visibilities
@@ -39,14 +45,21 @@ func _on_sequence_completed() -> void:
 	_apply_state_visuals()
 	
 	# Adjust the global ControlTimer
-	var adjustment = -timer_value if is_built else timer_value
-	_adjust_control_timer(adjustment)
+	_adjust_control_timer(-timer_value if is_built else timer_value)
 	
 	# Trigger NPC state change if configured
-	if state_trigger_npc_id != "":
-		var target_state = npc_state_built if is_built else npc_state_destroyed
-		if target_state != "":
-			GameManager.set_npc_state(state_trigger_npc_id, target_state)
+	_update_npc_trigger()
+
+func _update_npc_trigger() -> void:
+	if state_trigger_npc_id == "":
+		return
+
+	var current = GameManager.get_npc_state(state_trigger_npc_id)
+	var required = npc_required_state_for_build if is_built else npc_required_state_for_destroy
+	var target = npc_state_built if is_built else npc_state_destroyed
+	
+	if target != "" and target != current and (required == "" or required == current):
+		GameManager.set_npc_state(state_trigger_npc_id, target)
 
 func _adjust_control_timer(delta: float) -> void:
 	# Directly tell the manager to change the time

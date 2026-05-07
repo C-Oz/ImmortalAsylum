@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://dhxi152kdme1c"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_v7xqf"]
+
+[resource]
+script = ExtResource("1_v7xqf")
+dialogue_file = "res://scripts/resources/dialogue/syndra_intro_seq.txt"
+next_state = "intro"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

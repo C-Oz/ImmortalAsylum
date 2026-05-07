@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="PortraitSet" load_steps=9 format=3 uid="uid://ccm0or03u7jq2"]
+
+[ext_resource type="Script" uid="uid://drbnk3gfyh4e0" path="res://scripts/resources/dialogue/mood_portrait.gd" id="1_7gic6"]
+[ext_resource type="Texture2D" uid="uid://b0gpqbbaqs84j" path="res://assets/art/npc/haniran_happy.png" id="1_m0y83"]
+[ext_resource type="Script" uid="uid://cbfporf6jgqpj" path="res://scripts/resources/dialogue/portrait_set.gd" id="1_t4rx1"]
+[ext_resource type="Texture2D" uid="uid://chhcktkkawpbg" path="res://assets/art/npc/haniran_shocked.png" id="2_ayw2x"]
+[ext_resource type="Texture2D" uid="uid://cdqxs7b41wako" path="res://assets/art/npc/haniran_angry.png" id="3_383f1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw61c"]
+atlas = ExtResource("1_m0y83")
+region = Rect2(655.49243, 50.97159, 1798.262, 1413.4487)
+script = ExtResource("1_7gic6")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0y83"]
+atlas = ExtResource("2_ayw2x")
+region = Rect2(180.41565, 198.94531, 1823.1538, 1190.7683)
+script = ExtResource("1_7gic6")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayw2x"]
+atlas = ExtResource("3_383f1")
+region = Rect2(387.54926, -7.7487335, 1756.935, 1278.782)
+script = ExtResource("1_7gic6")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[resource]
+script = ExtResource("1_t4rx1")
+portraits = Dictionary[String, ExtResource("1_7gic6")]({
+"angry": SubResource("AtlasTexture_ayw2x"),
+"happy": SubResource("AtlasTexture_hw61c"),
+"shocked": SubResource("AtlasTexture_m0y83")
+})
+metadata/_custom_type_script = "uid://cbfporf6jgqpj"

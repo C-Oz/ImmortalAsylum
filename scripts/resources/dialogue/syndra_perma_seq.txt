@@ -1,6 +1,6 @@
-NPC: Different people in the fractured SUB-areas have [b]different parts[/b] of the [b]Stereo Code[/b].
-NPC: If you can put all of them together, you should be able to access it [b]using your instruments[/b].
-NPC: I don’t know the codes to the other areas, but I know the Stereo Code to the [b]SUB-area east of here[/b].
-NPC: The [color=blue]Clarinet[/color] should be positioned [b]north[/b], the [color=green]Guitar[/color] should be positioned [b]south[/b] and the [color=red]Cello[/color] should be positioned [b]west[/b].
-NPC: Please find Kryona and fix this. Haniran shouldn’t suffer like this any longer. 
+Syndra(Syndra)[happy]: Different people in the fractured SUB-areas have [color=yellow]different parts[/color] of the [color=yellow]Stereo Code[/color].
+Syndra(Syndra)[happy]: If you can put all of them together, you should be able to access it [color=yellow]using your instruments[/color].
+Syndra(Syndra)[happy]: I don’t know the codes to the other areas, but I know the Stereo Code to the [color=yellow]SUB-area east of here[/color].
+Syndra(Syndra)[happy]: The [color=blue]Clarinet[/color] should be positioned [color=yellow]north[/color], the [color=green]Guitar[/color] should be positioned [color=yellow]south[/color] and the [color=red]Cello[/color] should be positioned [color=yellow]west[/color].
+Syndra(Syndra)[sad]: Please find Kryona and fix this. Haniran shouldn’t suffer like this any longer. 
 PLAYER: Take care, Syn

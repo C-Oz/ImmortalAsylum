@@ -1,28 +1,28 @@
-NPC: Aah such an energetic melody and tune! Thank you for playing it again.
+Syndra(Syndra)[happy]: Aah such an energetic melody and tune! Thank you for playing it again.
 PLAYER: I missed hearing it as well Syn. How are things?
-NPC: … Bad Gira. We barely hear from Kryona anymore since you left. There’s no sign of the corruption slowing. I don’t know what will happen to Haniran if I’m gone completely.
+Syndra(Syndra)[sad]: … Bad Gira. We barely hear from Kryona anymore since you left. There’s no sign of the corruption slowing. I don’t know what will happen to Haniran if I’m gone completely.
 PLAYER: Syn don’t say that, she’s working on a solution.
-NPC: She’s been working for a long time, Gira, and we don’t have much left.
+Syndra(Syndra)[sad]: She’s been working for a long time, Gira, and we don’t have much left.
 PLAYER: I know Syn, I came here to talk to her.
-NPC: Well you should have come earlier, Goney and Havyo have passed already
+Syndra(Syndra)[sad]: Well you should have come earlier, Goney and Havyo have passed already
 PLAYER: ...
-NPC: ...
+Syndra(Syndra)[sad]: ...
 PLAYER: I’m sorry, Syndra.
-NPC: I mean, wait, no I’m glad you’re back, really, oh that was so rude, I’m sorry, I know you’re just trying…
+Syndra(Syndra)[sad]: I mean, wait, no I’m glad you’re back, really, oh that was so rude, I’m sorry, I know you’re just trying…
 PLAYER: Syn it’s ok, really, you have a right to be bitter about that.
-NPC: No really, I’m happy you’re back… In a way, this whole situation allowed me to escape my relationship with that idiot. I much prefer hanging out with Haniran all day haha! 
+Syndra(Syndra)[happy]: No really, I’m happy you’re back… In a way, this whole situation allowed me to escape my relationship with that idiot. I much prefer hanging out with Haniran all day haha! 
 PLAYER: Hahaha, did he leave the Server in the end?
-NPC: Ugh I really do not care. I suppose I hope so so he wouldn’t be bothering everyone else. Although he would be bothering people on earth as a fresh android then. So we lose either way.
+Syndra(Syndra)[sad]: Ugh I really do not care. I suppose I hope so so he wouldn’t be bothering everyone else. Although he would be bothering people on earth as a fresh android then. So we lose either way.
 PLAYER: Hahaha lord, I’m glad I never met him.
-NPC: yeah…
-NPC: Listen Gira, you need to talk to Kryona, you are the only one who can stop her.
-NPC: There are rumours that she is completely obsessed with her research for a cure but there are no signs of progress for anything. We are still suffering silently.
+Syndra(Syndra)[sad]: yeah…
+Syndra(Syndra)[sad]: Listen Gira, you need to talk to Kryona, you are the only one who can stop her.
+Syndra(Syndra)[sad]: There are rumours that she is completely obsessed with her research for a cure but there are no signs of progress for anything. We are still suffering silently.
 PLAYER: … Do you have faith that she will find a solution?
-NPC: If she had signs of a solution she would say something. It needs to end. Or we will meet the same fate as Goney and Havyo. 
-NPC: But like this we are stuck in perpetual stasis Giratran. Either a solution comes soon, or we just end the whole thing.
+Syndra(Syndra)[sad]: If she had signs of a solution she would say something. It needs to end. Or we will meet the same fate as Goney and Havyo. 
+Syndra(Syndra)[sad]: But like this we are stuck in perpetual stasis Giratran. Either a solution comes soon, or we just end the whole thing.
 PLAYER: … I understand Syn. I will talk to her. Is the passage in the north still open?
-NPC: It’s locked. But different people in the fractured SUB-areas have [b]different parts[/b] of the [b]Stereo Code[/b].
-NPC: If you can put all of them together, you should be able to access it [b]using your instruments[/b].
-NPC: I don’t know the codes to the other areas, but I know the Stereo Code to the [b]SUB-area east of here[/b]. 
-NPC: The [color=blue]Clarinet[/color] should be positioned [b]north[/b], the [color=green]Guitar[/color] should be positioned [b]south[/b] and the [color=red]Cello[/color] should be positioned [b]west[/b].
-NPC: Use the [b]knobs behind you[/b] to change their position in the [b]sound space[/b]. If the lights turn on, that means you can input a stereo code, although you can change the instrument positions at any time.
+Syndra(Syndra)[happy]: It’s locked. But different people in the fractured SUB-areas have [color=yellow]different parts[/color] of the [color=yellow]Stereo Code[/color].
+Syndra(Syndra)[happy]: If you can put all of them together, you should be able to access it [color=yellow]using your instruments[/color].
+Syndra(Syndra)[happy]: I don’t know the codes to the other areas, but I know the Stereo Code to the [color=yellow]SUB-area east of here[/color]. 
+Syndra(Syndra)[happy]: The [color=blue]Clarinet[/color] should be positioned [color=yellow]north[/color], the [color=green]Guitar[/color] should be positioned [color=yellow]south[/color] and the [color=red]Cello[/color] should be positioned [color=yellow]west[/color].
+Syndra(Syndra)[happy]: Use the [color=yellow]knobs behind you[/color] to change their position in the [color=yellow]sound space[/color]. If the lights turn on, that means you can input a stereo code, although you can change the instrument positions at any time.

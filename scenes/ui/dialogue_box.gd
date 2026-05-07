@@ -12,7 +12,7 @@ var is_displaying: bool = false
 
 # Temporary storage for the current conversation's NPC data
 var active_npc_name: String = ""
-var active_npc_portrait: Texture2D
+var active_portrait_set: Resource # PortraitSet
 
 signal dialogue_started
 signal dialogue_finished(next_state_id: String)
@@ -28,13 +28,13 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		advance_dialogue()
 
-func start_sequence(sequence: DialogueSequence, npc_name: String = "???", npc_portrait: Texture2D = null) -> void:
+func start_sequence(sequence: DialogueSequence, npc_name: String = "???", portrait_set: Resource = null) -> void:
 	if not sequence or sequence.get_parsed_lines().is_empty():
 		return
 		
 	current_sequence = sequence
 	active_npc_name = npc_name
-	active_npc_portrait = npc_portrait
+	active_portrait_set = portrait_set
 	
 	current_line_index = 0
 	is_displaying = true
@@ -69,6 +69,10 @@ func _display_current_line() -> void:
 		var p = null
 		if line.portrait_override_key != "" and current_sequence.portrait_overrides.has(line.portrait_override_key):
 			p = current_sequence.portrait_overrides[line.portrait_override_key]
+		
+		if not p and GameManager.player_portrait_set and GameManager.player_portrait_set.has_method("get_portrait"):
+			p = GameManager.player_portrait_set.get_portrait(line.portrait_override_key)
+			
 		if not p:
 			p = GameManager.player_portrait
 			
@@ -83,12 +87,16 @@ func _display_current_line() -> void:
 		# Name: Override > Active NPC Name
 		name_label.text = line.display_name_override if line.display_name_override != "" else active_npc_name
 		
-		# Portrait: Override > Active NPC Default
+		# Portrait: Override > Global Default
 		var p = null
+		
+		# 1. Check sequence-specific override (e.g. unique art for this scene)
 		if line.portrait_override_key != "" and current_sequence.portrait_overrides.has(line.portrait_override_key):
 			p = current_sequence.portrait_overrides[line.portrait_override_key]
-		if not p:
-			p = active_npc_portrait
+			
+		# 2. Check NPC's PortraitSet (for mood-based portraits)
+		if not p and active_portrait_set and active_portrait_set.has_method("get_portrait"):
+			p = active_portrait_set.get_portrait(line.portrait_override_key)
 			
 		if p:
 			portrait_right.texture = p
@@ -105,7 +113,7 @@ func hide_dialogue() -> void:
 	current_sequence = null
 	current_line_index = 0
 	active_npc_name = ""
-	active_npc_portrait = null
+	active_portrait_set = null
 
 func is_active() -> bool:
 	return is_displaying

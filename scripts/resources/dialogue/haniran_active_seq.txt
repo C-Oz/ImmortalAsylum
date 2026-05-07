@@ -1,21 +1,21 @@
-NPC: ...
-NPC: It doesn’t look like a mansion at all… 
+Haniran(Haniran)[shocked]: ...
+Haniran(Haniran)[shocked]: It doesn’t look like a mansion at all… 
 PLAYER: Well I think it looks… Quaint
-NPC: What does “Quaint” mean? Who would even want a “Quaint” mansion?
+Haniran(Haniran)[shocked]: What does “Quaint” mean? Who would even want a “Quaint” mansion?
 PLAYER: Well I told you I’m rusty. Maybe learn to appreciate more styles of architecture!
-NPC: I TOLD YOU YOUR EXCUSES ARE OF ugh whatever… thanks for the “quaint” mansion. At least it’s something in this boring nothing
+Haniran(Haniran)[angry]: I TOLD YOU YOUR EXCUSES ARE OF ugh whatever… thanks for the “quaint” mansion. At least it’s something in this boring nothing
 PLAYER: Did Kryona remove more of the world since I left?
-NPC: Yeah she removed almost everything… I hate her!!!
-NPC: But at least Syndra is here with me. [b]She is down in the south-west[/b] if you haven’t found her already… 
-NPC: Grah! I’m so mad at Kryona that she ruined everything, we could have had great parties with everyone! Every day!
+Haniran(Haniran)[angry]: Yeah she removed almost everything… I hate her!!!
+Haniran(Haniran)[happy]: But at least Syndra is here with me. [color=yellow]She is down in the south-west[/color] if you haven’t found her already… 
+Haniran(Haniran)[angry]: Grah! I’m so mad at Kryona that she ruined everything, we could have had great parties with everyone! Every day!
 PLAYER: Kryona is doing what she believes is right… Even if what she believes is suuuuuper lame
-NPC: SUUUUUUUUPER LAME
+Haniran(Haniran)[angry]: SUUUUUUUUPER LAME
 PLAYER: SUPER-DUPER-MEGA-LAME.
-NPC: That’s too much Gira.
+Haniran(Haniran)[shocked]: That’s too much Gira.
 PLAYER: Right sorry. Uhm if you don’t mind me asking? How are your parents? Dina and Kowo?
-NPC: I don’t talk to them much since the quarantine. Too dangerous. Kryona says the corruption passes through the phoneline as well.
+Haniran(Haniran)[shocked]: I don’t talk to them much since the quarantine. Too dangerous. Kryona says the corruption passes through the phoneline as well.
 PLAYER: Shit. You miss them a lot?
-NPC: Nnnnnnope. Neveeeerrrr! They are BORING and LAME. I just have fun with [b]Syndra[/b], you should talk to her!!!. She’s [b]down south-west of here[/b]!!!
+Haniran(Haniran)[happy]: Nnnnnnope. Neveeeerrrr! They are BORING and LAME. I just have fun with [color=yellow]Syndra[/color], you should talk to her!!!. She’s [color=yellow]down south-west of here[/color]!!!
 PLAYER: Haha I will, take care of yourself Haniran
-NPC: Yeahyeahyeah… I’m glad you’re back though, please cheer up this world a bit… I’d rather have more “quaint” cottages than nothing… 
+Haniran(Haniran)[happy]: Yeahyeahyeah… I’m glad you’re back though, please cheer up this world a bit… I’d rather have more “quaint” cottages than nothing… 
 PLAYER: … … Let’s see

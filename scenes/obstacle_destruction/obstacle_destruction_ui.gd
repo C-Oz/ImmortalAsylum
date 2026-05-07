@@ -9,6 +9,7 @@ enum State { INACTIVE, COUNTDOWN, ACTIVE }
 @export var slot_spacing: float = 20.0  # Adjust this to space buttons
 @export var button_scale: float = 0.06  # Scale down 480x480 button sprites
 @export var instrument_icon: Texture2D
+@export var auto_center_x: bool = true
 
 var state = State.INACTIVE
 var current_beat_index = 0
@@ -157,7 +158,9 @@ func resize_container():
 	size.x = total_width
 	
 	# Center the UI horizontally by offsetting position
-	position.x = -total_width / 2.0  # Shift left by half the width
+	if auto_center_x:
+		position.x = -total_width / 2.0  # Shift left by half the width
+	
 	background_panel.position.x = -padding # Shift left by padding amount
 	
 	# Position the icon and container

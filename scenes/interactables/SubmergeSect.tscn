@@ -173,7 +173,7 @@ sources/0 = SubResource("TileSetAtlasSource_itcf2")
 size = Vector2(110.75, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itcf2"]
-size = Vector2(70, 72)
+size = Vector2(64, 65.5)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q82bf"]
 particle_flag_disable_z = true
