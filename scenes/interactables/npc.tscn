@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnj8igdryih3q"]
 
 [ext_resource type="Script" uid="uid://bu7tl1d264qhx" path="res://scenes/interactables/npc.gd" id="1_jkvbc"]
-[ext_resource type="Texture2D" uid="uid://b0gpqbbaqs84j" path="res://assets/art/npc/haniran_happy.png" id="2_jkvbc"]
+[ext_resource type="Texture2D" uid="uid://b8ij8v5ae7idl" path="res://assets/art/npc/Haniran happy.png" id="2_jkvbc"]
 [ext_resource type="Texture2D" uid="uid://x8yfpt4w65lq" path="res://assets/art/ui/ABXY/button_xbox_digital_x_11.png" id="3_rqbc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnbj4"]

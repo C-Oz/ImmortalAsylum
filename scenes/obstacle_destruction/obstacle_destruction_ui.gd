@@ -15,7 +15,7 @@ var state = State.INACTIVE
 var current_beat_index = 0
 var beats_remaining = 0
 var player_input_index = 0
-const HIT_WINDOW_SECS := 0.2
+const HIT_WINDOW_SECS := 0.3
 var pressed_slots := []
 
 @onready var sequence_container = $SequenceContainer

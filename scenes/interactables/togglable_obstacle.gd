@@ -10,6 +10,7 @@ extends "res://scripts/interactables/obstacle.gd"
 @export var npc_required_state_for_build: String = "" # The only state that changes when built
 @export var npc_state_destroyed: String = "" # State to set when destroyed (e.g. "default")
 @export var npc_required_state_for_destroy: String = "" # Initial state that changes when destroyed
+@export var passable_when_built: bool = false
 
 # Infer the initial logical state from the editor's visibility setting
 @onready var is_built: bool = created_layer.visible
@@ -34,6 +35,11 @@ func _apply_state_visuals() -> void:
 	# Swap tilemap visibilities
 	created_layer.visible = is_built
 	destroyed_layer.visible = !is_built
+	
+	if passable_when_built:
+		collision_shape.set_deferred("disabled", is_built)
+	else:
+		collision_shape.set_deferred("disabled", false)
 
 func _on_sequence_completed() -> void:
 	# Toggle the state

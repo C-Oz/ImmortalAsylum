@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://drbnk3gfyh4e0" path="res://scripts/resources/dialogue/mood_portrait.gd" id="1_2fv8v"]
 [ext_resource type="Script" uid="uid://cbfporf6jgqpj" path="res://scripts/resources/dialogue/portrait_set.gd" id="1_s556v"]
-[ext_resource type="Texture2D" uid="uid://dk54n488x51jt" path="res://assets/art/npc/syndra_happy.png" id="1_wfbq3"]
-[ext_resource type="Texture2D" uid="uid://djyswc0q1dpux" path="res://assets/art/npc/syndra_sad.png" id="2_tow64"]
+[ext_resource type="Texture2D" uid="uid://feuxicdv5lsd" path="res://assets/art/npc/Syndra happy - torso.png" id="2_tow64"]
+[ext_resource type="Texture2D" uid="uid://bs35nymeirkst" path="res://assets/art/npc/Syndra sad - Torso.png" id="3_s4iph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tow64"]
-atlas = ExtResource("1_wfbq3")
-region = Rect2(492.47656, 11.575989, 1613.2559, 947.2328)
+atlas = ExtResource("2_tow64")
+region = Rect2(492.47656, 11.575989, 1613.2559, 1258.7871)
 script = ExtResource("1_2fv8v")
 metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4iph"]
-atlas = ExtResource("2_tow64")
+atlas = ExtResource("3_s4iph")
 region = Rect2(183.54639, 50.442764, 1831.5632, 1082.6575)
 script = ExtResource("1_2fv8v")
 metadata/_custom_type_script = "uid://drbnk3gfyh4e0"

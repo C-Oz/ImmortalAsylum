@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://7727se52upwp"]
+
+[ext_resource type="Script" uid="uid://dmxmhjwer28y2" path="res://scenes/interactables/glitch_barrier.gd" id="1_7jner"]
+[ext_resource type="PackedScene" uid="uid://biflggyra163j" path="res://scenes/obstacle_destruction/obstacle_destruction_ui.tscn" id="1_k6hww"]
+[ext_resource type="Shader" uid="uid://b78ntda46j08q" path="res://scripts/resources/shaders/glitch_barrier.gdshader" id="2_tlg0c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlg0c"]
+shader = ExtResource("2_tlg0c")
+shader_parameter/glitch_intensity = 0.01
+shader_parameter/static_amount = 0.15
+shader_parameter/scanline_count = 200.0
+shader_parameter/speed = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlg0c"]
+size = Vector2(128, 128)
+
+[node name="GlitchBarrier" type="Polygon2D"]
+z_index = 6
+material = SubResource("ShaderMaterial_tlg0c")
+script = ExtResource("1_7jner")
+
+[node name="InteractionZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+shape = SubResource("RectangleShape2D_tlg0c")
+
+[node name="DestructionUI" parent="." instance=ExtResource("1_k6hww")]
+offset_left = 64.0
+offset_top = -64.0
+offset_right = 249.0
+offset_bottom = -16.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]

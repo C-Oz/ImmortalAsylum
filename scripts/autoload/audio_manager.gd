@@ -52,7 +52,7 @@ func _load_doormat_sounds() -> void:
 						if not folder_dir.current_is_dir():
 							# In exported builds, audio files might only appear with a .import extension
 							var clean_name = file_name.trim_suffix(".import")
-							if clean_name.ends_with(".wav") or clean_name.ends_with(".ogg"):
+							if clean_name.ends_with(".wav") or clean_name.ends_with(".mp3"):
 								var stream = load(folder_path + "/" + clean_name)
 								if stream is AudioStream and not sounds.has(stream):
 									sounds.append(stream)

@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Immortal Asylum"
-config/version="0.3.2"
+config/version="0.4.0"
 run/main_scene="uid://c1blx866xkacx"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+run/max_fps=30
 config/icon="uid://cxlwcefa72d47"
 
 [autoload]
@@ -27,6 +28,7 @@ DeviceManager="*res://scripts/autoload/device_manager.gd"
 [editor]
 
 movie_writer/movie_file="D:/Godot_v4.5-stable_win64.exe/Projects/immortal-asylum/screen_rec.avi"
+import/use_multiple_threads=false
 
 [editor_plugins]
 

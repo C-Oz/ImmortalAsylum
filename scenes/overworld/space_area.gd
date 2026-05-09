@@ -1,7 +1,7 @@
 extends "res://scenes/overworld/overworld.gd"
 
-@export var world_width: float = 1280.0
-@export var world_height: float = 720.0
+@export var world_width: float = 4400.0
+@export var world_height: float = 3600.0
 
 @onready var world_content = $WorldContent
 @onready var player = $Player
@@ -9,6 +9,7 @@ extends "res://scenes/overworld/overworld.gd"
 @onready var parallax_layers: Array = [%Parallax2D, %Parallax2D2, %Parallax2D3]
 
 func _ready():
+	super()
 	# Automatically set repeat_size for parallax layers based on their textures
 	# This prevents 'gaps' from appearing when the world wraps or autoscrolls
 	for layer in parallax_layers:
@@ -33,8 +34,33 @@ func _ready():
 
 	for offset in offsets:
 		var copy = world_content.duplicate()
-		copy.position = offset
+		copy.position = world_content.position + offset
+		_strip_logic(copy)
 		add_child(copy)
+
+func _strip_logic(node: Node):
+	# Remove script to prevent _ready() and logic from running
+	node.set_script(null)
+	
+	# Disable processing and input just in case script removal is deferred
+	if node is Node2D:
+		node.set_process(false)
+		node.set_physics_process(false)
+		node.set_process_input(false)
+		
+		# Prevent screen-reading shaders in duplicates from jumbling the screen
+		if node is Polygon2D:
+			node.material = null
+	
+	# Remove collision and interaction nodes to prevent interference
+	if node is CollisionShape2D or node is CollisionPolygon2D or node is Area2D:
+		if node.get_parent():
+			node.get_parent().remove_child(node)
+		node.queue_free()
+	
+	# Recursively clean children
+	for child in node.get_children():
+		_strip_logic(child)
 
 func _process(_delta):
 	if is_instance_valid(player):
