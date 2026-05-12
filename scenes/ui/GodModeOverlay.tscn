@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8wfcpn783smr"]
+
+[ext_resource type="Shader" uid="uid://b78ntda46j08q" path="res://scripts/resources/shaders/glitch_barrier.gdshader" id="1_elj3b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etjdl"]
+shader = ExtResource("1_elj3b")
+shader_parameter/glitch_intensity = 0.01
+shader_parameter/static_amount = 0.10000000475
+shader_parameter/scanline_count = 100.00000475
+shader_parameter/speed = 2.0
+
+[node name="GodModeOverlay" type="CanvasLayer"]
+layer = 120
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_etjdl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

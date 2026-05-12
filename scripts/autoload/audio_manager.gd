@@ -7,8 +7,8 @@ var tween: Tween
 
 var doormat_sounds: Dictionary = {}
 var doormat_player: AudioStreamPlayer
-var last_doormat_time: int = -15000
-var doormat_cooldown_ms: int = 15000
+var last_doormat_time: int = -5000
+var doormat_cooldown_ms: int = 5000
 
 # Add folders here that need to be quieter. Value is in decibels (negative is quieter).
 var doormat_volume_offsets: Dictionary = {
@@ -16,6 +16,21 @@ var doormat_volume_offsets: Dictionary = {
 	"Am9": -8.0,
 	"Dbmaj9": -8.0,
 	"Dm9": -8.0,
+	"Space_Abmaj9": 7.0,
+	"Space_Am9": 7.0,
+	"Space_Bbm9": 7.0,
+	"Space_Bmaj9": 7.0,
+	"Space_C#dim": 7.0,
+	"Space_Cmaj9": 7.0,
+	"Space_D7b9": 7.0,
+	"Space_Dbmaj9": 7.0,
+	"Space_Dm9": 7.0,
+	"Space_Ebm maj9": 7.0,
+	"Space_F#9": 7.0,
+	"Space_Fdim": 7.0,
+	"Space_Fhalfdim": 7.0,
+	"Space_G halfdim": 7.0,
+	"Space_Gm9": 7.0,
 }
 
 func _ready() -> void:
@@ -30,12 +45,12 @@ func _ready() -> void:
 	
 	doormat_player = AudioStreamPlayer.new()
 	add_child(doormat_player)
-	doormat_player.bus = "Music"
+	doormat_player.bus = "Doormat"
 	
-	_load_doormat_sounds()
+	_load_doormat_sounds("res://assets/muzak/Doormat Chords", "")
+	_load_doormat_sounds("res://assets/muzak/Doormat Chords area 2", "Space_")
 
-func _load_doormat_sounds() -> void:
-	var path = "res://assets/muzak/Doormat Chords"
+func _load_doormat_sounds(path: String = "res://assets/muzak/Doormat Chords", prefix: String = "") -> void:
 	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
@@ -58,10 +73,11 @@ func _load_doormat_sounds() -> void:
 									sounds.append(stream)
 						file_name = folder_dir.get_next()
 					if sounds.size() > 0:
-						doormat_sounds[folder_name] = sounds
+						doormat_sounds[prefix + folder_name] = sounds
 			folder_name = dir.get_next()
 
 func play_doormat_chord(chord_name: String) -> void:
+	push_warning("chord name: ", chord_name)
 	var current_time = Time.get_ticks_msec()
 	if current_time - last_doormat_time < doormat_cooldown_ms:
 		return
@@ -69,9 +85,13 @@ func play_doormat_chord(chord_name: String) -> void:
 	if doormat_sounds.has(chord_name):
 		var sounds = doormat_sounds[chord_name]
 		if sounds.size() > 0:
+			var base_chord_name = chord_name
+			if base_chord_name.begins_with("Space_"):
+				base_chord_name = base_chord_name.trim_prefix("Space_")
+			
 			# Apply volume offset if defined, otherwise reset to 0
-			if doormat_volume_offsets.has(chord_name):
-				doormat_player.volume_db = doormat_volume_offsets[chord_name]
+			if doormat_volume_offsets.has(base_chord_name):
+				doormat_player.volume_db = doormat_volume_offsets[base_chord_name]
 			else:
 				doormat_player.volume_db = 0.0
 				

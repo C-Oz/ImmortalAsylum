@@ -27,10 +27,13 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_tlg0c")
 
 [node name="DestructionUI" parent="." instance=ExtResource("1_k6hww")]
-offset_left = 64.0
+modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(-20, 0)
+offset_left = 10.0
 offset_top = -64.0
-offset_right = 249.0
+offset_right = 10.0
 offset_bottom = -16.0
+auto_center_x = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 2

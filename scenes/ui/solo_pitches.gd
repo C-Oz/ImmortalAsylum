@@ -87,6 +87,13 @@ func _process(delta):
 func _process_audio(is_pressed: bool, player: AudioStreamPlayer):
 	if is_pressed:
 		if not player.playing:
+			# Determine volume reduction based on current scene
+			var scene_name = get_tree().current_scene.name
+			if scene_name == "EastArea2":
+				player.volume_db = -12.0
+			else:
+				player.volume_db = 2.0
+				
 			player.play()
 	#else:
 		#if player.playing:
@@ -147,7 +154,7 @@ func _get_files_to_array(folder_path: String, arr: Array):
 		while file_name != "":
 			if not dir.current_is_dir():
 				var clean_name = file_name.trim_suffix(".import")
-				if clean_name.ends_with(".wav") or clean_name.ends_with(".ogg"):
+				if clean_name.ends_with(".wav") or clean_name.ends_with(".mp3"):
 					var full_path = folder_path + "/" + clean_name
 					if not arr.has(full_path):
 						arr.append(full_path)

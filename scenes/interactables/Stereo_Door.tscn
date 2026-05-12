@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8r70n4bfskdd"]
+
+[ext_resource type="Script" uid="uid://dfryl5gburrqy" path="res://scenes/interactables/stereo_door.gd" id="1_jw6rc"]
+[ext_resource type="Texture2D" uid="uid://ds28oec7fhvre" path="res://assets/art/animations/props/Stereo Code Door Open.png" id="1_q6cvm"]
+[ext_resource type="Texture2D" uid="uid://cpj8ntncix5g8" path="res://assets/art/animations/props/WaterTiles-6frames.png" id="2_jw6rc"]
+[ext_resource type="Texture2D" uid="uid://bpysslsdc8wv2" path="res://assets/art/particles/star_yellow.png" id="4_me5x1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me5x1"]
+texture = ExtResource("2_jw6rc")
+2:18/animation_separation = Vector2i(1, 0)
+2:18/animation_frame_0/duration = 0.2
+2:18/animation_frame_1/duration = 0.2
+2:18/animation_frame_2/duration = 0.2
+2:18/animation_frame_3/duration = 0.2
+2:18/animation_frame_4/duration = 0.2
+2:18/animation_frame_5/duration = 0.2
+2:18/0 = 0
+3:18/animation_separation = Vector2i(1, 0)
+3:18/animation_frame_0/duration = 0.2
+3:18/animation_frame_1/duration = 0.2
+3:18/animation_frame_2/duration = 0.2
+3:18/animation_frame_3/duration = 0.2
+3:18/animation_frame_4/duration = 0.2
+3:18/animation_frame_5/duration = 0.2
+3:18/0 = 0
+3:19/animation_separation = Vector2i(1, 0)
+3:19/animation_frame_0/duration = 0.2
+3:19/animation_frame_1/duration = 0.2
+3:19/animation_frame_2/duration = 0.2
+3:19/animation_frame_3/duration = 0.2
+3:19/animation_frame_4/duration = 0.2
+3:19/animation_frame_5/duration = 0.2
+3:19/0 = 0
+2:19/animation_separation = Vector2i(1, 0)
+2:19/animation_frame_0/duration = 0.2
+2:19/animation_frame_1/duration = 0.2
+2:19/animation_frame_2/duration = 0.2
+2:19/animation_frame_3/duration = 0.2
+2:19/animation_frame_4/duration = 0.2
+2:19/animation_frame_5/duration = 0.2
+2:19/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_o606u"]
+sources/0 = SubResource("TileSetAtlasSource_me5x1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6cvm"]
+size = Vector2(16, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me5x1"]
+size = Vector2(16, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw6rc"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o606u"]
+size = Vector2(176, 168)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o606u"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 100.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 980, 0)
+radial_accel_min = -100.0
+radial_accel_max = 99.99999
+scale_min = 0.5
+scale_max = 0.5
+
+[node name="StereoDoor" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_jw6rc")
+
+[node name="DoorFrame" type="Sprite2D" parent="."]
+texture = ExtResource("1_q6cvm")
+
+[node name="DoorTile" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 254, 255, 0, 0, 2, 0, 18, 0, 0, 0, 255, 255, 255, 255, 0, 0, 2, 0, 19, 0, 0, 0, 0, 0, 254, 255, 0, 0, 3, 0, 18, 0, 0, 0, 0, 0, 255, 255, 0, 0, 3, 0, 19, 0, 0, 0)
+tile_set = SubResource("TileSet_o606u")
+
+[node name="LeftFrame" type="CollisionShape2D" parent="."]
+position = Vector2(-24, -3)
+shape = SubResource("RectangleShape2D_q6cvm")
+
+[node name="RightFrame" type="CollisionShape2D" parent="."]
+position = Vector2(24, -3)
+shape = SubResource("RectangleShape2D_me5x1")
+
+[node name="DoorCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_jw6rc")
+
+[node name="InteractionZone" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_o606u")
+
+[node name="SuccessParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 12
+texture = ExtResource("4_me5x1")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_o606u")

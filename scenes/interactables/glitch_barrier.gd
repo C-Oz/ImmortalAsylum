@@ -2,6 +2,11 @@
 extends Polygon2D
 
 @export var sequence: Array[String] = ["Y", "B", "A"]
+@export var instrument_icon: Texture2D:
+	set(value):
+		instrument_icon = value
+		if is_node_ready() and ui:
+			ui.instrument_icon = value
 @export var flash_duration: float = 0.5
 
 # We now look for the physics nodes as children
@@ -27,6 +32,7 @@ func _ready() -> void:
 		return
 		
 	ui.sequence = sequence
+	ui.instrument_icon = instrument_icon
 	ui.setup_sequence()
 	
 	interaction_zone.body_entered.connect(_on_body_entered)

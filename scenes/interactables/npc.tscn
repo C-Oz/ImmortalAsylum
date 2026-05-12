@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnj8igdryih3q"]
+[gd_scene load_steps=5 format=3 uid="uid://dnj8igdryih3q"]
 
 [ext_resource type="Script" uid="uid://bu7tl1d264qhx" path="res://scenes/interactables/npc.gd" id="1_jkvbc"]
-[ext_resource type="Texture2D" uid="uid://b8ij8v5ae7idl" path="res://assets/art/npc/Haniran happy.png" id="2_jkvbc"]
 [ext_resource type="Texture2D" uid="uid://x8yfpt4w65lq" path="res://assets/art/ui/ABXY/button_xbox_digital_x_11.png" id="3_rqbc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnbj4"]
 size = Vector2(11, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3bxh"]
-size = Vector2(76, 72)
+size = Vector2(67, 52)
 
 [node name="Npc" type="StaticBody2D"]
 y_sort_enabled = true
@@ -18,8 +17,7 @@ script = ExtResource("1_jkvbc")
 
 [node name="MapSprite" type="Sprite2D" parent="."]
 position = Vector2(2, -17.000006)
-scale = Vector2(0.010483879, 0.010268109)
-texture = ExtResource("2_jkvbc")
+scale = Vector2(0.015, 0.015)
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -2)
@@ -30,7 +28,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="InteractionCollider" type="CollisionShape2D" parent="InteractionZone"]
-position = Vector2(5, -14)
+position = Vector2(0.5, -4)
 shape = SubResource("RectangleShape2D_r3bxh")
 
 [node name="InteractionPrompt" type="Sprite2D" parent="."]

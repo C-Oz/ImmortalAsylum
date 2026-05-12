@@ -10,16 +10,21 @@ extends CanvasLayer
 @onready var timer_label = $TimerLabel
 @onready var timer_adjustment_label = $TimerAdjustmentLabel
 
+const SKILL_TOGGLE_COOLDOWN_SECS := 0.5
+
 var control_timer: Timer
 
 var _sfx_player: AudioStreamPlayer
 
 # Maps dpad actions to their corresponding skill slots
 var _dpad_slots: Dictionary
+var _skill_toggle_particles: GPUParticles2D
+var _skill_toggle_cooldown_remaining := 0.0
 
 func _ready():
 	# Use the persistent timer from GameManager
 	control_timer = GameManager.control_timer
+	_skill_toggle_particles = _get_skill_toggle_particles()
 	
 	if control_timer:
 		_sfx_player = GameManager.timer_sfx_player
@@ -81,14 +86,46 @@ func _refresh_skill_slots() -> void:
 func _unhandled_input(event: InputEvent):
 	for action in _dpad_slots:
 		if event.is_action_pressed(action):
-			var slot = _dpad_slots[action]
-			if is_instance_valid(slot):
-				# Toggle to the next pip / label option safely wrapping around at the max
-				slot.current_option_index = (slot.current_option_index + 1) % slot.total_options
-				# Push state to GameManager so NPCs can read it
-				GameManager.set_active_skill(action, slot.option_names[slot.current_option_index])
+			_try_toggle_skill(action)
+			return
+
+func _try_toggle_skill(action: String) -> void:
+	if _skill_toggle_cooldown_remaining > 0.0:
+		return
+	
+	var slot = _dpad_slots.get(action)
+	if not is_instance_valid(slot) or slot.total_options <= 0:
+		return
+	
+	# Toggle to the next pip / label option safely wrapping around at the max
+	slot.current_option_index = (slot.current_option_index + 1) % slot.total_options
+	# Push state to GameManager so NPCs can read it
+	GameManager.set_active_skill(action, slot.option_names[slot.current_option_index])
+	_play_skill_toggle_effect(slot)
+	_skill_toggle_cooldown_remaining = SKILL_TOGGLE_COOLDOWN_SECS
+
+func _get_skill_toggle_particles() -> GPUParticles2D:
+	var particles = get_node_or_null("DPadSkillWheel/SkillToggleParticles") as GPUParticles2D
+	if not particles:
+		particles = get_node_or_null("DPadSkillWheel/SuccessParticles") as GPUParticles2D
+	return particles
+
+func _play_skill_toggle_effect(slot: Control) -> void:
+	if not is_instance_valid(_skill_toggle_particles):
+		return
+	
+	var target = slot.find_child("Label", true, false) as Control
+	if not is_instance_valid(target):
+		target = slot
+	
+	_skill_toggle_particles.global_position = target.get_global_rect().get_center()
+	_skill_toggle_particles.restart()
+	_skill_toggle_particles.emitting = true
 
 func _process(delta):
+	if _skill_toggle_cooldown_remaining > 0.0:
+		_skill_toggle_cooldown_remaining = maxf(0.0, _skill_toggle_cooldown_remaining - delta)
+	
 	if is_instance_valid(control_timer):
 		timer_label.text = str("%.1f" % control_timer.time_left)
 

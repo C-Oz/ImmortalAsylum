@@ -3,14 +3,26 @@ extends Node
 signal scene_changed(scene_name: String)
 signal progression_updated
 signal reward_granted(reward_id: String)
+signal god_mode_changed(enabled: bool)
 
 var unlocked_rewards: Dictionary = {}
+var god_mode_enabled: bool = false
 var active_skills: Dictionary = {
 	"dpad_up": "Box 1",
 	"dpad_down": "Box 1",
 	"dpad_left": "Box 1",
 	"dpad_right": "Box 1"
 }
+
+func set_god_mode_enabled(enabled: bool) -> void:
+	if god_mode_enabled == enabled:
+		return
+	
+	god_mode_enabled = enabled
+	god_mode_changed.emit(god_mode_enabled)
+
+func toggle_god_mode() -> void:
+	set_god_mode_enabled(not god_mode_enabled)
 
 func set_active_skill(action: String, skill_name: String) -> void:
 	active_skills[action] = skill_name

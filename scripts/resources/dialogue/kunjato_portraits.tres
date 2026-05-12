@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PortraitSet" load_steps=7 format=3 uid="uid://btt0lchfclfvm"]
+
+[ext_resource type="Script" uid="uid://drbnk3gfyh4e0" path="res://scripts/resources/dialogue/mood_portrait.gd" id="1_yakmc"]
+[ext_resource type="Script" uid="uid://cbfporf6jgqpj" path="res://scripts/resources/dialogue/portrait_set.gd" id="2_dhb7p"]
+[ext_resource type="Texture2D" uid="uid://14rttw64dd77" path="res://assets/art/npc/Kunjato annoyed - Torso.png" id="2_y0jw3"]
+[ext_resource type="Texture2D" uid="uid://cqpmt4q83ceu3" path="res://assets/art/npc/Kunjato frustrated - Torso (resized).png" id="3_ydwbx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n8te"]
+atlas = ExtResource("2_y0jw3")
+script = ExtResource("1_yakmc")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m38r"]
+atlas = ExtResource("3_ydwbx")
+script = ExtResource("1_yakmc")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[resource]
+script = ExtResource("2_dhb7p")
+portraits = Dictionary[String, ExtResource("1_yakmc")]({
+"annoyed": SubResource("AtlasTexture_0n8te"),
+"frustrated": SubResource("AtlasTexture_3m38r")
+})
+metadata/_custom_type_script = "uid://cbfporf6jgqpj"

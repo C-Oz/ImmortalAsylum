@@ -57,11 +57,11 @@ func _run():
 	for i in range(obstacles.size()):
 		var obstacle = obstacles[i]
 		
-		# 1. Deterministic Random Sequence (3-5 buttons)
-		# We seed using the node's name so it's consistent across runs
+		# Deterministic seed using the node's name
 		var rng = RandomNumberGenerator.new()
 		rng.seed = hash(obstacle.name)
 		
+		# 1. Random Sequence (3-5 buttons)
 		var seq_length = rng.randi_range(3, 5)
 		var sequence: Array[String] = []
 		for j in range(seq_length):
@@ -72,11 +72,23 @@ func _run():
 		if "sequence" in obstacle:
 			obstacle.set("sequence", sequence)
 		
-		# 2. Equal Instrument Distribution (Round-Robin)
-		var ui = obstacle.get_node_or_null("DestructionUI")
-		if ui and "instrument_icon" in ui:
-			var tex = textures[i % instrument_count]
-			ui.set("instrument_icon", tex)
+		# 2. Random timer_value (5 to 20, increments of 1)
+		if "timer_value" in obstacle:
+			var new_timer = float(rng.randi_range(5, 20))
+			obstacle.set("timer_value", new_timer)
+			print("  - Set timer_value for '", obstacle.name, "' to: ", new_timer)
+		
+		# 3. Equal Instrument Distribution (Round-Robin)
+		var tex = textures[i % instrument_count]
+		
+		# Try to set on the obstacle itself first (e.g. GlitchBarrier now has it)
+		if "instrument_icon" in obstacle:
+			obstacle.set("instrument_icon", tex)
+		else:
+			# Fallback to setting directly on the UI node (e.g. for packed scenes)
+			var ui = obstacle.get_node_or_null("DestructionUI")
+			if ui and "instrument_icon" in ui:
+				ui.set("instrument_icon", tex)
 		
 		print("  - Randomized '", obstacle.name, "': Seq=", sequence, " Icon=", textures[i % instrument_count].resource_path.get_file())
 		processed_count += 1

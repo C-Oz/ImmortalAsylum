@@ -49,8 +49,8 @@ func _strip_logic(node: Node):
 		node.set_process_input(false)
 		
 		# Prevent screen-reading shaders in duplicates from jumbling the screen
-		if node is Polygon2D:
-			node.material = null
+		#if node is Polygon2D:
+			#node.material = null
 	
 	# Remove collision and interaction nodes to prevent interference
 	if node is CollisionShape2D or node is CollisionPolygon2D or node is Area2D:

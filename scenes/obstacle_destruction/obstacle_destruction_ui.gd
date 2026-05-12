@@ -1,14 +1,27 @@
+@tool
 extends Control
 
 signal sequence_completed
 
 enum State { INACTIVE, COUNTDOWN, ACTIVE }
 
-@export var sequence: Array[String] = [] # passed from parent
+@export var sequence: Array[String] = []: # passed from parent
+	set(value):
+		sequence = value
+		if Engine.is_editor_hint():
+			setup_sequence()
+
 @export var countdown_beats: int = 4
 @export var slot_spacing: float = 20.0  # Adjust this to space buttons
 @export var button_scale: float = 0.06  # Scale down 480x480 button sprites
-@export var instrument_icon: Texture2D
+
+@export var instrument_icon: Texture2D:
+	set(value):
+		instrument_icon = value
+		_update_icon_visuals()
+		if Engine.is_editor_hint():
+			setup_sequence() # Resize needed when icon changes
+
 @export var auto_center_x: bool = true
 
 var state = State.INACTIVE
@@ -41,31 +54,37 @@ func _ready():
 	# Reset root modulation so it doesn't multiply with children
 	modulate = Color(1, 1, 1, 1)
 	
+	_update_icon_visuals()
+	setup_sequence()
+	
+	if not Engine.is_editor_hint():
+		hide_countdown()
+		reset_needle()
+		stop_sequence() # Ensure initial state is greyed out correctly
+
+func _update_icon_visuals():
+	if not is_node_ready(): await ready
 	if instrument_icon_rect:
 		if instrument_icon:
 			instrument_icon_rect.texture = instrument_icon
 			instrument_icon_rect.visible = true
 		else:
 			instrument_icon_rect.visible = false
-	
-	setup_sequence()
-	hide_countdown()
-	reset_needle()
-	stop_sequence() # Ensure initial state is greyed out correctly
 
 func setup_sequence():
-	print("setup_sequence called with: ", sequence)
+	if not is_node_ready(): await ready
+	if not sequence_container: return
+	
 	# Clear existing slots
 	for child in sequence_container.get_children():
 		child.queue_free()
 	
 	resize_container()
-	print("Container size after resize: ", sequence_container.size)
 	
 	# Calculate layout
 	var button_width = 480 * button_scale
-	var icon_width = 0.0
-# Create button slots
+	
+	# Create button slots
 	for i in sequence.size():
 		var slot = TextureRect.new()
 		
@@ -81,21 +100,18 @@ func setup_sequence():
 		slot.position.x = i * (button_width + slot_spacing)
 		slot.position.y = (sequence_container.size.y / 2.0) - (button_width / 2.0)
 		slot.name = "Slot_" + str(i)
-		print("Button ", i, " created at position: ", slot.position, " size: ", slot.size)
 		
 		sequence_container.add_child(slot)
 	
-	print("Created ", sequence_container.get_child_count(), " button slots")
-	reset_needle()
+	if not Engine.is_editor_hint():
+		reset_needle()
 
 func start_sequence():
 	if state != State.INACTIVE:
-		print("Already active, returning")
 		return
 	
 	DeviceManager.vibrate(DeviceManager.Role.BUTTONS, 0.1, 0.1, 0)
 	
-	print("Starting countdown from ", countdown_beats)
 	state = State.COUNTDOWN
 	beats_remaining = countdown_beats
 	current_beat_index = 0
@@ -110,33 +126,45 @@ func stop_sequence():
 	player_input_index = 0
 	current_beat_index = 0
 	reset_buttons()
-	# Grey out everything except the icon
-	background_panel.modulate = Color(0.5, 0.5, 0.5, 1.0)
-	sequence_container.modulate = Color(0.5, 0.5, 0.5, 1.0)
-	needle.modulate = Color(0.5, 0.5, 0.5, 1.0)
+	# Grey out everything
+	var grey = Color(0.5, 0.5, 0.5, 1.0)
+	background_panel.modulate = grey
+	sequence_container.modulate = grey
+	needle.modulate = grey
+	if instrument_icon_rect:
+		instrument_icon_rect.modulate = grey
 	visible = true # Reappear when resetting
 
 func on_beat():
-	#print("on_beat called, state: ", State.keys()[state], " beats_remaining: ", beats_remaining)
 	match state:
 		State.COUNTDOWN:
 			beats_remaining -= 1
-			print("Countdown: ", beats_remaining)
 			update_countdown_display()
 			
 			if beats_remaining <= 0:
-				print("Countdown finished, going ACTIVE")
 				state = State.ACTIVE
-				hide_countdown()
-				# Full brightness for everything
-				background_panel.modulate = Color(1.0, 1.0, 1.0, 1.0)
-				sequence_container.modulate = Color(1.0, 1.0, 1.0, 1.0)
-				needle.modulate = Color(1.0, 1.0, 1.0, 1.0)
+				_activate_visuals()
+				# Reset current_beat_index to 0 to ensure we start on the first slot
+				current_beat_index = 0
+				reset_needle()
 		
 		State.ACTIVE:
 			advance_needle()
 
+func _activate_visuals():
+	hide_countdown()
+	# Full brightness for everything
+	var white = Color(1.0, 1.0, 1.0, 1.0)
+	background_panel.modulate = white
+	sequence_container.modulate = white
+	needle.modulate = white
+	if instrument_icon_rect:
+		instrument_icon_rect.modulate = white
+
 func resize_container():
+	if not is_node_ready(): await ready
+	if not sequence_container or not background_panel: return
+	
 	# Calculate needed width for all buttons + spacing
 	var button_width = 480 * button_scale  # Width of one button
 	var icon_width = 0.0
@@ -196,7 +224,7 @@ func update_needle_position():
 	needle.position.y = target_slot.position.y - button_width
 
 func check_input(button: String):
-	if state != State.ACTIVE:
+	if state == State.INACTIVE:
 		return
 	
 	var rhythm_notifier = get_tree().current_scene.get_node("RhythmNotifier")
@@ -207,6 +235,21 @@ func check_input(button: String):
 	var diff_current : float = rhythm_notifier.current_position - beat_time
 	var diff_next : float = next_beat_time - rhythm_notifier.current_position
 	var diff : float = min(diff_current, diff_next)
+	
+	# Handle early hit on the very first button during countdown
+	if state == State.COUNTDOWN:
+		# If on last beat of countdown and hitting closer to the "GO" beat
+		if beats_remaining == 1 and diff_current > diff_next and diff <= HIT_WINDOW_SECS:
+			if button == sequence[0]:
+				state = State.ACTIVE
+				# We don't advance the beat index here, just activate visuals
+				# The upcoming on_beat will handle the first "natural" beat transition
+				_activate_visuals()
+				show_pressed_feedback(0)
+				player_input_index = 1
+				print("Early hit on first button registered!")
+				return
+		return # Ignore other countdown inputs
 	
 	# Check timing window
 	if diff > HIT_WINDOW_SECS:

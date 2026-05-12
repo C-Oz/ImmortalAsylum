@@ -5,6 +5,7 @@ extends StaticBody2D
 @export var portrait_set: Resource # PortraitSet
 @export var dialogue_map: Dictionary[String, DialogueSequence] = {}
 @export var state_overrides: Array[ConditionalStateOverride] = []
+@export var floating_animation_on: bool = true
 
 @onready var interaction_zone: Area2D = $InteractionZone
 @onready var interaction_prompt: Sprite2D = $InteractionPrompt
@@ -17,7 +18,8 @@ func _ready() -> void:
 	if npc_map_sprite:
 		map_sprite.texture = npc_map_sprite
 	
-	_setup_floating_animation()
+	if floating_animation_on:
+		_setup_floating_animation()
 	
 	interaction_zone.body_entered.connect(_on_body_entered)
 	interaction_zone.body_exited.connect(_on_body_exited)

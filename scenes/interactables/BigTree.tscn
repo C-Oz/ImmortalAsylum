@@ -1341,11 +1341,11 @@ texture = ExtResource("2_a8gkj")
 [sub_resource type="TileSet" id="TileSet_ej5ct"]
 sources/1 = SubResource("TileSetAtlasSource_r3jm6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh7k1"]
-size = Vector2(183.75, 118.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4xvc"]
 size = Vector2(48, 43.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh7k1"]
+size = Vector2(183.75, 118.5)
 
 [node name="BigTree" type="StaticBody2D" groups=["destructibles"]]
 collision_layer = 4
@@ -1354,18 +1354,19 @@ script = ExtResource("1_8i21n")
 timer_value = 15.0
 
 [node name="CreatedLayer" type="TileMapLayer" parent="."]
+visible = false
 z_index = 1
 tile_map_data = PackedByteArray("AAD+/wAAAAAbAA0AAAD//wAAAAAcAA0AAAAAAAAAAAAdAA0AAAABAAAAAAAeAA0AAAD5//f/AAAWAAQAAAD5//j/AAAWAAUAAAD5//n/AAAWAAYAAAD5//r/AAAWAAcAAAD5//v/AAAWAAgAAAD5//z/AAAWAAkAAAD5//3/AAAWAAoAAAD5//7/AAAWAAsAAAD5////AAAWAAwAAAD5/wAAAAAWAA0AAAD6//b/AAAXAAMAAAD6//f/AAAXAAQAAAD6//j/AAAXAAUAAAD6//n/AAAXAAYAAAD6//r/AAAXAAcAAAD6//v/AAAXAAgAAAD6//z/AAAXAAkAAAD6//3/AAAXAAoAAAD6//7/AAAXAAsAAAD6////AAAXAAwAAAD6/wAAAAAXAA0AAAD7//b/AAAYAAMAAAD7//f/AAAYAAQAAAD7//j/AAAYAAUAAAD7//n/AAAYAAYAAAD7//r/AAAYAAcAAAD7//v/AAAYAAgAAAD7//z/AAAYAAkAAAD7//3/AAAYAAoAAAD7//7/AAAYAAsAAAD7////AAAYAAwAAAD7/wAAAAAYAA0AAAD7/wEAAAAYAA4AAAD8//T/AAAZAAEAAAD8//X/AAAZAAIAAAD8//b/AAAZAAMAAAD8//f/AAAZAAQAAAD8//j/AAAZAAUAAAD8//n/AAAZAAYAAAD8//r/AAAZAAcAAAD8//v/AAAZAAgAAAD8//z/AAAZAAkAAAD8//3/AAAZAAoAAAD8//7/AAAZAAsAAAD8////AAAZAAwAAAD8/wAAAAAZAA0AAAD8/wEAAAAZAA4AAAD9//T/AAAaAAEAAAD9//X/AAAaAAIAAAD9//b/AAAaAAMAAAD9//f/AAAaAAQAAAD9//j/AAAaAAUAAAD9//n/AAAaAAYAAAD9//r/AAAaAAcAAAD9//v/AAAaAAgAAAD9//z/AAAaAAkAAAD9//3/AAAaAAoAAAD9//7/AAAaAAsAAAD9////AAAaAAwAAAD9/wAAAAAaAA0AAAD9/wEAAAAaAA4AAAD9/wIAAAAaAA8AAAD+//T/AAAbAAEAAAD+//X/AAAbAAIAAAD+//b/AAAbAAMAAAD+//f/AAAbAAQAAAD+//j/AAAbAAUAAAD+//n/AAAbAAYAAAD+//r/AAAbAAcAAAD+//v/AAAbAAgAAAD+//z/AAAbAAkAAAD+//3/AAAbAAoAAAD+//7/AAAbAAsAAAD+////AAAbAAwAAAD+/wEAAAAbAA4AAAD+/wIAAAAbAA8AAAD///T/AAAcAAEAAAD///X/AAAcAAIAAAD///b/AAAcAAMAAAD///f/AAAcAAQAAAD///j/AAAcAAUAAAD///n/AAAcAAYAAAD///r/AAAcAAcAAAD///v/AAAcAAgAAAD///z/AAAcAAkAAAD///3/AAAcAAoAAAD///7/AAAcAAsAAAD/////AAAcAAwAAAD//wEAAAAcAA4AAAD//wIAAAAcAA8AAAAAAPT/AAAdAAEAAAAAAPX/AAAdAAIAAAAAAPb/AAAdAAMAAAAAAPf/AAAdAAQAAAAAAPj/AAAdAAUAAAAAAPn/AAAdAAYAAAAAAPr/AAAdAAcAAAAAAPv/AAAdAAgAAAAAAPz/AAAdAAkAAAAAAP3/AAAdAAoAAAAAAP7/AAAdAAsAAAAAAP//AAAdAAwAAAAAAAEAAAAdAA4AAAAAAAIAAAAdAA8AAAABAPT/AAAeAAEAAAABAPX/AAAeAAIAAAABAPb/AAAeAAMAAAABAPf/AAAeAAQAAAABAPj/AAAeAAUAAAABAPn/AAAeAAYAAAABAPr/AAAeAAcAAAABAPv/AAAeAAgAAAABAPz/AAAeAAkAAAABAP3/AAAeAAoAAAABAP7/AAAeAAsAAAABAP//AAAeAAwAAAABAAEAAAAeAA4AAAABAAIAAAAeAA8AAAACAPb/AAAfAAMAAAACAPf/AAAfAAQAAAACAPj/AAAfAAUAAAACAPn/AAAfAAYAAAACAPr/AAAfAAcAAAACAPv/AAAfAAgAAAACAPz/AAAfAAkAAAACAP3/AAAfAAoAAAACAP7/AAAfAAsAAAACAP//AAAfAAwAAAACAAAAAAAfAA0AAAACAAEAAAAfAA4AAAADAPj/AAAgAAUAAAADAPn/AAAgAAYAAAADAPr/AAAgAAcAAAADAPv/AAAgAAgAAAADAPz/AAAgAAkAAAADAP3/AAAgAAoAAAADAP7/AAAgAAsAAAADAP//AAAgAAwAAAADAAAAAAAgAA0AAAAEAPn/AAAhAAYAAAAEAPr/AAAhAAcAAAAEAPv/AAAhAAgAAAAEAPz/AAAhAAkAAAAEAP3/AAAhAAoAAAAEAP7/AAAhAAsAAAAEAP//AAAhAAwAAAAEAAAAAAAhAA0AAAA=")
 tile_set = SubResource("TileSet_464g8")
 
 [node name="DestroyedLayer" type="TileMapLayer" parent="."]
-z_index = -1
+z_index = -2
 tile_map_data = PackedByteArray("AAD+//7/AQAbAAsAAAD+////AQAbAAwAAAD///7/AQAcAAsAAAD/////AQAcAAwAAAAAAP7/AQAdAAsAAAAAAP//AQAdAAwAAAA=")
 tile_set = SubResource("TileSet_ej5ct")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11.875, -19.25)
-shape = SubResource("RectangleShape2D_sh7k1")
+position = Vector2(-8, -21.625)
+shape = SubResource("RectangleShape2D_i4xvc")
 
 [node name="InteractionZone" type="Area2D" parent="." groups=["destructibles"]]
 position = Vector2(1, 0)
@@ -1373,18 +1374,20 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
-position = Vector2(-9, -21.625)
-shape = SubResource("RectangleShape2D_i4xvc")
+position = Vector2(-12.875, -19.25)
+shape = SubResource("RectangleShape2D_sh7k1")
 
 [node name="DestructionUI" parent="." instance=ExtResource("4_r3jm6")]
+modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(28.8, 0)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -104.0
+offset_left = -14.4
 offset_top = 40.0
-offset_right = 81.0
+offset_right = 14.4
 offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 0

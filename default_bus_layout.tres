@@ -1,4 +1,27 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://nvanpq5cve32"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://nvanpq5cve32"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+threshold = -10.0
 
 [resource]
-bus/0/send = &"SFX_Quiet"
+bus/1/name = &"Doormat"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Percussion"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"SoloPitch"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"

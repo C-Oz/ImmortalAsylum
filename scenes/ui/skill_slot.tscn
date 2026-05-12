@@ -30,7 +30,7 @@ theme_override_constants/separation = 8
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(48, 36)
+custom_minimum_size = Vector2(64, 48)
 layout_mode = 2
 texture = ExtResource("2_a62ui")
 
@@ -47,6 +47,7 @@ offset_right = 9.0
 offset_bottom = 6.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 32
 text = "Off"
 
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -56,8 +57,8 @@ layout_mode = 2
 layout_mode = 0
 offset_left = -10.0
 offset_top = 9.0
-offset_right = 60.0
-offset_bottom = 64.0
+offset_right = 76.0
+offset_bottom = 87.0
 texture = ExtResource("3_w4jot")
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Control"]
@@ -65,8 +66,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
 offset_top = 4.0
-offset_right = 48.0
-offset_bottom = 53.98857
+offset_right = 68.0
+offset_bottom = 74.0
 texture = ExtResource("2_yu5lf")
 expand_mode = 5
 

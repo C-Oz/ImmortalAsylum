@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://cl3xanfp3q1qt"]
+[gd_scene load_steps=89 format=4 uid="uid://cl3xanfp3q1qt"]
 
 [ext_resource type="Script" uid="uid://djw5m7d3mwnmj" path="res://scenes/overworld/overworld.gd" id="1_1r6xs"]
 [ext_resource type="PackedScene" uid="uid://cp7cev47h51bg" path="res://scenes/overworld/overworld_ui.tscn" id="2_hauu2"]
@@ -52,8 +52,9 @@
 [ext_resource type="PackedScene" uid="uid://clc74mu74quc3" path="res://assets/art/animations/props/Statue_Dress.tscn" id="43_ch882"]
 [ext_resource type="PackedScene" uid="uid://crct0wrjrtapu" path="res://assets/art/animations/props/Bubble_misc.tscn" id="44_8tddi"]
 [ext_resource type="AudioStream" uid="uid://begfdklk3rnum" path="res://assets/muzak/IMMORTAL ASYLUM 8-bit metronome 72 bpm.wav" id="44_bgwl7"]
-[ext_resource type="PackedScene" uid="uid://b8r70n4bfskdd" path="res://assets/art/animations/props/Stereo_Door.tscn" id="47_6fx4o"]
+[ext_resource type="PackedScene" uid="uid://b8r70n4bfskdd" path="res://scenes/interactables/Stereo_Door.tscn" id="47_6fx4o"]
 [ext_resource type="PackedScene" uid="uid://djeqlq5gjlrw5" path="res://scenes/interactables/portal.tscn" id="54_5w3a7"]
+[ext_resource type="PackedScene" uid="uid://c8wfcpn783smr" path="res://scenes/ui/GodModeOverlay.tscn" id="55_jgbb6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1q4q"]
 texture = ExtResource("4_n31uu")
@@ -4571,7 +4572,11 @@ position = Vector2(86, 13)
 position = Vector2(86, 6)
 
 [node name="DestructionUI" parent="East Area - Corrected/SubmergeSectGarden" index="4"]
+modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(-20, 0)
+offset_left = 10.0
 offset_top = -50.0
+offset_right = 10.0
 offset_bottom = -2.0
 
 [node name="SubmergeSectRooftops" parent="East Area - Corrected" instance=ExtResource("27_bgwl7")]
@@ -4587,9 +4592,11 @@ position = Vector2(-10, 150)
 position = Vector2(-11, 181)
 
 [node name="DestructionUI" parent="East Area - Corrected/SubmergeSectRooftops" index="4"]
-offset_left = -102.0
+modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(-20, 0)
+offset_left = 10.0
 offset_top = 96.0
-offset_right = 83.0
+offset_right = 10.0
 offset_bottom = 144.0
 
 [node name="SubmergeSectGranite" parent="East Area - Corrected" instance=ExtResource("27_bgwl7")]
@@ -4605,9 +4612,11 @@ position = Vector2(130, -309)
 position = Vector2(122, -332.25)
 
 [node name="DestructionUI" parent="East Area - Corrected/SubmergeSectGranite" index="4"]
+modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(-20, 0)
 offset_left = 74.0
 offset_top = -293.0
-offset_right = 259.0
+offset_right = 74.0
 offset_bottom = -245.0
 auto_center_x = false
 
@@ -4859,7 +4868,10 @@ metadata/_custom_type_script = "uid://dos3qhffr4v0a"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RhythmNotifier"]
 stream = ExtResource("44_bgwl7")
-volume_db = 12.0
+volume_db = 2.0
+bus = &"Percussion"
+
+[node name="GodModeOverlay" parent="." instance=ExtResource("55_jgbb6")]
 
 [editable path="East Area - Corrected/SubmergeSectGarden"]
 [editable path="East Area - Corrected/SubmergeSectRooftops"]

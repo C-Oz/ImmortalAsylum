@@ -117,10 +117,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u13xr"]
-size = Vector2(24, 13.5)
+size = Vector2(24, 18.75)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
+position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 5
@@ -136,6 +137,7 @@ frame = 4
 frame_progress = 0.19713175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.625)
 shape = SubResource("RectangleShape2D_u13xr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
