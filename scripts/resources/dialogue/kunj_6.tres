@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://curvfs5bn57we"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_6v0n1"]
+
+[resource]
+script = ExtResource("1_6v0n1")
+raw_dialogue = "Kunjato(Kunjato)[annoyed]: Now that you are still loitering in my garden for some reason, can I ask you, why did you come back? Why now?
+Kunjato(Kunjato)[annoyed]: Unlike us, you had the freedom to just enjoy your life on earth. Why come back to this broken prison?
+PLAYER: I had hoped that me leaving would convince Kryona to come with me eventually. That she loved me enough. But either she loves her project more, or her guilt would not let her leave.
+Kunjato(Kunjato)[frustrated]: well well, how noble. That’s a beautiful reason besides the fact that I don’t believe you at all. I don’t know what I respect less, her delusion or your spinelessness.
+PLAYER: ...
+PLAYER: Goodbye Kunjato
+Kunjato(Kunjato)[annoyed]: Talk to [color=yellow]Nenneppo[/color], the stereo code…
+PLAYER: Yeah, yeah I get it. I should visit [color=yellow]Neneppo[/color] in the south. The stereo code for that door is as follows: The [color=#4a86e8]Clarinet[/color] should be positioned [color=yellow]East[/color], the [color=#6aa84f]Guitar[/color] should be positioned [color=yellow]West[/color] and the [color=#cc4125]Cello[/color] should be positioned [color=yellow]North[/color]."
+next_state = "7"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

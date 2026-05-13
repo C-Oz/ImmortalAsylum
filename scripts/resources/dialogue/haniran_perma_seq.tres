@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("2_jqx0b")
 dialogue_file = "res://scripts/resources/dialogue/haniran_perma_seq.txt"
-next_state = "perma"
+next_state = "fifth"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

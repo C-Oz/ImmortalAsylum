@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("2_201tt")
-dialogue_file = "res://scripts/resources/dialogue/haniran_intro_seq.txt"
+raw_dialogue = "Haniran(Haniran): Hi Giratran!! Could you make me that mansion? By the [color=yellow]little overlay that says Y, B and A[/color]? If you press the buttons [color=yellow]at the right time in sequence, according to the beat[/color], you should be able to create it!"
 next_state = "intro"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

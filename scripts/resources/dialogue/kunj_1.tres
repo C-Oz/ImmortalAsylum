@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://y8kdi1uaje2f"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_1h1v8"]
+
+[resource]
+script = ExtResource("1_1h1v8")
+raw_dialogue = "Kunjato(Kunjato)[annoyed]: Well if it isn’t Giratran, blessing us with her presence after all this time
+Kunjato(Kunjato)[frustrated]: You have a lot of guts showing your face after deserting us.
+PLAYER: I know Kunjato, I’m here now to fix things
+Kunjato(Kunjato)[annoyed]: Bit late for that, why don’t you make yourself useful and fix up the fountain for my garden, then I might tolerate your presence for a few more minutes."
+next_state = "2"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

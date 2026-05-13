@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("2_34vda")
 dialogue_file = "res://scripts/resources/dialogue/syndra_perma_seq.txt"
-next_state = "perma"
+next_state = "fifth"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

@@ -7,6 +7,7 @@ signal god_mode_changed(enabled: bool)
 
 var unlocked_rewards: Dictionary = {}
 var god_mode_enabled: bool = false
+var god_mode_speed_multiplier: float = 2.5
 var active_skills: Dictionary = {
 	"dpad_up": "Box 1",
 	"dpad_down": "Box 1",
@@ -73,7 +74,7 @@ func _ready() -> void:
 	control_timer.timeout.connect(_on_control_timer_timeout)
 	control_timer.start()
 	
-	player_portrait = load("res://assets/art/p1.PNG")
+	player_portrait = load("res://scripts/resources/dialogue/player_portrait.tres")
 
 func _on_control_timer_timeout() -> void:
 	if cycling_unlocked:

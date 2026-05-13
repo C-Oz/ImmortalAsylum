@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("2_6hl2c")
-dialogue_file = "res://scripts/resources/dialogue/syndra_intro_seq.txt"
+raw_dialogue = "Syndra(Syndra)[happy]: Hi Gira! Please find [color=yellow]Haniran[/color] in the [color=yellow]North-east[/color] and [color=yellow]play me his theme[/color] when you get it"
 next_state = "intro"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

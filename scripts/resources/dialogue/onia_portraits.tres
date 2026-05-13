@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://wqjkrqexorfi" path="res://assets/art/npc/Onia relaxed - Torso.png" id="2_u2fug"]
 [ext_resource type="Texture2D" uid="uid://bjy7iwvto6qsm" path="res://assets/art/npc/Onia annoyed - Torso.png" id="3_csds3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xpsny"]
-atlas = ExtResource("2_u2fug")
+[sub_resource type="AtlasTexture" id="AtlasTexture_um6sk"]
+atlas = ExtResource("3_csds3")
 script = ExtResource("1_7ivni")
 metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_um6sk"]
-atlas = ExtResource("3_csds3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpsny"]
+atlas = ExtResource("2_u2fug")
 script = ExtResource("1_7ivni")
 metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
 

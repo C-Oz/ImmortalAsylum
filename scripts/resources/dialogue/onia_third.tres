@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://bv7n4u2j8d3n1"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_4v6n1"]
+
+[resource]
+script = ExtResource("1_4v6n1")
+raw_dialogue = "Onia(Onia)[happy]: Hello Giratran, thanks for creating the lake in the south! Now, would you be able to play me [color=yellow]Syndra’s theme[/color] and [color=yellow]Haniran’s Theme[/color] together? I haven’t heard those since you left."
+next_state = "third"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

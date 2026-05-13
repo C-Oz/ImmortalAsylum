@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://dg3n7u2j8d3n2"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_5v7n1"]
+
+[resource]
+script = ExtResource("1_5v7n1")
+raw_dialogue = "Onia(Onia)[happy]: Thank you Gira, I haven’t heard their song in a while. And that lake is such a beautiful little piece of world. Its artificiality irrelevant in the face of our emotions. Goney was there all the time.
+PLAYER: I heard of his passing…
+Onia(Onia)[annoyed]: …we collectively decided to delete him. Too far corrupted. It won’t be long before it takes me too.
+Onia(Onia)[annoyed]: The Residents are in a difficult position as well. They are holding on to a failed dream.
+Onia(Onia)[happy]: You should talk to [color=yellow]Kunjato north-east[/color] of here. He could use some company"
+next_state = "fifth"
+reward_id = "guitar_box5"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

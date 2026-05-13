@@ -50,11 +50,19 @@ func _ready():
 	DialogueBox.dialogue_finished.connect(_on_dialogue_finished)
 
 func _on_reward_granted(reward_id: String) -> void:
-	if reward_id == "haniran_box5":
+	var rewards_config = {
+		"haniran_box5": ["Haniran's Theme Acquired", "res://assets/art/instruments/cello_big.png"],
+		"clarinet_box5": ["Syndra's Theme Acquired", "res://assets/art/instruments/clarinet_big.png"],
+		"guitar_box5": ["Onia's Theme Acquired", "res://assets/art/instruments/guitar_big.png"],
+		"drums_box5": ["Kunjato's Theme Acquired", "res://assets/art/instruments/drums_big.png"]
+	}
+	
+	if rewards_config.has(reward_id):
+		var config = rewards_config[reward_id]
 		var reward_scene = load("res://scenes/ui/RewardUI.tscn")
 		if reward_scene:
 			var reward_inst = reward_scene.instantiate()
-			reward_inst.setup("Haniran's Theme Acquired", load("res://assets/art/instruments/cello_big.png"))
+			reward_inst.setup(config[0], load(config[1]))
 			add_child(reward_inst)
 
 func _refresh_skill_slots() -> void:
@@ -68,9 +76,15 @@ func _refresh_skill_slots() -> void:
 		# Build specific labels for this slot
 		var current_labels = base_labels.duplicate()
 		
-		# If this is the skill_up slot and haniran box 5 is unlocked
+		# Append NPC themes based on unlocked rewards and dpad direction
 		if action == "dpad_up" and GameManager.unlocked_rewards.has("haniran_box5"):
 			current_labels.append("Haniran")
+		elif action == "dpad_down" and GameManager.unlocked_rewards.has("clarinet_box5"):
+			current_labels.append("Syndra")
+		elif action == "dpad_left" and GameManager.unlocked_rewards.has("guitar_box5"):
+			current_labels.append("Onia")
+		elif action == "dpad_right" and GameManager.unlocked_rewards.has("drums_box5"):
+			current_labels.append("Kunjato")
 			
 		# Apply the labels to the slot
 		slot.option_names = current_labels
@@ -163,3 +177,22 @@ func show_timer_adjustment(delta: float) -> void:
 	tween.set_parallel(true)
 	tween.tween_property(timer_adjustment_label, "position:y", base_y - 20, 1.2)
 	tween.tween_property(timer_adjustment_label, "modulate:a", 0.0, 1.2)
+
+func _on_dpad_area_body_entered(body: Node2D) -> void:
+	print("Dpad Area entered by: ", body.name)
+	var wheel = get_node_or_null("DPadSkillWheel")
+	if wheel and body.is_in_group("player") and not wheel.visible:
+		wheel.modulate.a = 0.0
+		wheel.visible = true
+		var tween = create_tween()
+		tween.tween_property(wheel, "modulate:a", 1.0, 1.0).set_trans(Tween.TRANS_SINE)
+
+
+func _on_solo_area_body_entered(body: Node2D) -> void:
+	push_warning("Solo Area entered by: ", body.name)
+	var pitches = get_node_or_null("SoloPitches")
+	if pitches and body.is_in_group("player") and not pitches.visible:
+		pitches.modulate.a = 0.0
+		pitches.visible = true
+		var tween = create_tween()
+		tween.tween_property(pitches, "modulate:a", 1.0, 1.0).set_trans(Tween.TRANS_SINE)

@@ -86,22 +86,23 @@ func _process(delta):
 
 func _process_audio(is_pressed: bool, player: AudioStreamPlayer):
 	if is_pressed:
-		if not player.playing:
-			# Determine volume reduction based on current scene
-			var scene_name = get_tree().current_scene.name
-			if scene_name == "EastArea2":
-				player.volume_db = -12.0
-			else:
-				player.volume_db = 2.0
-				
-			player.play()
-	#else:
-		#if player.playing:
-			#player.stop()
+		#if not player.playing:
+		# Determine volume reduction based on current scene
+		var scene_name = get_tree().current_scene.name
+		if scene_name == "EastArea2" or scene_name == "Tutorial":
+			player.volume_db = -12.0
+		else:
+			player.volume_db = 2.0
+		
+		player.play()
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("solo_toggle"):
-		is_alt_map = !is_alt_map
+		is_alt_map = true
+		_update_audio_streams()
+	elif event.is_action_released("solo_toggle"):
+		is_alt_map = false
 		_update_audio_streams()
 
 func _update_audio_streams():
@@ -118,10 +119,7 @@ func _update_audio_streams():
 		if is_instance_valid(solo_instrument):
 			solo_instrument.flip_v = false
 			
-	# Restart sounds if they were already playing
-	#if sound_y.playing: sound_y.play()
-	#if sound_b.playing: sound_b.play()
-	#if sound_a.playing: sound_a.play()
+
 
 func _build_file_index():
 	_file_index.clear()

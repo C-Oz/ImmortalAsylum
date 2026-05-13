@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://cm3n7u2j8d3n2"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_2v7n1"]
+
+[resource]
+script = ExtResource("1_2v7n1")
+raw_dialogue = "Kunjato(Kunjato)[annoyed]: Why don’t you make yourself useful and [color=yellow]fix up the fountain[/color] for my garden, then I might tolerate your presence for a few more minutes."
+next_state = "2"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

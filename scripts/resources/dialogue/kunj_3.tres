@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://dm4n8u2j8d3n3"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_3v8n1"]
+
+[resource]
+script = ExtResource("1_3v8n1")
+raw_dialogue = "Kunjato(Kunjato)[annoyed]: … thanks I guess. Could you also play me [color=yellow]Onia’s[/color] and [color=yellow]Haniran’s[/color] theme at the same time? As well as the element of [color=yellow]Fire[/color] embedded in the [color=#cc4125]Cello.[/color]"
+next_state = "4"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

@@ -61,7 +61,7 @@ func _start_interaction() -> void:
 		if override.required_base_state != "" and override.required_base_state != current_state:
 			continue
 			
-		if GameManager.active_skills.get(override.required_skill_slot) == override.required_skill_name:
+		if override.is_met(GameManager.active_skills):
 			current_state = override.override_state
 			break
 	

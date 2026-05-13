@@ -2822,14 +2822,16 @@ position = Vector2(-1, -30)
 shape = SubResource("RectangleShape2D_i4xvc")
 
 [node name="DestructionUI" parent="." instance=ExtResource("3_yvgwr")]
+modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(28.8, 0)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -94.0
+offset_left = -14.4
 offset_top = -155.0
-offset_right = 91.0
+offset_right = 14.4
 offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 0

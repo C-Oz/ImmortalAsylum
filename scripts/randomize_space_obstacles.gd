@@ -20,11 +20,14 @@ func _run():
 	# Verification that we are in SpaceArea or a scene containing WorldContent
 	var world_content = root.get_node_or_null("WorldContent")
 	if not world_content:
-		# If SpaceArea is the root itself or we are inside WorldContent
-		if root.name == "WorldContent":
+		world_content = root.get_node_or_null("East Area - Corrected")
+		
+	if not world_content:
+		# If the node itself is the container
+		if root.name in ["WorldContent", "East Area - Corrected"]:
 			world_content = root
 		else:
-			push_error("Obstacle Randomizer: Could not find 'WorldContent' node in the current scene. Please open SpaceArea.tscn.")
+			push_error("Obstacle Randomizer: Could not find 'WorldContent' or 'East Area - Corrected' node. Please open a valid area scene.")
 			return
 
 	print("Obstacle Randomizer: Starting randomization in '", root.name, "'...")
@@ -33,7 +36,7 @@ func _run():
 	_find_obstacles(world_content, obstacles)
 	
 	if obstacles.is_empty():
-		print("Obstacle Randomizer: No obstacles with 'DestructionUI' found.")
+		print("Obstacle Randomizer: No eligible obstacles found (skipping SubmergeSects).")
 		return
 		
 	print("Obstacle Randomizer: Found ", obstacles.size(), " obstacles.")
@@ -98,7 +101,8 @@ func _run():
 
 func _find_obstacles(node: Node, list: Array):
 	# An obstacle is defined by having a DestructionUI child
-	if node.has_node("DestructionUI"):
+	# We skip "SubmergeSect" objects as requested to keep them untouched
+	if node.has_node("DestructionUI") and not node.name.begins_with("SubmergeSect"):
 		list.append(node)
 	
 	# Recursively search children

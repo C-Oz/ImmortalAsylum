@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://corsfs5bn57we"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_8v0n1"]
+
+[resource]
+script = ExtResource("1_8v0n1")
+raw_dialogue = "Onia(Onia)[happy]: What are you doing dilly-dallying? Go talk to [color=yellow]Kunjato[/color] in the [color=yellow]north east[/color]. He will direct you further.
+PLAYER: Will do, goodbye Onia."
+next_state = "seventh"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

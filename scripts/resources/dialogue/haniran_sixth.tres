@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://dvv7v6re6q821"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_a47o6"]
+
+[resource]
+script = ExtResource("1_a47o6")
+raw_dialogue = "Haniran(Haniran): What are you still doing here? You should talk to [color=yellow]Syndra down south-west of here!!![/color] 
+PLAYER: I will. And can I destroy the house again? I might need to for some more… time
+Haniran(Haniran)[shocked]: What?... Which house?... Oh the “quaint” architectural failure you just put there? Whatever I don’t care about it anymore.
+PLAYER: That’s a bit unnecessary… "
+next_state = "sixth"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

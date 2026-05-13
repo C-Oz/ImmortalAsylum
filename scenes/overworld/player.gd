@@ -15,10 +15,12 @@ var original_tile_alt: int = 0
 
 var is_locked: bool = false
 var _god_mode_enabled: bool = false
+var _base_speed: float
 var _original_collision_layer: int = 0
 var _original_collision_mask: int = 0
 
 func _ready() -> void:
+	_base_speed = speed
 	_original_collision_layer = collision_layer
 	_original_collision_mask = collision_mask
 	set_god_mode_enabled(GameManager.god_mode_enabled)
@@ -31,13 +33,15 @@ func _ready() -> void:
 func set_god_mode_enabled(enabled: bool) -> void:
 	if _god_mode_enabled == enabled:
 		return
-	
+		
 	_god_mode_enabled = enabled
 	if _god_mode_enabled:
 		collision_mask = 0
+		speed = _base_speed * GameManager.god_mode_speed_multiplier
 	else:
 		collision_layer = _original_collision_layer
 		collision_mask = _original_collision_mask
+		speed = _base_speed
 
 func _physics_process(_delta: float) -> void:
 	if DialogueBox.is_active() or is_locked:

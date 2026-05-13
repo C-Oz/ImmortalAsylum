@@ -1,6 +1,5 @@
-Haniran(Haniran)[happy]: Hey!!!!! Hellooo!!!
-Haniran(Haniran)[happy]: I remember you! You made all of these houses and fountains and stuff with these instruments!
-Haniran(Haniran)[happy]: Could you please build a huge, gorgeous palace over there? By the little [color=yellow]overlay that says Y, B and A?[/color]
-Haniran(Haniran)[happy]: If you press [color=yellow]the buttons at the right time in sequence, according to the beat,[/color] you should be able to [color=yellow]create a beautiful mansion for me![/color]
+Haniran(Haniran): Hey!!!!! Hellooo!!! I remember you! You made all of these houses and fountains and stuff with these instruments!
+Haniran(Haniran): Could you please build a huge, gorgeous palace over there? By the [color=yellow]little overlay that says Y, B and A[/color]?
+Haniran(Haniran): If you press [color=yellow]the buttons at the right time in sequence, according to the beat[/color], you should be able to [color=yellow]create a beautiful mansion for me![/color]
 PLAYER: Hi Haniran… Uhm, I will do my best but I’m a bit rusty… I haven’t been here in a while.
 Haniran(Haniran)[angry]: YOUR EXCUSES ARE OF NO CONCERN TO ME

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://o15e2pdruhi2"]
+
+[ext_resource type="Script" uid="uid://ckkcqb8nkpgwn" path="res://scripts/resources/dialogue/dialogue_sequence.gd" id="1_yyrhq"]
+
+[resource]
+script = ExtResource("1_yyrhq")
+raw_dialogue = "Syndra(Syndra)[happy]: In a way, this whole situation allowed me to escape my relationship with that idiot. I much prefer hanging out with Haniran all day haha! 
+PLAYER: Hahaha, did he leave the Server in the end?
+Syndra(Syndra)[sad]: Ugh I really do not care. I suppose I hope so so he wouldn’t be bothering everyone else. Although he would be bothering people on earth as a fresh android then. So we lose either way.
+PLAYER: Hahaha lord, I’m glad I never met him.
+Syndra(Syndra)[sad]: yeah…"
+next_state = "sixth"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

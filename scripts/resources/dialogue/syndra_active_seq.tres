@@ -6,4 +6,5 @@
 script = ExtResource("2_7grul")
 dialogue_file = "res://scripts/resources/dialogue/syndra_active_seq.txt"
 next_state = "perma"
+reward_id = "clarinet_box5"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"
