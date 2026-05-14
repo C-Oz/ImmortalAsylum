@@ -77,7 +77,7 @@ func _load_doormat_sounds(path: String = "res://assets/muzak/Doormat Chords", pr
 			folder_name = dir.get_next()
 
 func play_doormat_chord(chord_name: String) -> void:
-	push_warning("chord name: ", chord_name)
+	#push_warning("chord name: ", chord_name)
 	var current_time = Time.get_ticks_msec()
 	if current_time - last_doormat_time < doormat_cooldown_ms:
 		return

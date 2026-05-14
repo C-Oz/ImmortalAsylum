@@ -28,10 +28,10 @@ shape = SubResource("RectangleShape2D_tlg0c")
 
 [node name="DestructionUI" parent="." instance=ExtResource("1_k6hww")]
 modulate = Color(1, 1, 1, 1)
-custom_minimum_size = Vector2(-20, 0)
-offset_left = 10.0
+custom_minimum_size = Vector2(77.6, 0)
+offset_left = -56.0
 offset_top = -64.0
-offset_right = 10.0
+offset_right = 21.599998
 offset_bottom = -16.0
 auto_center_x = false
 

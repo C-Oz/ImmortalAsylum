@@ -11,7 +11,6 @@ func _enter_tree() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	god_mode_overlay = find_child("GodModeOverlay", true, false) as CanvasLayer
-	god_mode_player = find_child("Player", true, false)
 	
 	if not GameManager.god_mode_changed.is_connected(_on_god_mode_changed):
 		GameManager.god_mode_changed.connect(_on_god_mode_changed)
@@ -29,21 +28,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("god_mode"):
-		GameManager.toggle_god_mode()
-		get_viewport().set_input_as_handled()
-
 func _on_god_mode_changed(enabled: bool) -> void:
 	if not is_instance_valid(god_mode_overlay):
 		god_mode_overlay = find_child("GodModeOverlay", true, false) as CanvasLayer
 	if god_mode_overlay:
 		god_mode_overlay.visible = enabled
-	
-	if not is_instance_valid(god_mode_player):
-		god_mode_player = find_child("Player", true, false)
-	if god_mode_player and god_mode_player.has_method("set_god_mode_enabled"):
-		god_mode_player.set_god_mode_enabled(enabled)
 
 func _on_beat(beat: int) -> void:
 	get_tree().call_group("destructibles", "on_beat")

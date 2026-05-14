@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=4 uid="uid://c67wrr12hfwop"]
+[gd_scene load_steps=137 format=4 uid="uid://c67wrr12hfwop"]
 
 [ext_resource type="PackedScene" uid="uid://c5bcqd2dmw0ak" path="res://scenes/overworld/player.tscn" id="1_7scds"]
 [ext_resource type="Script" uid="uid://p2gqxyxvgf00" path="res://scenes/overworld/space_area.gd" id="1_qtdfl"]
@@ -124,6 +124,14 @@ And in the process turned the colours bland and grey
 Tick, tock the time goes forward
 Tick, tock the end comes closer
 Tick, tock…"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"
+
+[sub_resource type="Resource" id="Resource_2yw4r"]
+script = ExtResource("16_e1bml")
+raw_dialogue = "Dear Diary
+I don’t understand why everyone here loves forests and water so much. It’s so boring!!! I want more cool sci-fi stuff!!! Luckily Giratran made this little place for me. Kryona got so mad…
+
+Player: Hope you are doing well, Havyo"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_48o5k"]
@@ -7931,7 +7939,7 @@ sequence = Array[String](["B", "Y", "B"])
 instrument_icon = ExtResource("16_fif6a")
 
 [node name="GlitchBarrier3" parent="WorldContent" instance=ExtResource("46_8or63")]
-position = Vector2(3336, -920)
+position = Vector2(3328, -920)
 polygon = PackedVector2Array(-88, -64, -88, -488, 536, -488, 536, -64)
 sequence = Array[String](["A", "A", "B", "B"])
 instrument_icon = ExtResource("17_iww7c")
@@ -7976,6 +7984,13 @@ dialogue_map = Dictionary[String, ExtResource("16_e1bml")]({
 position = Vector2(3232, 934)
 dialogue_map = Dictionary[String, ExtResource("16_e1bml")]({
 "first": SubResource("Resource_iypm4")
+})
+
+[node name="Tablet6" parent="WorldContent" instance=ExtResource("39_bouqv")]
+position = Vector2(3808, -1274)
+dialogue_map = Dictionary[String, ExtResource("16_e1bml")]({
+"": null,
+"first": SubResource("Resource_2yw4r")
 })
 
 [node name="Sub area 1; Gardens" type="Node2D" parent="WorldContent"]

@@ -11,7 +11,8 @@ enum State { INACTIVE, COUNTDOWN, ACTIVE }
 		if Engine.is_editor_hint():
 			setup_sequence()
 
-@export var countdown_beats: int = 4
+@export var countdown_beats: int = 2
+@export var breather_beats: int = 2
 @export var slot_spacing: float = 20.0  # Adjust this to space buttons
 @export var button_scale: float = 0.06  # Scale down 480x480 button sprites
 
@@ -21,6 +22,8 @@ enum State { INACTIVE, COUNTDOWN, ACTIVE }
 		_update_icon_visuals()
 		if Engine.is_editor_hint():
 			setup_sequence() # Resize needed when icon changes
+
+var breather_sprite = preload("res://assets/art/ui/pipfull16.png")
 
 @export var auto_center_x: bool = true
 
@@ -77,12 +80,32 @@ func setup_sequence():
 	
 	# Clear existing slots
 	for child in sequence_container.get_children():
+		sequence_container.remove_child(child)
 		child.queue_free()
 	
 	resize_container()
 	
 	# Calculate layout
 	var button_width = 480 * button_scale
+	
+	# Create breather slots (pips)
+	for i in breather_beats:
+		var slot = TextureRect.new()
+		slot.texture = breather_sprite
+		slot.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		slot.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
+		
+		# Match button dimensions for perfect needle alignment
+		slot.custom_minimum_size = Vector2(button_width, button_width)
+		slot.size = Vector2(button_width, button_width)
+		
+		# Position
+		slot.position.x = i * (button_width + slot_spacing)
+		slot.position.y = (sequence_container.size.y / 2.0) - (button_width / 2.0)
+		slot.modulate.a = 0.6 # Dim the pips
+		slot.name = "Pip_" + str(i)
+		
+		sequence_container.add_child(slot)
 	
 	# Create button slots
 	for i in sequence.size():
@@ -96,8 +119,8 @@ func setup_sequence():
 		
 		# Just scale it down instead of resizing
 		slot.scale = Vector2(button_scale, button_scale)
-		# Position (top-left corner positioning for Control nodes)
-		slot.position.x = i * (button_width + slot_spacing)
+		# Position (offset by breather beats)
+		slot.position.x = (i + breather_beats) * (button_width + slot_spacing)
 		slot.position.y = (sequence_container.size.y / 2.0) - (button_width / 2.0)
 		slot.name = "Slot_" + str(i)
 		
@@ -171,7 +194,8 @@ func resize_container():
 	if instrument_icon:
 		icon_width = button_width + slot_spacing
 		
-	var total_width = (button_width * sequence.size()) + (slot_spacing * (sequence.size() - 1)) + icon_width
+	var total_beats = sequence.size() + breather_beats
+	var total_width = (button_width * total_beats) + (slot_spacing * (total_beats - 1)) + icon_width
 	
 	var padding = 10
 	
@@ -200,7 +224,8 @@ func resize_container():
 		sequence_container.position.x = 0
 
 func advance_needle():
-	current_beat_index = (current_beat_index + 1) % sequence.size()
+	var total_beats = sequence.size() + breather_beats
+	current_beat_index = (current_beat_index + 1) % total_beats
 	update_needle_position()
 	
 	# Always reset visuals at start of loop
@@ -238,6 +263,11 @@ func check_input(button: String):
 	
 	# Handle early hit on the very first button during countdown
 	if state == State.COUNTDOWN:
+		# If there are breather beats, we don't allow "GO" hits to the first button
+		# because they are now multiple beats away.
+		if breather_beats > 0:
+			return
+			
 		# If on last beat of countdown and hitting closer to the "GO" beat
 		if beats_remaining == 1 and diff_current > diff_next and diff <= HIT_WINDOW_SECS:
 			if button == sequence[0]:
@@ -245,7 +275,7 @@ func check_input(button: String):
 				# We don't advance the beat index here, just activate visuals
 				# The upcoming on_beat will handle the first "natural" beat transition
 				_activate_visuals()
-				show_pressed_feedback(0)
+				show_pressed_feedback(breather_beats) # Index adjusted for breather
 				player_input_index = 1
 				print("Early hit on first button registered!")
 				return
@@ -259,20 +289,29 @@ func check_input(button: String):
 	
 	# Determine which beat to check
 	var check_index = current_beat_index
-	# If closer to next beat, check next button
-	if diff_current > diff_next and current_beat_index + 1 < sequence.size():
-		check_index = current_beat_index + 1
+	var total_beats = sequence.size() + breather_beats
 	
-	var expected_button = sequence[check_index]
+	# If closer to next beat, check next button (with wrapping)
+	if diff_current > diff_next:
+		check_index = (current_beat_index + 1) % total_beats
+	
+	# Map check_index to sequence array
+	var seq_idx = check_index - breather_beats
+	
+	# Ignore input if in breather zone
+	if seq_idx < 0:
+		return
+		
+	var expected_button = sequence[seq_idx]
 	
 	# Check if correct button for THIS beat (not sequence position)
 	if button == expected_button:
 		# Always show visual feedback for correct button
 		show_pressed_feedback(check_index)
-		print("Correct button at position: ", check_index)
+		print("Correct button at position: ", seq_idx)
 		
 		# Only advance sequence if it's the NEXT expected button
-		if check_index == player_input_index:
+		if seq_idx == player_input_index:
 			player_input_index += 1
 			print("Sequence progress: ", player_input_index, "/", sequence.size())
 			
@@ -296,7 +335,10 @@ func show_pressed_feedback(slot_index: int):
 		return
 	
 	var slot = sequence_container.get_child(slot_index)
-	var button_key = sequence[slot_index]
+	var seq_idx = slot_index - breather_beats
+	
+	if seq_idx < 0: return # Should not happen with current logic but safe to check
+	var button_key = sequence[seq_idx]
 	
 	# Change to pressed sprite
 	if button_key in button_sprites_pressed:
@@ -316,8 +358,9 @@ func show_pressed_feedback(slot_index: int):
 
 func reset_buttons():
 	# Reset all buttons to unpressed state
-	for i in range(sequence_container.get_child_count()):
-		var slot = sequence_container.get_child(i)
+	for i in range(sequence.size()):
+		var slot_index = i + breather_beats
+		var slot = sequence_container.get_child(slot_index)
 		var button_key = sequence[i]
 		
 		if button_key in button_sprites:

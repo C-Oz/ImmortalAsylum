@@ -7,7 +7,7 @@ signal god_mode_changed(enabled: bool)
 
 var unlocked_rewards: Dictionary = {}
 var god_mode_enabled: bool = false
-var god_mode_speed_multiplier: float = 2.5
+var god_mode_speed_multiplier: float = 3.0
 var active_skills: Dictionary = {
 	"dpad_up": "Box 1",
 	"dpad_down": "Box 1",
@@ -75,6 +75,20 @@ func _ready() -> void:
 	control_timer.start()
 	
 	player_portrait = load("res://scripts/resources/dialogue/player_portrait.tres")
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("god_mode"):
+		toggle_god_mode()
+	
+	if not god_mode_enabled:
+		return
+	
+	if event.is_action_pressed("start_tutorial"):
+		change_scene("res://scenes/overworld/Tutorial.tscn")
+	elif event.is_action_pressed("start_east"):
+		change_scene("res://scenes/overworld/EastArea2.tscn")
+	elif event.is_action_pressed("start_space"):
+		change_scene("res://scenes/overworld/SpaceArea.tscn")
 
 func _on_control_timer_timeout() -> void:
 	if cycling_unlocked:

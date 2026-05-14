@@ -23,6 +23,10 @@ func _ready() -> void:
 	_base_speed = speed
 	_original_collision_layer = collision_layer
 	_original_collision_mask = collision_mask
+	
+	if not GameManager.god_mode_changed.is_connected(set_god_mode_enabled):
+		GameManager.god_mode_changed.connect(set_god_mode_enabled)
+		
 	set_god_mode_enabled(GameManager.god_mode_enabled)
 	
 	if GameManager.has_pending_portal_spawn():

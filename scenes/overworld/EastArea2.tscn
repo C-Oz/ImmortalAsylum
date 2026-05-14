@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://cl3xanfp3q1qt"]
+[gd_scene load_steps=100 format=4 uid="uid://cl3xanfp3q1qt"]
 
 [ext_resource type="Script" uid="uid://djw5m7d3mwnmj" path="res://scenes/overworld/overworld.gd" id="1_1r6xs"]
 [ext_resource type="PackedScene" uid="uid://cp7cev47h51bg" path="res://scenes/overworld/overworld_ui.tscn" id="2_hauu2"]
@@ -4408,6 +4408,11 @@ raw_dialogue = "Then one day the comet said: “Friend, I have a gift.”
 “If you harness this crystal, you may just live the longest.”"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"
 
+[sub_resource type="Resource" id="Resource_5ew8g"]
+script = ExtResource("25_u2vi0")
+raw_dialogue = "[color=#4a86e8]Clarinet[/color] - [color=yellow]east[/color], [color=#6aa84f]Guitar[/color] - [color=yellow]west[/color], [color=#cc4125]Cello[/color] -  [color=yellow]east[/color]"
+metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4lv6"]
 size = Vector2(417.333, 283)
 
@@ -4542,6 +4547,7 @@ sequence = Array[String](["B", "A", "B", "A"])
 [node name="Statue" parent="East Area - Corrected/Props" instance=ExtResource("30_w2bl4")]
 position = Vector2(880, -184)
 timer_value = 9.0
+sequence = Array[String](["A", "A", "A"])
 
 [node name="BuildingMed" parent="East Area - Corrected/Props" instance=ExtResource("31_ixif6")]
 z_index = -1
@@ -4581,6 +4587,9 @@ position = Vector2(96, -888)
 [node name="StereoDoor4" parent="East Area - Corrected/Props" instance=ExtResource("47_6fx4o")]
 position = Vector2(-368, -160)
 
+[node name="StereoDoor2" parent="East Area - Corrected/Props" instance=ExtResource("47_6fx4o")]
+position = Vector2(1104, 240)
+
 [node name="Tablet" parent="East Area - Corrected/Props" instance=ExtResource("55_i8tfc")]
 position = Vector2(1576, 190)
 
@@ -4594,6 +4603,13 @@ dialogue_map = Dictionary[String, ExtResource("25_u2vi0")]({
 position = Vector2(504, -1218)
 dialogue_map = Dictionary[String, ExtResource("25_u2vi0")]({
 "first": SubResource("Resource_cdk8e")
+})
+
+[node name="Tablet3" parent="East Area - Corrected/Props" instance=ExtResource("55_i8tfc")]
+position = Vector2(1208, 80)
+dialogue_map = Dictionary[String, ExtResource("25_u2vi0")]({
+"": null,
+"first": SubResource("Resource_5ew8g")
 })
 
 [node name="Player" parent="East Area - Corrected" instance=ExtResource("3_aweov")]
@@ -4628,15 +4644,15 @@ position = Vector2(86, 6)
 
 [node name="DestructionUI" parent="East Area - Corrected/SubmergeSectGarden" index="4"]
 modulate = Color(1, 1, 1, 1)
-custom_minimum_size = Vector2(28.8, 0)
-offset_left = -14.4
+custom_minimum_size = Vector2(126.4, 0)
+offset_left = -63.2
 offset_top = -50.0
-offset_right = 14.4
+offset_right = 63.2
 offset_bottom = -2.0
+countdown_beats = 4
 instrument_icon = ExtResource("57_65gq7")
 
 [node name="SubmergeSectRooftops" parent="East Area - Corrected" instance=ExtResource("27_bgwl7")]
-visible = false
 position = Vector2(322, -998)
 sequence = Array[String](["B", "B", "A", "A"])
 
@@ -4651,15 +4667,15 @@ position = Vector2(-11, 181)
 
 [node name="DestructionUI" parent="East Area - Corrected/SubmergeSectRooftops" index="4"]
 modulate = Color(1, 1, 1, 1)
-custom_minimum_size = Vector2(28.8, 0)
-offset_left = -14.4
+custom_minimum_size = Vector2(126.4, 0)
+offset_left = -63.2
 offset_top = 96.0
-offset_right = 14.4
+offset_right = 63.2
 offset_bottom = 144.0
+countdown_beats = 4
 instrument_icon = ExtResource("58_i8tfc")
 
 [node name="SubmergeSectGranite" parent="East Area - Corrected" instance=ExtResource("27_bgwl7")]
-visible = false
 position = Vector2(982, 461)
 sequence = Array[String](["Y", "B", "A", "B"])
 
@@ -4674,11 +4690,12 @@ position = Vector2(122, -332.25)
 
 [node name="DestructionUI" parent="East Area - Corrected/SubmergeSectGranite" index="4"]
 modulate = Color(1, 1, 1, 1)
-custom_minimum_size = Vector2(-20, 0)
+custom_minimum_size = Vector2(77.6, 0)
 offset_left = 74.0
 offset_top = -293.0
-offset_right = 74.0
+offset_right = 151.6
 offset_bottom = -245.0
+countdown_beats = 4
 auto_center_x = false
 
 [node name="Markers" type="Node2D" parent="East Area - Corrected"]
