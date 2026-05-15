@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_yyrhq")
 raw_dialogue = "Syndra(Syndra)[happy]: In a way, this whole situation allowed me to escape my relationship with that idiot. I much prefer hanging out with Haniran all day haha! 
-PLAYER: Hahaha, did he leave the Server in the end?
+PLAYER[happy]: Hahaha, did he leave the Server in the end?
 Syndra(Syndra)[sad]: Ugh I really do not care. I suppose I hope so so he wouldn’t be bothering everyone else. Although he would be bothering people on earth as a fresh android then. So we lose either way.
-PLAYER: Hahaha lord, I’m glad I never met him.
-Syndra(Syndra)[sad]: yeah…"
+PLAYER[happy]: Hahaha lord, I’m glad I never met him.
+Syndra(Syndra)[sad]: yeah… To go through that exit [color=yellow]west[/color] of here, the [color=#4a86e8]Clarinet[/color] should be positioned [color=yellow]north[/color], the [color=#6aa84f]Guitar[/color] should be positioned [color=yellow]south[/color] and the [color=#cc4125]Cello[/color] should be positioned [color=yellow]west[/color]. Use the [color=yellow]knobs behind you[/color] to change their position in the [color=yellow]sound space.[/color]"
 next_state = "sixth"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

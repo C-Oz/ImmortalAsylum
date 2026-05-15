@@ -4,14 +4,14 @@
 
 [resource]
 script = ExtResource("1_7v9n1")
-raw_dialogue = "PLAYER: Onia, I really am sorry about Goney.
+raw_dialogue = "PLAYER[mask_up]: Onia, I really am sorry about Goney.
 Onia(Onia)[happy]: It’s not your fault dummy. Stop feeding your survivor’s guilt. Is Corruption really different from sickness or old age? How can our experience of time even be compared to that on earth? 
 Onia(Onia)[happy]: Maybe we are more similar to those on earth than the Residents here in our experience and understanding of death. 
 Onia(Onia)[happy]: What changes in a person knowing that death no longer exists? Or learning that it does?
-PLAYER: … It’s nice to know that you have not changed much at the least.
+PLAYER[look_back]: … It’s nice to know that you have not changed much at the least.
 Onia(Onia)[happy]: Oh I have Giratran, you just weren’t around to find out in which ways I’ve changed.
-PLAYER: ...
+PLAYER[masked]: ...
 Onia(Onia)[happy]: Go talk to [color=yellow]Kunjato[/color] in the [color=yellow]north east[/color]. He will direct you further
-PLAYER: Take care Onia"
+PLAYER[happy]: Take care Onia"
 next_state = "seventh"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

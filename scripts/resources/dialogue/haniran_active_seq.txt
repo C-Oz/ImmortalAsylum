@@ -1,10 +1,10 @@
 Haniran(Haniran): …
 Haniran(Haniran)[shocked]: It doesn’t look like a mansion at all…
-PLAYER: Well I think it looks… Quaint
+PLAYER[look_back]: Well I think it looks… Quaint
 Haniran(Haniran)[shocked]: What does “Quaint” mean? Who would even want a “Quaint” mansion?
-PLAYER: Well I told you I’m rusty. Maybe learn to appreciate more styles of architecture!
+PLAYER[look_back]: Well I told you I’m rusty. Maybe learn to appreciate more styles of architecture!
 Haniran(Haniran)[angry]: I TOLD YOU YOUR EXCUSES ARE OF ugh whatever… thanks for the “quaint” mansion. At least it’s something in this boring nothing
-PLAYER: Did Kryona remove more of the world since I left?
+PLAYER[mask_up]: Did Kryona remove more of the world since I left?
 Haniran(Haniran)[angry]: Yeah she removed almost everything… I hate her!!!
 Haniran(Haniran)[angry]: Now everything is grey and stupid and boring.
 Haniran(Haniran)[angry]: I just stayed here since then, nothing interesting to see anywhere else.

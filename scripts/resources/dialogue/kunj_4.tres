@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_w0njo")
 raw_dialogue = "Kunjato(Kunjato)[frustrated]: …Your playing is really getting rusty… And wow that fountain is truly a piece of shit. You know I would create something far more beautiful if I was still allowed to play instruments.
-PLAYER: But you only like gardens. Whenever you tried to build a house or something you would just rush it
+PLAYER[look_back]: But you only like gardens. Whenever you tried to build a house or something you would just rush it
 Kunjato(Kunjato)[annoyed]: Haha, I guess my current state is a punishment for that, although I have no regrets building garbage architecture for those lazy fuckers up in the residencies.
-PLAYER: Just tell me you don’t talk to Haniran like this
+PLAYER[mask_up]: Just tell me you don’t talk to Haniran like this
 Kunjato(Kunjato)[annoyed]: I hate the little bastard, but deserves to know a few swears to cuss out you and Kryona at least. 
-PLAYER: … Fair enough
+PLAYER[masked]: … Fair enough
 Kunjato(Kunjato)[annoyed]: Now, For the sake of me not having to look at your ugly mug again, please visit [color=yellow]Nenneppo[/color] in the south. I will tell you the stereo code: 
 Kunjato(Kunjato)[annoyed]: Yes. The [color=#4a86e8]Clarinet[/color] should be positioned [color=yellow]East[/color], the [color=#6aa84f]Guitar[/color] should be positioned [color=yellow]West[/color] and the [color=#cc4125]Cello[/color] should be positioned [color=yellow]North[/color]. 
 Kunjato(Kunjato)[frustrated]: [color=yellow]Now get out of my face![/color]"

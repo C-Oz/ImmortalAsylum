@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_2n0p3")
-raw_dialogue = "Onia(Onia)[happy]: Good to see you Giratran. Please, if you could [color=yellow]rebuild[/color] and then [color=yellow]the fountain[/color] of Goney [color=yellow]south of here?[/color]"
+raw_dialogue = "Onia(Onia)[happy]: Good to see you Giratran. Please, if you could [color=yellow]rebuild[/color] [color=yellow]rrand[/color] then [color=yellow]the fountain[/color] of Goney [color=yellow]south of here?[/color]"
 next_state = "second"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

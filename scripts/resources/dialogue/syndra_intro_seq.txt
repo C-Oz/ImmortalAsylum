@@ -1,2 +1,3 @@
 Syndra(Syndra)[happy]: No way, Gira, you came back? And you brought your instruments? Please play me [color=yellow]Haniran’s Theme[/color]. I missed hearing it so much from you. If you can’t play it yet, just talk to him [color=yellow]north-east[/color] of here.
-PLAYER: Will do Syndra, I will look for him.
+PLAYER[masked]: Will do Syndra…
+PLAYER[mask_up]: I will look for him.

@@ -10,6 +10,9 @@ func _enter_tree() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if scene_file_path.contains("Tutorial.tscn"):
+		GameManager.start_global_game_timer()
+	
 	god_mode_overlay = find_child("GodModeOverlay", true, false) as CanvasLayer
 	
 	if not GameManager.god_mode_changed.is_connected(_on_god_mode_changed):

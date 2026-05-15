@@ -24,22 +24,23 @@ func _ready() -> void:
 	_original_collision_layer = collision_layer
 	_original_collision_mask = collision_mask
 	
-	if not GameManager.god_mode_changed.is_connected(set_god_mode_enabled):
-		GameManager.god_mode_changed.connect(set_god_mode_enabled)
+	if not GameManager.god_mode_changed.is_connected(_on_god_mode_changed):
+		GameManager.god_mode_changed.connect(_on_god_mode_changed)
 		
-	set_god_mode_enabled(GameManager.god_mode_enabled)
+	_on_god_mode_changed(GameManager.god_mode_enabled)
 	
 	if GameManager.has_pending_portal_spawn():
 		_move_to_portal_spawn(GameManager.consume_pending_portal_name())
 	elif GameManager.returning_from_battle and GameManager.saved_player_position != Vector2.ZERO:
 		global_position = GameManager.saved_player_position
 
-func set_god_mode_enabled(enabled: bool) -> void:
+func _on_god_mode_changed(enabled: bool) -> void:
 	if _god_mode_enabled == enabled:
 		return
 		
 	_god_mode_enabled = enabled
 	if _god_mode_enabled:
+		collision_layer = 0
 		collision_mask = 0
 		speed = _base_speed * GameManager.god_mode_speed_multiplier
 	else:

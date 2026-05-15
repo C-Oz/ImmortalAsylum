@@ -1,6 +1,7 @@
 Syndra(Syndra)[happy]: Aah such an energetic melody and tune! Thank you for playing it again.
-PLAYER: I missed hearing it as well Syn. How are things?
+PLAYER[happy]: I missed hearing it as well Syn. How are things?
 Syndra(Syndra)[sad]: … Bad Gira. We barely hear from Kryona anymore since you left. There’s no sign of the corruption slowing. I don’t know what will happen to Haniran if I’m gone completely.
-PLAYER: Syn don’t say that, she’s working on a solution.
+PLAYER[mask_up]: Syn don’t say that, she’s working on a solution.
 Syndra(Syndra)[sad]: She’s been working for a long time, Gira, and we don’t have much left. 
-Syndra(Syndra)[sad]: You should go talk to the others, they can direct you further. I know the Stereo Code to the SUB-area [color=yellow]west[/color] of here. To go through that exit, the [color=#4a86e8]Clarinet[/color] should be positioned [color=yellow]north[/color], the [color=#6aa84f]Guitar[/color] should be positioned [color=yellow]south[/color] and the [color=#cc4125]Cello[/color] should be positioned [color=yellow]west[/color]. Use the [color=yellow]knobs behind you[/color] to change their position in the [color=yellow]sound space.[/color]
+Syndra(Syndra)[sad]: You should go talk to the others, they can direct you further. I know the Stereo Code to the SUB-area [color=yellow]west[/color] of here.
+Syndra(Syndra)[sad]: To go through that exit, the [color=#4a86e8]Clarinet[/color] should be positioned [color=yellow]north[/color], the [color=#6aa84f]Guitar[/color] should be positioned [color=yellow]south[/color] and the [color=#cc4125]Cello[/color] should be positioned [color=yellow]west[/color]. Use the [color=yellow]knobs behind you[/color] to change their position in the [color=yellow]sound space.[/color]

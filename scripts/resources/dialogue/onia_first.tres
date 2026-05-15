@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_wlfyf")
 raw_dialogue = "Onia(Onia)[happy]: Giratran! you’re back! Oh how I missed you
-PLAYER: Hey Onia! I missed you too.
+PLAYER[masked]: Hey Onia!
+PLAYER[mask_up]: I missed you too.
 Onia(Onia)[happy]: Please, if you could [color=yellow]rebuild[/color] [color=yellow]the lake[/color] and then [color=yellow]the fountain[/color] of Goney [color=yellow]south of here?[/color]"
 next_state = "second"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

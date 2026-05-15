@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://brqbh45bh166s" path="res://scenes/ui/dialogue_box.gd" id="1_6iboe"]
 [ext_resource type="Texture2D" uid="uid://x8yfpt4w65lq" path="res://assets/art/ui/ABXY/button_xbox_digital_x_11.png" id="2_4mjmi"]
 [ext_resource type="Texture2D" uid="uid://dkbo5bvy2i4tp" path="res://assets/art/ui/Enlarged 1-bit-UI dialogue box.png" id="2_daetb"]
-[ext_resource type="Texture2D" uid="uid://vi70d1ysfq5r" path="res://scripts/resources/dialogue/player_portrait.tres" id="2_h44io"]
-[ext_resource type="Texture2D" uid="uid://cuq430wucds1x" path="res://assets/art/p2.PNG" id="5_pyby6"]
+[ext_resource type="Texture2D" uid="uid://o5x4qy130fd4" path="res://assets/art/player/Giratran with mask.png" id="4_h44io"]
+[ext_resource type="Texture2D" uid="uid://da1c5r8opi6jf" path="res://assets/art/npc/Haniran annoyed - torso.png" id="5_h44io"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h44io"]
 texture = ExtResource("2_daetb")
@@ -50,10 +50,11 @@ layout_mode = 2
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 1
-offset_top = 37.0
-offset_right = 157.0
-offset_bottom = 123.0
-texture = ExtResource("2_h44io")
+offset_left = 9.0
+offset_top = 49.0
+offset_right = 163.00441
+offset_bottom = 162.0
+texture = ExtResource("4_h44io")
 expand_mode = 3
 stretch_mode = 5
 
@@ -68,7 +69,7 @@ offset_left = -184.0
 offset_top = 33.0
 offset_bottom = 176.0
 grow_horizontal = 0
-texture = ExtResource("5_pyby6")
+texture = ExtResource("5_h44io")
 expand_mode = 3
 stretch_mode = 5
 

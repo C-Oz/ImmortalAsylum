@@ -141,14 +141,46 @@ func _process(delta):
 		_skill_toggle_cooldown_remaining = maxf(0.0, _skill_toggle_cooldown_remaining - delta)
 	
 	if is_instance_valid(control_timer):
-		timer_label.text = str("%.1f" % control_timer.time_left)
+		_update_timer_display()
 
-func _on_control_timer_timeout():
-	if not GameManager.cycling_unlocked:
+func _update_timer_display() -> void:
+	if control_timer.is_stopped():
+		timer_label.visible = false
 		return
 	
-	if is_instance_valid(_sfx_player):
-		_sfx_player.play()
+	timer_label.visible = true
+	timer_label.text = GameManager.get_formatted_game_time()
+	
+	var time_left = control_timer.time_left
+	if GameManager.has_win_collectible:
+		timer_label.add_theme_color_override("font_color", Color.GREEN)
+
+	if time_left <= 300.0:
+		# Transition from White to Red (if not win)
+		var ratio = (300.0 - time_left) / 300.0
+		if not GameManager.has_win_collectible:
+			timer_label.add_theme_color_override("font_color", Color.WHITE.lerp(Color.RED, ratio))
+
+		# Base scale grows from 1.0 to 3.0
+		var base_scale = lerp(1.0, 3.0, ratio)
+
+		
+		# Pulse if less than 60s
+		if time_left <= 60.0:
+			var pulse = base_scale + (sin(Time.get_ticks_msec() * 0.01) * 0.1)
+			timer_label.scale = Vector2(pulse, pulse)
+		else:
+			timer_label.scale = Vector2(base_scale, base_scale)
+			
+		timer_label.pivot_offset = timer_label.size / 2.0
+	else:
+		timer_label.remove_theme_color_override("font_color")
+		timer_label.scale = Vector2.ONE
+
+func _on_control_timer_timeout():
+	# Legacy handler for connections in existing scenes.
+	# The logic is now handled in GameManager and _process.
+	pass
 
 func _on_dialogue_started():
 	visible = false

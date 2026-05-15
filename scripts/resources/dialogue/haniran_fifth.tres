@@ -4,11 +4,12 @@
 
 [resource]
 script = ExtResource("1_pwjrc")
-raw_dialogue = "PLAYER: Uhm if you don’t mind me asking? How are your parents? Dina and Kowo?
+raw_dialogue = "PLAYER[look_back]: Uhm if you don’t mind me asking? How are your parents? Dina and Kowo?
 Haniran(Haniran)[shocked]: I don’t talk to them much since the quarantine. Too dangerous. Kryona says the corruption passes through the phoneline as well.
-PLAYER: Shit. You miss them a lot?
+PLAYER[mask_up]: Shit. You miss them a lot?
 Haniran(Haniran)[happy]: Nnnnnnope. Neveeeerrrr! They are BORING and LAME. I just have fun with [color=yellow]Syndra[/color], you should talk to her!!!. She’s [color=yellow]down south-west of here[/color]!!!
-PLAYER: Haha I will, take care of yourself Haniran
-Haniran(Haniran)[happy]: Yeahyeahyeah… I’m glad you’re back though, please cheer up this world a bit… I’d rather have more “quaint” cottages than nothing…"
+PLAYER[happy]: Haha I will, take care of yourself Haniran
+Haniran(Haniran)[happy]: Yeahyeahyeah… I’m glad you’re back though, please cheer up this world a bit… I’d rather have more “quaint” cottages than nothing… 
+PLAYER[masked]: … … Let’s see"
 next_state = "sixth"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

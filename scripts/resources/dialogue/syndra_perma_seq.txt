@@ -1,8 +1,9 @@
-PLAYER: I know things are bad Syn, I came here to talk to Kryona.
+PLAYER[mask_up]: I know things are bad Syn, I came here to talk to Kryona.
 Syndra(Syndra)[sad]: Well you should have come earlier, Goney and Havyo have passed already
-PLAYER: …
+PLAYER[masked]: …
 Syndra(Syndra)[sad]: …
-PLAYER: I’m sorry, Syndra.
+PLAYER[mask_up]: I’m sorry, Syndra.
 Syndra(Syndra)[sad]: I mean, wait, no I’m glad you’re back, really, oh that was so rude, I’m sorry, I know you’re just trying…
-PLAYER: Syn it’s ok, really, you have a right to be bitter about that.
-Syndra(Syndra)[happy]: No really, I’m happy you’re back… But you should talk to the others as well. To go through that exit [color=yellow]west[/color] of here, the [color=#4a86e8]Clarinet[/color] should be positioned [color=yellow]north[/color], the [color=#6aa84f]Guitar[/color] should be positioned [color=yellow]south[/color] and the [color=#cc4125]Cello[/color] should be positioned [color=yellow]west[/color]. Use the [color=yellow]knobs behind you[/color] to change their position in the [color=yellow]sound space.[/color]
+PLAYER[look_back]: Syn it’s ok, really, you have a right to be bitter about that.
+Syndra(Syndra)[happy]: No really, I’m happy you’re back… But you should talk to the others as well.
+Syndra(Syndra)[happy]: To go through that exit [color=yellow]west[/color] of here, the [color=#4a86e8]Clarinet[/color] should be positioned [color=yellow]north[/color], the [color=#6aa84f]Guitar[/color] should be positioned [color=yellow]south[/color] and the [color=#cc4125]Cello[/color] should be positioned [color=yellow]west[/color]. Use the [color=yellow]knobs behind you[/color] to change their position in the [color=yellow]sound space.[/color]

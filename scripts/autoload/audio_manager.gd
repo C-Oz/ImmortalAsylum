@@ -7,8 +7,8 @@ var tween: Tween
 
 var doormat_sounds: Dictionary = {}
 var doormat_player: AudioStreamPlayer
-var last_doormat_time: int = -5000
-var doormat_cooldown_ms: int = 5000
+var last_doormat_time: int = -7000
+var doormat_cooldown_ms: int = 7000
 
 # Add folders here that need to be quieter. Value is in decibels (negative is quieter).
 var doormat_volume_offsets: Dictionary = {

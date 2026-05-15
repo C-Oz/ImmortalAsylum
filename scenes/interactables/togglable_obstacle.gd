@@ -30,6 +30,14 @@ func _ready() -> void:
 	if state_trigger_npc_id != "":
 		GameManager.progression_updated.connect(_update_npc_trigger)
 		_update_npc_trigger()
+		
+	# If already built (from save or editor), disable further interaction
+	if is_built:
+		sequence_completed = true
+		if is_instance_valid(ui):
+			ui.stop_sequence()
+			ui.visible = false
+		interaction_zone.set_deferred("monitoring", false)
 
 func _apply_state_visuals() -> void:
 	# Swap tilemap visibilities
@@ -42,19 +50,26 @@ func _apply_state_visuals() -> void:
 		collision_shape.set_deferred("disabled", false)
 
 func _on_sequence_completed() -> void:
-	# Toggle the state
-	is_built = !is_built
+	# Permanently set to built
+	is_built = true
 	
 	# Save the new state
 	GameManager.save_object_state(self, is_built)
 	
 	_apply_state_visuals()
 	
-	# Adjust the global ControlTimer
-	_adjust_control_timer(-timer_value if is_built else timer_value)
+	# Adjust the global ControlTimer - always positive addition now
+	_adjust_control_timer(timer_value)
 	
 	# Trigger NPC state change if configured
 	_update_npc_trigger()
+	
+		# Disable further interaction permanently
+	sequence_completed = true
+	if is_instance_valid(ui):
+		ui.stop_sequence()
+		ui.visible = false
+	interaction_zone.set_deferred("monitoring", false)
 
 func _update_npc_trigger() -> void:
 	if state_trigger_npc_id == "":

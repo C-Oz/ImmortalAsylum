@@ -58,12 +58,17 @@ var unlocked_skills: Dictionary = {
 	"right": true
 }
 
+var game_over_overlay_scene = preload("res://scenes/ui/GameOverOverlay.tscn")
+var game_over_overlay: CanvasLayer
+var timer_has_started: bool = false
+var has_win_collectible: bool = false
+
 func _ready() -> void:
 	# Create a persistent timer node that lives inside the Autoload
 	control_timer = Timer.new()
 	control_timer.name = "ControlTimer"
-	control_timer.one_shot = false
-	control_timer.wait_time = 180.0
+	control_timer.one_shot = true
+	control_timer.wait_time = 2520.0 # 45 minutes 2700
 	add_child(control_timer)
 	
 	timer_sfx_player = AudioStreamPlayer.new()
@@ -72,9 +77,8 @@ func _ready() -> void:
 	control_timer.add_child(timer_sfx_player)
 	
 	control_timer.timeout.connect(_on_control_timer_timeout)
-	control_timer.start()
 	
-	player_portrait = load("res://scripts/resources/dialogue/player_portrait.tres")
+	player_portrait_set = load("res://scripts/resources/dialogue/player_portraits.tres")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("god_mode"):
@@ -89,17 +93,94 @@ func _input(event: InputEvent) -> void:
 		change_scene("res://scenes/overworld/EastArea2.tscn")
 	elif event.is_action_pressed("start_space"):
 		change_scene("res://scenes/overworld/SpaceArea.tscn")
+	
+	if event.is_action_pressed("debug_add_timer"):
+		_debug_adjust_timer(60.0)
+	elif event.is_action_pressed("debug_sub_timer"):
+		_debug_adjust_timer(-60.0)
+
+func _debug_adjust_timer(delta: float) -> void:
+	if not timer_has_started: return
+	var new_time = max(0.1, control_timer.time_left + delta)
+	control_timer.start(new_time)
+
+func _process(_delta: float) -> void:
+	_update_glitch_apocalypse()
+
+func collect_win_item() -> void:
+	has_win_collectible = true
+	progression_updated.emit()
+
+func _update_glitch_apocalypse() -> void:
+	if not timer_has_started:
+		if is_instance_valid(game_over_overlay):
+			game_over_overlay.visible = false
+		return
+		
+	if not control_timer.is_stopped() and control_timer.time_left > 300.0:
+		if is_instance_valid(game_over_overlay):
+			game_over_overlay.visible = false
+		return
+	
+	if not is_instance_valid(game_over_overlay):
+		game_over_overlay = game_over_overlay_scene.instantiate()
+		add_child(game_over_overlay)
+	
+	game_over_overlay.visible = true
+	var time_left = control_timer.time_left
+	var urgency = 1.0
+	if not control_timer.is_stopped():
+		urgency = (300.0 - time_left) / 300.0 # 0.0 to 1.0
+	
+	var color_rect = game_over_overlay.get_node("ColorRect")
+	var white_screen = game_over_overlay.get_node_or_null("WhiteScreen")
+	
+	if has_win_collectible:
+		color_rect.visible = false
+		if white_screen:
+			white_screen.visible = true
+			white_screen.modulate.a = urgency
+	else:
+		color_rect.visible = true
+		var material = color_rect.material as ShaderMaterial
+		if material:
+			material.set_shader_parameter("glitch_intensity", lerp(0.0, 0.05, urgency))
+			material.set_shader_parameter("static_amount", lerp(0.0, 1.0, urgency))
+			material.set_shader_parameter("speed", lerp(2.0, 10.0, urgency))
+		if white_screen:
+			white_screen.visible = false
+
+func start_global_game_timer() -> void:
+	if control_timer.is_stopped():
+		control_timer.start()
+		timer_has_started = true
+
+func get_formatted_game_time() -> String:
+	var total_seconds = int(control_timer.time_left)
+	var minutes = total_seconds / 60
+	var seconds = total_seconds % 60
+	return "%02d:%02d" % [minutes, seconds]
 
 func _on_control_timer_timeout() -> void:
+	if is_instance_valid(game_over_overlay):
+		if has_win_collectible:
+			var white_screen = game_over_overlay.get_node_or_null("WhiteScreen")
+			if white_screen:
+				white_screen.visible = true
+				white_screen.modulate.a = 1.0
+		else:
+			var black_screen = game_over_overlay.get_node_or_null("BlackScreen")
+			if black_screen:
+				black_screen.visible = true
+	
 	if cycling_unlocked:
 		timer_sfx_player.play()
 
 func adjust_timer(delta: float) -> void:
-	var new_time = max(0.1, control_timer.time_left + delta)
-	# start(new_time) sets the duration for the CURRENT run.
-	# We then reset wait_time so the NEXT automatic loop uses 180.
+	if delta <= 0: return # Only additions now
+	
+	var new_time = control_timer.time_left + delta
 	control_timer.start(new_time)
-	control_timer.wait_time = 180.0
 
 func change_scene(scene_path: String) -> void:
 	scene_changed.emit(scene_path)

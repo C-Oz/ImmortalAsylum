@@ -216,7 +216,6 @@ stream = ExtResource("17_14gop")
 volume_db = -8.0
 
 [node name="TimerLabel" type="Label" parent="."]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -229,7 +228,6 @@ theme_override_font_sizes/font_size = 32
 text = "Timer"
 
 [node name="TimerAdjustmentLabel" type="Label" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = 546.0
 offset_top = 60.0

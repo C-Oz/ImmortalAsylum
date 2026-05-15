@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_6v8n1")
 raw_dialogue = "Onia(Onia)[annoyed]: Why did you leave us Gira? You know you are the only able to get through to her. 
-PLAYER: I really tried to convince her. Leaving was my last option. I hoped she would eventually follow me back to earth. I thought our bond was strong enough for that. I see now that that was a mistake
+PLAYER[look_back]: I really tried to convince her. Leaving was my last option. I hoped she would eventually follow me back to earth. I thought our bond was strong enough for that. I see now that that was a mistake
 Onia(Onia)[annoyed]: … I get your reasoning I suppose. I think we all overestimated Kryona’s stubbornness. You should talk to [color=yellow]Kunjato[/color] in the [color=yellow]north east[/color] if you want to find her research chamber."
 next_state = "sixth"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

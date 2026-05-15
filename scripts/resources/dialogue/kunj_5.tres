@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource("1_5v9n1")
-raw_dialogue = "PLAYER: I’m gonna talk to Kryona to try and fix things
+raw_dialogue = "PLAYER[look_back]: I’m gonna talk to Kryona to try and fix things
 Kunjato(Kunjato)[annoyed]: Don’t
-PLAYER: what…?
+PLAYER[mask_up]: what…?
 Kunjato(Kunjato)[frustrated]: Don’t “try and fix things” Gira, it’s obvious this whole project was a mistake. The Residents, the Digitalborn, the whole damn Server. Just shut it all down.
-PLAYER: …things only went awry when you were created.
+PLAYER[look_back]: …things only went awry when you were created.
 Kunjato(Kunjato)[annoyed]: Come on, even before us you KNEW that the energy supply was finite and that it was draining faster, the larger the Server became.
 Kunjato(Kunjato)[annoyed]: This whole world is UNSUSTAINABLE, we only sped up its demise… And Haniran could not even get his damn mansion.
 Kunjato(Kunjato)[annoyed]: Now, for the sake of me not having to look at your ugly mug again, please visit [color=yellow]Nenneppo[/color] in the south. I will tell you the stereo code: 

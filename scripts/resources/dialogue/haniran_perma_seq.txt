@@ -1,6 +1,7 @@
 Haniran(Haniran)[angry]: Grah! I’m so mad at Kryona that she ruined everything, we could have had great parties with everyone! Every day!
-PLAYER: Kryona is doing what she believes is right… Even if what she believes is suuuuuper lame
+PLAYER[look_back]: Kryona is doing what she believes is right… Even if what she believes is suuuuuper lame
 Haniran(Haniran)[angry]: SUUUUUUUUPER LAME
-PLAYER: SUPER-DUPER-MEGA-LAME.
+PLAYER[happy]: SUPER-DUPER-MEGA-LAME.
 Haniran(Haniran)[shocked]: That’s too much Gira.
-PLAYER: Right sorry.
+PLAYER[mask_up]: Right sorry.
+Haniran(Haniran): Just go talk to Syndra [color=yellow]Down in the south-west of here[/color].

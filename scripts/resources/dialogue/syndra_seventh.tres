@@ -6,6 +6,6 @@
 script = ExtResource("1_sum5y")
 raw_dialogue = "Syndra(Syndra)[happy]: The [color=#4a86e8]Clarinet[/color] should be positioned [color=yellow]north[/color], the [color=#6aa84f]Guitar[/color] should be positioned [color=yellow]south[/color] and the [color=#cc4125]Cello[/color] should be positioned [color=yellow]west[/color]. Use the [color=yellow]knobs behind you[/color] to change their position in the [color=yellow]sound space.[/color]
 Syndra(Syndra)[sad]: Please find Kryona and fix this. Haniran shouldn’t suffer like this any longer. 
-PLAYER: Take care, Syn"
+PLAYER[happy]: Take care, Syn"
 next_state = "seventh"
 metadata/_custom_type_script = "uid://ckkcqb8nkpgwn"

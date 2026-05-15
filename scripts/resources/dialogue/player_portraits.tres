@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="PortraitSet" load_steps=11 format=3 uid="uid://b0v3vwgeeqh3x"]
+
+[ext_resource type="Script" uid="uid://drbnk3gfyh4e0" path="res://scripts/resources/dialogue/mood_portrait.gd" id="1_d8hny"]
+[ext_resource type="Script" uid="uid://cbfporf6jgqpj" path="res://scripts/resources/dialogue/portrait_set.gd" id="2_66yfa"]
+[ext_resource type="Texture2D" uid="uid://o5x4qy130fd4" path="res://assets/art/player/Giratran with mask.png" id="2_o5wsn"]
+[ext_resource type="Texture2D" uid="uid://cpfk4mo8ud2j2" path="res://assets/art/player/Giratran pushing mask up.png" id="3_2mctv"]
+[ext_resource type="Texture2D" uid="uid://cs0oqbd3317ds" path="res://assets/art/player/Giratran looking forward 2.png" id="4_mgugw"]
+[ext_resource type="Texture2D" uid="uid://cpscqtp1wpkq4" path="res://assets/art/player/Giratran happy.png" id="5_ri0yg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2vkx"]
+atlas = ExtResource("2_o5wsn")
+script = ExtResource("1_d8hny")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6tub"]
+atlas = ExtResource("5_ri0yg")
+script = ExtResource("1_d8hny")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hbat"]
+atlas = ExtResource("4_mgugw")
+script = ExtResource("1_d8hny")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3d3m"]
+atlas = ExtResource("3_2mctv")
+script = ExtResource("1_d8hny")
+metadata/_custom_type_script = "uid://drbnk3gfyh4e0"
+
+[resource]
+script = ExtResource("2_66yfa")
+portraits = Dictionary[String, ExtResource("1_d8hny")]({
+"default": SubResource("AtlasTexture_k2vkx"),
+"happy": SubResource("AtlasTexture_g6tub"),
+"look_back": SubResource("AtlasTexture_0hbat"),
+"mask_up": SubResource("AtlasTexture_i3d3m"),
+"masked": SubResource("AtlasTexture_k2vkx")
+})
+metadata/_custom_type_script = "uid://cbfporf6jgqpj"

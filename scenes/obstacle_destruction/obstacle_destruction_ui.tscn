@@ -20,29 +20,35 @@ scale_min = 0.5
 scale_max = 0.5
 
 [node name="DestructionUI" type="Control"]
-modulate = Color(0.5, 0.5, 0.5, 1)
 z_index = 10
+custom_minimum_size = Vector2(77.6, 0)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 185.0
+offset_left = -38.8
+offset_right = 38.8
 offset_bottom = 48.0
 script = ExtResource("1_8yhai")
+countdown_beats = 3
 
 [node name="InstrumentIcon" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 expand_mode = 1
 
 [node name="BackgroundPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(97.6, 0)
 layout_mode = 0
-offset_right = 183.0
+offset_left = -10.0
+offset_right = 87.6
 offset_bottom = 48.0
 
 [node name="SequenceContainer" type="Control" parent="."]
+custom_minimum_size = Vector2(77.6, 0)
 layout_mode = 1
 anchors_preset = 0
-offset_right = 183.0
+offset_right = 77.6
 offset_bottom = 49.0
 
 [node name="Needle" type="TextureRect" parent="."]
